@@ -1,0 +1,191 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li {if $op == 'display'}class="active"{/if}><a href="{php echo $this->createWebUrl('station',array('op'=>'display'))}">岗位管理</a></li>
+    <li {if $op == 'edit'}class="active"{/if}><a href="{php echo $this->createWebUrl('station',array('op'=>'edit'))}">添加岗位</a></li>
+</ul>
+
+{if $op == 'display'}
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">岗位管理</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th>编号</th>
+                      <th>岗位名称</th>
+                      <th>排序</th>
+                      <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($stas)}
+                    {loop $stas $key $sta}
+                    <tr>
+                        <td>{php echo $key+1}</td>
+                        <td style="width:230px;">
+                            <div style="width:100%;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:5;-webkit-box-orient:vertical;">
+                                {$sta['staName']}
+                            </div>
+                        </td>
+                        <td>{$sta['displayorder']}</td>
+                        <td>
+                            <a href="{php echo $this->createWebUrl('station', array('op'=>'edit', 'id'=>$sta['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑"><i class="fa fa-edit"></i></a>
+                            <a onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" href="{php echo $this->createWebUrl('station', array('op'=>'delete', 'id'=>$sta['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">尚未添加主题</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{/if}
+
+{if $op == 'edit'}
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">添加岗位</div>
+            <div class="panel-body">
+              <div class="form-group">
+                  <label class="col-xs-12 col-sm-3 col-lg-2 control-label">岗位名称</label>
+                  <div class="col-xs-12 col-sm-9">
+                      <input type="text" class="form-control" name="staName" value="{$content['staName']}">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-xs-12 col-sm-3 col-lg-2 control-label">排序</label>
+                  <div class="col-xs-12 col-sm-9">
+                      <input type="text" class="form-control" name="displayorder" value="{$content['displayorder']}">
+                      <h5><small>注意：顺序决定生成的网页的不同位置，数字越小越前面</small></h5>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">岗位职责</div>
+            <div class="panel-body">
+              <div class="row" id="duty-children" style="margin-top:15px;">
+                  {php $dutys = iunserializer($content['staDuty'])}
+                  {loop $dutys $key $duty}
+                  <div class="form-group duty-item">
+                      <label class="col-xs-12 col-sm-3 col-lg-2 control-label">岗位职责</label>
+                      <div class="col-xs-12 col-sm-8">
+                          <div class="row">
+                              <div class="col-xs-12 col-sm-12">
+                                  <input type="text" class="form-control" name="duty[{$key}][content]" value="{$duty['content']}">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-1">
+                          <div class="btn btn-danger" onclick="delItem(this)">
+                              <span class="glyphicon glyphicon-remove"></span>
+                          </div>
+                      </div>
+                  </div>
+                  {/loop}
+              </div>
+              <div class="form-group">
+                  <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                      <div class="btn btn-success" onclick="addItem('duty')">添加岗位职责</div>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">岗位职责</div>
+            <div class="panel-body">
+              <div class="row" id="req-children" style="margin-top:15px;">
+                  {php $reqs = iunserializer($content['staRequire'])}
+                  {loop $reqs $key $req}
+                  <div class="form-group req-item">
+                      <label class="col-xs-12 col-sm-3 col-lg-2 control-label">岗位要求</label>
+                      <div class="col-xs-12 col-sm-8">
+                          <div class="row">
+                              <div class="col-xs-12 col-sm-12">
+                                  <input type="text" class="form-control" name="req[{$key}][content]" value="{$req['content']}">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-1">
+                          <div class="btn btn-danger" onclick="delItem(this)">
+                              <span class="glyphicon glyphicon-remove"></span>
+                          </div>
+                      </div>
+                  </div>
+                  {/loop}
+              </div>
+              <div class="form-group">
+                  <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                      <div class="btn btn-success" onclick="addItem('req')">添加岗位要求</div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                      <input type="hidden" name="id" value="{$content['id']}">
+                      <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                      <input type="hidden" name="token" value="{$_W['token']}">
+                  </div>
+              </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+function addItem(type) {
+    var _type = type;
+    if(_type == 'duty'){
+      var num = $('.duty-item').length;
+      var html = '<div class="form-group duty-item">'+
+      '<label class="col-xs-12 col-sm-3 col-lg-2 control-label">岗位职责</label>'+
+              '<div class="col-xs-12 col-sm-8">'+
+                  '<div class="row">'+
+                      '<div class="col-xs-6 col-sm-12">'+
+                          '<input type="text" class="form-control" name="duty['+num+'][content]">'+
+                      '</div>'+
+                  '</div>'+
+              '</div>'+
+              '<div class="col-xs-12 col-sm-1">'+
+                  '<div class="btn btn-danger" onclick="delItem(this)">'+
+                      '<span class="glyphicon glyphicon-remove"></span>'+
+                  '</div>'+
+              '</div>'+
+          '</div>';
+      $('#duty-children').append(html);
+      num++;
+    }else{
+      var num = $('.req-item').length;
+      var html = '<div class="form-group req-item">'+
+      '<label class="col-xs-12 col-sm-3 col-lg-2 control-label">岗位要求</label>'+
+              '<div class="col-xs-12 col-sm-8">'+
+                  '<div class="row">'+
+                      '<div class="col-xs-6 col-sm-12">'+
+                          '<input type="text" class="form-control" name="req['+num+'][content]">'+
+                      '</div>'+
+                  '</div>'+
+              '</div>'+
+              '<div class="col-xs-12 col-sm-1">'+
+                  '<div class="btn btn-danger" onclick="delItem(this)">'+
+                      '<span class="glyphicon glyphicon-remove"></span>'+
+                  '</div>'+
+              '</div>'+
+          '</div>';
+      $('#req-children').append(html);
+      num++;
+    }
+
+}
+function delItem(obj) {
+    $(obj).parent().parent().remove();
+}
+</script>
+{/if}
+{template 'common/footer'}

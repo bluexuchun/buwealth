@@ -1,0 +1,233 @@
+.float_l {
+  float: left;
+}
+.float_r {
+  float: right;
+}
+.clear:after{
+  content:'';
+  clear:both;
+  display: block;
+  height:0;
+}
+.mobile-hide{
+  display: block;
+}
+.pc-hide{
+  display: none;
+}
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #151515;
+}
+.Bnav {
+  width: 100%;
+  height: 5.45rem;
+}
+.Bnav .nav {
+  width: 69rem;
+  height: 5.45rem;
+  margin: 0 auto;
+}
+.Bnav .nav img {
+  width: 9rem;
+  height: 3rem;
+  margin: 2rem 5rem 0 2rem;
+}
+.Bnav .nav ul {
+  margin-top: 3rem;
+  list-style: none;
+  height: 1rem;
+  box-sizing: border-box;
+}
+.Bnav .nav ul li {
+  float: left;
+  margin-right: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #151515;
+}
+.Bnav .nav ul li:hover {
+  border-bottom: 2px solid #B69570;
+}
+.Bnav .nav ul li a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #DEDEDE;
+}
+.bill {
+  width: 100%;
+}
+.bill img {
+  height: auto;
+  width: 100%;
+}
+.text {
+  margin: 2rem auto 2rem;
+  width: 53rem;
+}
+.text h3 {
+  color: #B69570;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.text h3 .h3-line{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom:2px;
+  margin-right:1rem;
+}
+.text p.text-lheight {
+  color: #D3D3D3;
+  font-size: .8rem;
+  width: 32rem;
+  line-height:2rem;
+  margin-top:1rem;
+}
+.main {
+  width: 53rem;
+  margin: 0 auto;
+  margin-bottom: 8rem;
+}
+.main .main_top {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.main .main_top ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.main .main_top ul li {
+  float: left;
+  height: 2.5rem;
+  padding: 0 2rem 0 2rem;
+  border-top: 1px solid #B69570;
+  border-bottom: 1px solid #B69570;
+  border-left:1px solid #B69570;
+  cursor: pointer;
+}
+.main .main_top ul li:last-child{
+  border-right:1px solid #B69570;
+}
+.main .main_top ul li div {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  line-height: 2.5rem;
+  color: #B69570;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.main .main_top ul li div .icon-credit{
+  width:10px;
+  height:auto;
+  margin-left:15px;
+}
+.main .main_top ul li div .icon-creditup{
+  width:10px;
+  height:auto;
+  margin-left:15px;
+  display: none;
+}
+.main .main_top div {
+  height: 3rem;
+}
+.main .main_top div span {
+  line-height: 3rem;
+  color: #B69570;
+}
+.main .main_bottom {
+  width: 100%;
+}
+.main .main_bottom ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  height:56rem;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.main .main_bottom ul::-webkit-scrollbar,.rcontent::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 6px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 6px;
+}
+.main .main_bottom ul::-webkit-scrollbar-thumb,.rcontent::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(190,157,112,0.8);
+}
+.main .main_bottom ul::-webkit-scrollbar-track,.rcontent::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(190,157,112,0.3);
+}
+.main .main_bottom ul li {
+  display: flex;
+}
+
+.main .main_bottom ul li .main-direct{
+  display: flex;
+  width:100%;
+  flex-direction: row;
+  margin-bottom: 2rem;
+  position: relative;
+  cursor: pointer;
+}
+.main .main_bottom ul li .main-direct > img {
+  width: 22rem;
+  height:auto;
+  max-height:12rem;
+  object-fit: cover;
+  margin-right: 2rem;
+}
+.main .main_bottom ul li .main-direct .item {
+  position: absolute;
+  height: 100%;
+  width: 26rem;
+  right:10px;
+  top:0px;
+  color: #B69570;
+  border-top: 1px solid #B69570;
+  border-bottom: 1px solid #B69570;
+  padding: 0 1rem;
+  margin: 0;
+}
+.main .main_bottom ul li .main-direct > div p {
+  position: absolute;
+  height: 9rem;
+  word-break: break-all;
+  margin-right: 4rem;
+  vertical-align: middle;
+  top: 50%;
+  margin-top: -0.9rem;
+}
+.main .main_bottom ul li .main-direct > div .s_l {
+  width: 9rem;
+}
+.main .main_bottom ul li .main-direct > div .s_r {
+  left: 13rem;
+}
+.main .main_bottom ul li .main-direct > div > img {
+  width: 4rem;
+  height:auto;
+  max-height:5rem;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -1.4rem;
+}
+.main_bottom .nomore{
+  width:100%;
+  padding:12px 0px;
+  text-align: center;
+  color:#B69570;
+  font-size:.875rem;
+  display: none;
+}

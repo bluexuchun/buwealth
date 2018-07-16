@@ -1,0 +1,250 @@
+{template 'header'}
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/product/product.less">
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/product/product-media.css">
+<script src="{MODULE_URL}template/mobile/js/less-1.7.0.js" type="text/javascript"></script>
+<div class="product">
+
+  <div class="product-content">
+    <img class="product-img" src="{MODULE_URL}template/mobile/images/product.png" alt="">
+
+    <div class="lists">
+      {loop $newproduct $key $product}
+      <div class="lists-content">
+        <div class="lists-title">{$productCate[$key]['catename']}</div>
+        <ul class="lists-ul">
+          {loop $product $key $value}
+          <li class="lists-ul-li">
+            <a class="gotoDetail" data-href="{php echo $this->createMobileUrl('detail',array('id'=>$id,'childId'=>$value['id']))}" data-id="{$value['id']}">
+              <img class="lists-img" src="{php echo tomedia($value['productIcon'])}" alt="">
+              <div class="lists-word">
+                <div class="title">{$value['productTitle']}</div>
+                <div class="btn">
+                  <img src="{MODULE_URL}template/mobile/images/more.png" alt="">
+                </div>
+              </div>
+            </a>
+          </li>
+          {/loop}
+        </ul>
+      </div>
+      {/loop}
+    </div>
+  </div>
+</div>
+<div class="sign1">
+  <div class="sign1-content">
+    <div class="sign1-title">
+      BU财富谨遵中基协《私募投资基金监督管理暂行办法》之规定，只向特定投资人展示私募基金产品信息， 不构成任何投资推介建议。
+    </div>
+    <div class="sign1-word">
+      阁下如有意了解私募基金且满足《私募投资基金监督管理暂行办法》关于“合格投资人”标准之规定，即：具备相应风险识别能力和风险承担能力；投资于单只私募基金的金额不低于100万元；个人金融类资产不低于300
+万元或者最近三年个人平均收入不低于50万元人民币。请阁下详细阅读本提示，并注册成为BU财富特定的合格投资者。
+   </div>
+   <div class="sign1-btn">
+     <div class="read">
+       <input type="checkbox" checked name="read"><span>我已阅读并接受此认定书</span>
+     </div>
+     <div class="confrim" id="confrim">确定</div>
+   </div>
+  </div>
+</div>
+<div class="questions">
+  <div class="questions-img">
+    <div class="qcontent-black"></div>
+    <div class="qcontent">
+      <div class="qcontent-h1">合格投资者风险测评问卷</div>
+      <div class="qcontent-title">
+        根据《私募投资基金监督管理暂行办法》第四章第十四条规定：
+      </div>
+      <div class="qcontent-desc">
+          私募基金管理人、私募基金销售机构不得向合格投资者之外的单位和个人募集资金，不得通过报刊电台、电视、互联网等公众传播或讲座，报告分析会、传单、手机短信、微信、博客和电子邮件等方式向不特定对象宣传推介。
+      </div>
+      <div class="qcontent-desc1">
+        阁下如有意了解私募基金且满足《私募投资基金监督管理暂行方法》关于“合格投资人”标准之规定，即：
+        <ul class="qcontent-ul">
+          <li>√具备相应风险识别能力和风险承担能力；</li>
+          <li>√投资于单只私募基金的金额不低于100万元；</li>
+          <li>√个人金融类资产不低于300万元或者最近三年个人年平均收入不低于50万元人民币。</li>
+        </ul>
+      </div>
+      <div class="qcontent-desc2">
+        BU财富谨遵《私募投资基金监督管理暂行办法》之规定，只向特定投资人展示私募基金产品信息，不构成任何投资推介建议。为了给您提供更优质的服务，请您花费几分钟时间，如实填写调查问卷，本问卷可协助您评估您的风险承受能力，进而为您挑选更适合的投资产品。
+      </div>
+      <div class="qcontent-options">
+        <ul class="options-ul">
+          {loop $options $key $option}
+          <li class="options-li">
+            <div class="options-title">
+              <div class="options-key">{php echo $key+1}、</div>
+              <div class="options-word">{$option['question']}</div>
+            </div>
+            <ul class="options-items">
+              {php $qoptions = iunserializer($option['options'])}
+              {loop $qoptions $keychild $value}
+              {php $len = mb_strlen($value['title'],'UTF-8');}
+              <li>
+                <span class="option-span">
+                  <input type="radio" data-value="{$value['value']}" num="{$len}" name="question{$key}" class="option-radio" value="{$eng[$keychild]}"><label><div class="label-content">{$eng[$keychild]}、{$value['title']}</div></label>
+                </span>
+              </li>
+              {/loop}
+            </ul>
+          </li>
+          {/loop}
+        </ul>
+        <div class="question-btn">
+          <button id="qsubmit">提交</button>
+        </div>
+      </div>
+    </div>
+    <div class="rcontent">
+      <div class="rcontent-title">
+        适当性评估结果及匹配意见
+      </div>
+      <div class="rcontent-desc">
+        根据您填写的《基金投资者风险测评问卷》，本公司对您的风险承受能力进行了综合评估，现得到评估结果如下：
+      </div>
+      <div class="rcontent-result">
+        您的风险承受能力为：<span class="rcontent-spe" id="rs"></span>
+      </div>
+      <div class="rcontent-level">
+        与您风险承受能力匹配的产品风险风险等级为：<span class="rcontent-spe" id="rl"></span>
+      </div>
+      <div class="rcontent-tips">
+        本公司在此郑重提醒，本公司向您推荐的产品将以您的风险承受能力等级为基础，若您提供的信息发生任何重大变化，您都应当及时书面通知本公司。本公司建议您审慎评判自身风险承受能力、结合自身投资行为，
+        作出审慎的投资判断。
+      </div>
+      <div class="rcontent-btn">
+        <button id="rsubmit">确&nbsp;定</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+    $('html , body').animate({scrollTop: 0},'normal');
+    var isConfrim = '{$isConfrim['isConfrim']}';
+    if(isConfrim == 1){
+      $('.sign1').css('display','none');
+    }else{
+      $('.sign1').css('display','flex');
+      $('body,html').css('overflow-y','hidden');
+    }
+
+  })
+  $('#confrim').on('click',function(){
+    if($('input[name="read"]').is(':checked')){
+      var is_login = $('#li-login').attr('data-login');
+      if(is_login != '' && is_login != null && is_login != undefined && is_login != 0){
+        var userphone = $('#li-login').attr('data-userphone');
+        $.ajax({
+          url: "{php echo $this->createMobileUrl('isConfrim')}",
+          data:{'phone':userphone},
+          type: 'post',
+          dataType:'json',
+          success:function(res){
+            console.log(res);
+            if(res.status == 1){
+              $('.sign1').css('display','none');
+              $('body,html').css('overflow-y','auto');
+            }else{
+
+            }
+          }
+        })
+      }else{
+        $('.sign1').css('display','none');
+        $('body,html').css('overflow-y','auto');
+      }
+    }
+  })
+  $('.gotoDetail').on('click',function(){
+    var that = this;
+    var is_login = $('#li-login').attr('data-login');
+    if(is_login == '' || is_login == null || is_login == undefined || is_login == 0){
+      alert('请先登录');
+      $('html , body').animate({scrollTop: 0},'normal');
+      $('.tools').eq(0).show();
+      return false;
+    }else{
+      $('html , body').animate({scrollTop: 0},'normal');
+      $('html,body').css('overflow-y','hidden');
+      var userphone = $('#li-login').attr('data-userphone');
+      console.log(userphone);
+      $.ajax({
+        url:"{php echo $this->createMobileUrl('isquestion')}",
+        data:{'phone':userphone},
+        type:'post',
+        dataType:'json',
+        success:function(data){
+          if(data.success == 1){
+            if(data.message == 1){
+              location.href = $(that).attr('data-href');
+            }else{
+              $('.questions').show().attr('data-url',$(that).attr('data-href')).attr('data-id',$(that).attr('data-id'));
+            }
+          }else{
+            alert(data.message);
+          }
+        }
+      })
+    }
+  });
+  $('#qsubmit').on('click',function(){
+    var _length = $('.options-li').length;
+    var _options = new Array();
+    var _result = 0;
+    $('#rs').html();
+    $('#rl').html();
+    $('#rtitle').html();
+    for (var i = 0; i < _length; i++) {
+      var val = $('input[name="question'+i+'"]:checked').val();
+      if(val == '' || val == null || val == undefined){
+        alert('请选择第'+(i+1)+'题的选项');
+        return false;
+      }else{
+        _options.push($('input[name="question'+i+'"]:checked').val());
+        _result = Number($('input[name="question'+i+'"]:checked').attr('data-value')) + Number(_result);
+      }
+    }
+    var username = $('#li-login').attr('data-username');
+    var userphone = $('#li-login').attr('data-userphone');
+    var childId = $('.questions').attr('data-id');
+    var themeid = "{$questions['id']}";
+    // 预约
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('question')}",
+      type:'post',
+      data:{'username':username,'userphone':userphone,'options':_options,'result':_result,'themeid':themeid,'childId':childId},
+      dataType:'json',
+      success:function(data){
+        console.log(data);
+        if(data.success == 1){
+          $('.qcontent').animate({
+            'left':'-150%'
+          },1000);
+          $('.rcontent').animate({
+            'left':'50%'
+          },1000);
+          $('.qcontent-black').hide();
+          $('#rs').html(data.result);
+          $('#rl').html(data.resultLevel);
+          $('#rtitle').html(data.resultProduct);
+        }else{
+          alert(data.message);
+        }
+      }
+    })
+  });
+  $('.qcontent-black').on('click',function(){
+    $('html,body').css('overflow-y','auto');
+    $('.questions').hide();
+  });
+  $('#rsubmit').on('click',function(){
+    $('html,body').css('overflow-y','auto');
+    $('.questions').hide();
+    var url = $('.questions').attr('data-url');
+    location.href = url;
+  })
+</script>
+{template 'footer'}

@@ -1,0 +1,52 @@
+{template 'header'}
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/success/success.css">
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/success/media.css">
+<div class="createOlder">
+    <div class="createOlder_main">
+        <h2>兑换成功</h2>
+        <img class="float_r su-icon" src="{MODULE_URL}template/mobile/images/success/process.png" alt="">
+        <div style="clear: both"></div>
+        <p class="minline"></p>
+        <div class="detail">
+            <div class="top">
+                <div class="top-left">
+                    <img src="{MODULE_URL}template/mobile/images/success/go.png" alt="" class="float_l" style="margin-right: 1rem">
+                </div>
+                <p class="p_style top-right">你已成功兑换 <span style="color: #BE9D70">{$good['title']}</span> 产品</p>
+            </div>
+            <div class="center">
+                <div class="float_l" style="padding-bottom: 2rem;border-bottom: 1px solid #BE9D70">
+                    <p class="float_l p_style" style="margin-right: 1rem">兑换消费积分 <span class="f_color">{$orderinfo['price']}分</span></p>
+                    <p class="float_l p_style">个人剩余积分 <span class="f_color">{$member['credit1']}分</span></p></div>
+            </div>
+            <div class="footer">
+                <p class="float_l footer-title">货物送至：</p>
+                <div class="float_l">
+                    <p>{$address['province']} {$address['city']} {$address['district']} {$address['address']} {$address['username']} 收</p>
+                    <span>{$address['phone']}
+                      {if $address['isdefault'] == 1}
+                      <span style="display: inline-block;margin-left: 1rem;border: 1px solid #ffffff;padding: 0.2rem">默认地址</span>
+                      {/if}
+                    </span>
+                </div>
+
+            </div>
+            <div class="m_footer m_style">
+                <div>
+                 <p class="float_l">货物送至：</p>
+                <div class="float_l">
+                    <p>{$address['province']} {$address['city']} {$address['district']} {$address['address']}</p>
+                    <span>{$address['username']} {$address['phone']}</span>
+                </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="look m_style">
+            <a href="#">查看订单</a>
+        </div>
+        <div class="back_l m_style">
+            <a href="#">返回群英会</a>
+        </div>
+</div>
+{template 'footer'}

@@ -1,0 +1,32 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li {if $op == 'all'}class="active"{/if}><a href="{php echo $this->createWebUrl('exrecord',array('op'=>'all','userid'=>$userid))}">全部记录</a></li>
+</ul>
+{if $op == 'all'}
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">导出记录</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th>管理员姓名</th>
+                      <th>导出时间</th>
+                      <th>导出数据范围</th>
+                  </tr>
+                  {loop $info $v}
+                  <tr>
+                      <th>{$v['operator']}</th>
+                      <th>{$v['createtime']}</th>
+                      <th>{$v['starttime']} ~ {$v['endtime']}</th>
+                  </tr>
+                  {/loop}
+                </thead>
+
+            </table>
+        </div>
+    </div>
+</div>
+{/if}
+
+{template 'common/footer'}

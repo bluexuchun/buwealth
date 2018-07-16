@@ -1,0 +1,287 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li {if $op == 'display'}class="active"{/if}><a href="{php echo $this->createWebUrl('product',array('op'=>'display'))}">产品管理</a></li>
+    <li {if $op == 'edit'}class="active"{/if}><a href="{php echo $this->createWebUrl('product',array('op'=>'edit'))}">添加产品</a></li>
+    <li {if $op == 'cdisplay'}class="active"{/if}><a href="{php echo $this->createWebUrl('product',array('op'=>'cdisplay'))}">产品分类管理</a></li>
+    <li {if $op == 'cedit'}class="active"{/if}><a href="{php echo $this->createWebUrl('product',array('op'=>'cedit'))}">添加分类</a></li>
+</ul>
+
+{if $op == 'display'}
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">活动管理</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th style="width:80px;">编号</th>
+                      <th>标题</th>
+                      <th>封面</th>
+                      <th style="width:230px;">内容</th>
+                      <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($products)}
+                    {loop $products $key $product}
+                    <tr>
+                        <td>{php echo $key+1}</td>
+                        <td>{$product['productTitle']}</td>
+                        <td>
+                            <img style="max-height:100px;" src="{php echo tomedia($product['productIcon'])}" alt="">
+                        </td>
+                        <td style="width:230px;">
+                            <div style="width:230px;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:5;-webkit-box-orient:vertical;">
+                                {$product['productContent']}
+                            </div>
+                        </td>
+                        <td>
+                            <a href="{php echo $this->createWebUrl('product', array('op'=>'edit', 'id'=>$product['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑"><i class="fa fa-edit"></i></a>
+                            <a onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" href="{php echo $this->createWebUrl('product', array('op'=>'delete', 'id'=>$product['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">尚未添加主题</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{/if}
+{if $op == 'cdisplay'}
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">产品分类管理</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th style="width:80px;">编号</th>
+                      <th>分类名称</th>
+                      <th>排序</th>
+                      <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($cproducts)}
+                    {loop $cproducts $key $product}
+                    <tr>
+                        <td>{php echo $key+1}</td>
+                        <td>{$product['catename']}</td>
+                        <td>{$product['displayorder']}</td>
+                        <td>
+                            <a href="{php echo $this->createWebUrl('product', array('op'=>'cedit', 'id'=>$product['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑"><i class="fa fa-edit"></i></a>
+                            <a onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" href="{php echo $this->createWebUrl('product', array('op'=>'cdelete', 'id'=>$product['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">尚未添加分类</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{/if}
+{if $op == 'edit'}
+<div class="main">
+    <form production="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">添加产品</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品标题</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control"  name="productTitle" value="{$content['productTitle']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品简介</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control"  name="productDesc" value="{$content['productDesc']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品封面</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('productIcon',$content['productIcon'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1000px * 500px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品分类</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <select name="productCate" class="form-control">
+                          {loop $cates $key $cate}
+                          <option {if $content['productCate'] == $cate['id']}selected{/if} value="{$cate['id']}">{$cate['catename']}</option>
+                          {/loop}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品排序</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="displayorder" value="{$content['displayorder']}">
+                        <h5><small>注意：数字越大排序越前</small></h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">是否在网站上直接显示</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <select name="is_show" class="form-control">
+                          <option {if $content['is_show'] == 0}selected{/if} value="0">关闭</option>
+                          <option {if $content['is_show'] == 1}selected{/if} value="1">开启</option>
+                        </select>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-info">
+              <div class="panel-heading">详情内容</div>
+              <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('contentIcon',$content['contentIcon'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1920px * 603px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">标题</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="contentTitle" value="{$content['contentTitle']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">简介</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="contentDesc" value="{$content['contentDesc']}">
+                    </div>
+                </div>
+                <div class="row" id="param-children" style="margin-top:15px;">
+                    {php $params = iunserializer($content['contentParam'])}
+                    {loop $params $key $param}
+                    <div class="form-group param-item">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">参数</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4">
+                                    <input type="text" class="form-control" name="contentParam[{$key}][name]" value="{$param['name']}">
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <input type="text" class="form-control" name="contentParam[{$key}][content]" value="{$param['content']}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-1">
+                            <div class="btn btn-danger" onclick="delItem(this)">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </div>
+                        </div>
+                    </div>
+                    {/loop}
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <div class="btn btn-success" onclick="addItem('req')">添加参数</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">内容</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('productContent',$content['productContent']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">内容(移动端)</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('productPcontent',$content['productPcontent']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="{$content['id']}">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+function addItem() {
+  var num = $('.param-item').length;
+  var html = '<div class="form-group param-item">'+
+  '<label class="col-xs-12 col-sm-3 col-lg-2 control-label">参数</label>'+
+          '<div class="col-xs-12 col-sm-8">'+
+              '<div class="row">'+
+                  '<div class="col-xs-6 col-sm-4">'+
+                      '<input type="text" class="form-control" name="contentParam['+num+'][name]" placeholder="请输入参数名称">'+
+                  '</div>'+
+                  '<div class="col-xs-12 col-sm-8">'+
+                      '<input type="text" class="form-control" name="contentParam['+num+'][content]" placeholder="请输入参数内容">'+
+                  '</div>'+
+              '</div>'+
+          '</div>'+
+          '<div class="col-xs-12 col-sm-1">'+
+              '<div class="btn btn-danger" onclick="delItem(this)">'+
+                  '<span class="glyphicon glyphicon-remove"></span>'+
+              '</div>'+
+          '</div>'+
+      '</div>';
+  $('#param-children').append(html);
+  num++;
+}
+function delItem(obj) {
+    $(obj).parent().parent().remove();
+}
+</script>
+{/if}
+{if $op == 'cedit'}
+<div class="main">
+    <form production="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">添加分类</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">分类名称</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control"  name="catename" value="{$content['catename']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">分类排序</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control"  name="displayorder" value="{$content['displayorder']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="{$content['id']}">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{/if}
+{template 'common/footer'}

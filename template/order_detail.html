@@ -1,0 +1,45 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('user',array('op'=>'all'))}">返回用户信息</a></li>
+    <li class="active"><a href="#">全部记录</a></li>
+</ul>
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading"></div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th>姓名</th>
+                      <th>手机</th>
+                      <th>兑换商品名称</th>
+                      <th>兑换商品积分</th>
+                      <th>兑换方式</th>
+                      <th>兑换时间</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($userOrder)}
+                    {loop $userOrder $key $order}
+                    <tr>
+                        <td>{$userinfo[$key]['name']}</td>
+                        <td>{$userinfo[$key]['phone']}</td>
+                        <td>{$order['pid']}</td>
+                        <td>{$order['price']}</td>
+                        <td>{$order['aid']}</td>
+                        <td>{$order['creattime']}</td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">此用户尚未有订单..</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{template 'common/footer'}

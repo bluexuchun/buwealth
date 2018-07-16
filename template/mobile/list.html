@@ -1,0 +1,283 @@
+{template 'header'}
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/list/list.css">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/list/media.css">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/swiper.css">
+<style>
+html, body {
+  position: relative;
+  height: 100%;
+}
+.swiper-container {
+  width:100%;
+  height:100%;
+}
+.swiper-slide {
+  text-align: center;
+  width:100%;
+  height:100%;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.bill{
+  height:500px;
+}
+.swiper-slide img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display: inline-block;
+}
+.swiper-pagination-bullet-active{
+  background: #fff;
+}
+</style>
+<div class="bill">
+  <div class="swiper-container">
+      <div class="swiper-wrapper">
+          {php $cateicons = iunserializer($cateinfo['thumb']);}
+          {loop $cateicons $key $value}
+          <div class="swiper-slide">
+              <img src="{php echo tomedia($value)}" alt="">
+          </div>
+          {/loop}
+      </div>
+      <div class="swiper-pagination"></div>
+  </div>
+</div>
+<div class="text">
+    <h3>
+      <div class="h3-line">|</div>
+      <div>
+        {$cateinfo['name']}
+      </div>
+    </h3>
+    <p class="text-lheight">{$cateinfo['description']}</p>
+</div>
+<!--main部分-->
+<div class="main">
+    <div class="main_top clear">
+        <ul class="float_l" id="allsort">
+            <li data-type="1"><div>综合排序</div></li>
+            <li data-type="2"><div>新品优先</div></li>
+            {if $inits['setting']['showCredit'] == 1}
+            <li data-type="3">
+              <div>
+                <span>积分</span>
+                <img class="icon-credit" src="{MODULE_URL}template/mobile/images/list/arrow.png" alt="">
+                <img class="icon-creditup" src="{MODULE_URL}template/mobile/images/list/arrowup.png" alt="">
+              </div>
+            </li>
+            {/if}
+        </ul>
+        <div class="float_r mobile-hide">
+            <span><span id="page">1</span>/{$nums}</span>
+            <span>页</span>
+        </div>
+    </div>
+    <div class="main_bottom">
+        <ul class="main-scroll" data-main="1">
+            {loop $goods $key $good}
+            <li data-id="{$good['id']}" class="add_style">
+              <div class="main-direct" onclick="goDetail(this)">
+                <img src="{php echo tomedia($good['thumb'])}" alt="" />
+                <div class="mobile-hide item">
+                    <p class="s_l float_l">{$good['title']}</p>
+                    {if $inits['setting']['showCredit'] == 1}
+                    <p class="float_l s_r">{$good['marketprice']}积分</p>
+                    {/if}
+                    <img src="{MODULE_URL}template/mobile/images/list/more.png" alt="">
+                </div>
+                <div class="pc-hide">
+                  <div class="mobile-item">
+                    <div class="mobile-item-title">{$good['title']}</div>
+                    {if $inits['setting']['showCredit'] == 1}
+                    <div class="mobile-item-credit">{$good['marketprice']}积分</div>
+                    {/if}
+                    <img src="{MODULE_URL}template/mobile/images/list/more.png" alt="" />
+                  </div>
+                </div>
+              </a>
+            </li>
+            {/loop}
+        </ul>
+        <div class="nomore">没有更多数据了~</div>
+    </div>
+    <script src="{MODULE_URL}template/mobile/js/swiper.min.js"></script>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true,
+        },
+      });
+    </script>
+    <script>
+    function goDetail(obj){
+      var id = $(obj).parent().attr('data-id');
+      console.log(id);
+      var is_login = $('#li-login').attr('data-login');
+      console.log(is_login);
+      if(is_login == 1){
+        location.href = "{php echo $this->createMobileUrl('goods')}&id="+id+'&cid='+"{$_GPC['cid']}";
+      }else{
+        alert('请先登录！');
+      }
+    }
+    $('.main-scroll').on('scroll',function(){
+      // div 滚动了
+      var height = $(this).height();
+      var scrolltop = $(this).scrollTop();
+      var scrollHeight =$(this).get(0).scrollHeight;
+      console.log(height + '~' + scrolltop + '~' + scrollHeight);
+      if(height + scrolltop >= scrollHeight - 1){
+        var type = $(this).attr('data-main');
+        var page = Number($('#page').html()) + 1;
+        $.ajax({
+          url: "{php echo $this->createMobileUrl('sort')}",
+          data: {'types':type,'type':'{$cid}','page':page},
+          dataType: 'JSON',
+          type: 'post',
+          success:function(res){
+            if(res.status == 1){
+              for(var i = 0;i<res.data.length;i++){
+                var thumb = res.data[i].thumb;
+                var id = res.data[i].id;
+                if({$inits['setting']['showCredit']} == 1){
+                  $('.main-scroll').append(
+                    '<li data-id="'+id+'">'+
+                      '<div class="main-direct" onclick="goDetail(this)">'+
+                        '<img src="https://www.buwealth.com/attachment/'+thumb+'" alt="" />'+
+                        '<div class="mobile-hide item">'+
+                            '<p class="s_l float_l">'+res.data[i].title+'</p>'+
+                            '<p class="float_l s_r">'+res.data[i].marketprice+'积分</p>'+
+                            '<img src="{MODULE_URL}template/mobile/images/list/more.png" alt="">'+
+                        '</div>'+
+                        '<div class="pc-hide">'+
+                          '<div class="mobile-item">'+
+                            '<div class="mobile-item-title">'+res.data[i].title+'</div>'+
+                            '<div class="mobile-item-credit">'+res.data[i].marketprice+'积分</div>'+
+                            '<img src="{MODULE_URL}template/mobile/images/list/more.png" alt="" />'+
+                          '</div>'+
+                        '</div>'+
+                      '</div>'+
+                    '</li>'
+                  );
+                }else{
+                  $('.main-scroll').append(
+                    '<li data-id="'+id+'">'+
+                      '<div class="main-direct" onclick="goDetail(this)">'+
+                        '<img src="https://www.buwealth.com/attachment/'+thumb+'" alt="" />'+
+                        '<div class="mobile-hide item">'+
+                            '<p class="s_l float_l">'+res.data[i].title+'</p>'+
+                            '<img src="{MODULE_URL}template/mobile/images/list/more.png" alt="">'+
+                        '</div>'+
+                        '<div class="pc-hide">'+
+                          '<div class="mobile-item">'+
+                            '<div class="mobile-item-title">'+res.data[i].title+'</div>'+
+                            '<img src="{MODULE_URL}template/mobile/images/list/more.png" alt="" />'+
+                          '</div>'+
+                        '</div>'+
+                      '</div>'+
+                    '</li>'
+                  );
+                }
+
+              }
+              $('#page').html(page);
+            }else{
+              $('.nomore').show();
+            }
+          }
+        })
+
+      }
+
+    });
+    // 排序
+    $('#allsort li').on('click',function(){
+      var type = $(this).attr('data-type');
+      $('.main-scroll').attr('data-main',type);
+      $('.nomore').hide();
+      if(type == 3){
+        $(this).attr('data-type',4);
+        $('.icon-credit').hide();
+        $('.icon-creditup').show();
+      }else if(type == 4){
+        $(this).attr('data-type',3);
+        $('.icon-credit').show();
+        $('.icon-creditup').hide();
+      }
+      $.ajax({
+        url: "{php echo $this->createMobileUrl('sort')}",
+        data:{'types':type,'type':'{$cid}'},
+        dataType:'JSON',
+        type:'POST',
+        success:function(res){
+          console.log(res);
+          if(res.status == 1){
+            console.log(res);
+            $('.main-scroll').empty();
+            for(var i = 0;i<res.data.length;i++){
+              var thumb = res.data[i].thumb;
+              var id = res.data[i].id;
+              if({$inits['setting']['showCredit']} == 1){
+                $('.main-scroll').append(
+                  '<li data-id="'+id+'">'+
+                    '<div class="main-direct" onclick="goDetail(this)">'+
+                      '<img src="https://www.buwealth.com/attachment/'+thumb+'" alt="" />'+
+                      '<div class="mobile-hide item">'+
+                          '<p class="s_l float_l">'+res.data[i].title+'</p>'+
+                          '<p class="float_l s_r">'+res.data[i].marketprice+'积分</p>'+
+                          '<img src="{MODULE_URL}template/mobile/images/list/more.png" alt="">'+
+                      '</div>'+
+                      '<div class="pc-hide">'+
+                        '<div class="mobile-item">'+
+                          '<div class="mobile-item-title">'+res.data[i].title+'</div>'+
+                          '<div class="mobile-item-credit">'+res.data[i].marketprice+'积分</div>'+
+                          '<img src="{MODULE_URL}template/mobile/images/list/more.png" alt="" />'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
+                  '</li>'
+                );
+              }else{
+                $('.main-scroll').append(
+                  '<li data-id="'+id+'">'+
+                    '<div class="main-direct" onclick="goDetail(this)">'+
+                      '<img src="https://www.buwealth.com/attachment/'+thumb+'" alt="" />'+
+                      '<div class="mobile-hide item">'+
+                          '<p class="s_l float_l">'+res.data[i].title+'</p>'+
+                          '<img src="{MODULE_URL}template/mobile/images/list/more.png" alt="">'+
+                      '</div>'+
+                      '<div class="pc-hide">'+
+                        '<div class="mobile-item">'+
+                          '<div class="mobile-item-title">'+res.data[i].title+'</div>'+
+                          '<img src="{MODULE_URL}template/mobile/images/list/more.png" alt="" />'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>'+
+                  '</li>'
+                );
+              }
+            }
+          }
+        }
+      })
+    })
+    </script>
+</div>
+{template 'footer'}

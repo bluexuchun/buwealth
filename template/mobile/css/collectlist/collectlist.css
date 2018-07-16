@@ -1,0 +1,394 @@
+.float_l {
+  float: left;
+}
+.float_r {
+  float: right;
+}
+.colladd{
+  display: none;
+}
+.m_style{
+  display: block;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #232323;
+}
+.collect_box {
+  width: 100%;
+  height: 100%;
+  background-color: #232323;
+}
+.collect_box .box_top {
+  width: 100%;
+  height: 3rem;
+  border-bottom: 1px solid #B69570;
+}
+.collect_box .box_top .box_main_top {
+  width: 20rem;
+  height: 3rem;
+  margin: 0 auto;
+}
+.collect_box .box_top .box_main_top > div {
+  height: 3rem;
+  margin-left: 0.4rem;
+}
+.collect_box .box_top .box_main_top > div a {
+  text-decoration: none;
+  color: #B69570 ;
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+.collect_box .box_top .box_main_top p {
+  margin: 0;
+  color: #B69570;
+  font-size: 1rem;
+  line-height: 3rem;
+  margin-left: 7rem;
+}
+.collect_box .list_ul {
+  width: 100%;
+}
+.collect_box .list_ul > ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.collect_box .list_ul > ul li {
+  width: 100%;
+  font-size: 14px;
+  list-style: none;
+  height: 5rem;
+  color: #ffffff;
+  border-bottom: 1px solid #2b2b2b;
+}
+.collect_box .list_ul > ul li .li_box {
+  height: 5rem;
+  width: 20rem;
+  margin: 0 auto;
+}
+.collect_box .list_ul > ul li .li_box .input_box {
+  height: 5rem;
+  width: 2rem;
+  margin-left: 0.5rem;
+}
+.collect_box .list_ul > ul li .li_box .input_box label {
+  display: inline-block;
+  margin-top: 2rem;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+}
+.collect_box .list_ul > ul li .li_box .input_box label input {
+  margin: 0;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  display: none;
+}
+.collect_box .list_ul > ul li .li_box .test_person {
+  position: relative;
+  margin-top: 1rem ;
+}
+.collect_box .list_ul > ul li .li_box .test_footer {
+  margin-top: 2rem;
+}
+.collect_box .add-addess {
+  width: 100%;
+  height: 3rem;
+  background-color: #333333;
+}
+.collect_box .add-addess .add_box {
+  width: 20rem;
+  height: 3rem;
+  margin: 0 auto;
+}
+.collect_box .add-addess .add_box p {
+  margin: 0;
+  color: #B69570;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+.collect_box .add-addess .add_box img {
+  margin-top: 1rem;
+}
+
+/* cvs */
+.cvs {
+  width: 100%;
+  height: 100vh;
+  background-color: #282828;
+  position: absolute;
+  display: none;
+  z-index:999;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.cvs .close {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  cursor: pointer;
+}
+.cvs .main {
+  width: 65%;
+  height: 34rem;
+  background-color: #141414;
+  margin: 0 auto;
+  margin-top: 6rem;
+  margin-bottom:4rem;
+  padding: 4rem;
+}
+.cvs .main .place {
+  height: 2rem;
+  color: #ffffff;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+.cvs .main .place > div {
+  margin-right: 1rem;
+  cursor: pointer;
+  width: 8rem;
+  height: 2rem;
+  border: 1px solid #333333;
+  box-sizing: border-box;
+  font-size:.675rem;
+}
+.cvs .main .place .leave_out {
+  position: relative;
+}
+.cvs .main .place .leave_out > ul {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 0;
+  position: absolute;
+  width: 7.9rem;
+  margin: 0;
+  padding: 0;
+  background-color: #141414;
+  top: 1.9rem;
+  left: -0.06rem;
+  border-left:1px solid #333;
+  border-right:1px solid #333;
+  border-bottom:1px solid #333;
+}
+.cvs .main .place .leave_out > ul > li {
+  list-style: none;
+  width: 8rem;
+  height: 2rem;
+  cursor: pointer;
+  border-bottom: 1px solid #333333;
+  text-align: center;
+}
+.cvs .main .place .leave_out > ul > li:hover {
+  background-color: #282828;
+}
+.cvs .main .place .leave_out > ul > li > p {
+  margin: 0 0 0 1.5rem;
+}
+.cvs .main .place .city {
+  position: relative;
+}
+.cvs .main .place .city > ul {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 0;
+  position: absolute;
+  width: 7.9rem;
+
+  margin: 0;
+  padding: 0;
+  background-color: #141414;
+  top: 1.9rem;
+  left: -0.06rem;
+  border-left:1px solid #333;
+  border-right:1px solid #333;
+  border-bottom:1px solid #333;
+}
+.cvs .main .place .city > ul > li {
+  list-style: none;
+  width: 8rem;
+  height: 2rem;
+  cursor: pointer;
+  border-bottom: 1px solid #333333;
+  text-align: center;
+}
+.cvs .main .place .city > ul > li:hover {
+  background-color: #282828;
+}
+.cvs .main .place .city > ul > li > p {
+  margin: 0 0 0 1.5rem;
+}
+.cvs .main .place .area {
+  position: relative;
+}
+.cvs .main .place .area > ul {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 0;
+  position: absolute;
+  width: 7.9rem;
+  margin: 0;
+  padding: 0;
+  background-color: #141414;
+  top: 1.9rem;
+  left: -0.06rem;
+  border-left:1px solid #333;
+  border-right:1px solid #333;
+  border-bottom:1px solid #333;
+}
+.cvs .main .place .area > ul > li {
+  list-style: none;
+  width: 8rem;
+  height: 2rem;
+  cursor: pointer;
+  border-bottom: 1px solid #333333;
+  text-align: center;
+}
+.cvs .main .place .area > ul > li:hover {
+  background-color: #282828;
+}
+.cvs .main .place .area > ul > li > p {
+  margin: 0 0 0 1.5rem;
+}
+.cvs .main .name {
+  height: 2rem;
+  color: #ffffff;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+.cvs .main .name > p {
+  margin: 0 1.2rem 0 0;
+}
+.cvs .main .name > div {
+  width: 24rem;
+  height: 2rem;
+  border: 1px solid #333333;
+  overflow: hidden;
+}
+.cvs .main .name > div input {
+  width: 23rem;
+  height: 1.7rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  outline-color: #141414;
+  color: #ffffff;
+  margin-left: 1rem;
+}
+.cvs .main .filedTel {
+  height: 2rem;
+  color: #ffffff;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+.cvs .main .filedTel > .text {
+  margin: 0 1rem 0 0;
+}
+.cvs .main .filedTel > div {
+  overflow: hidden;
+}
+.cvs .main .filedTel > div:nth-child(2) {
+  width: 5rem;
+  height: 2rem;
+  border: 1px solid #333333;
+  overflow: hidden;
+}
+.cvs .main .filedTel > div:nth-child(2) input {
+  width: 5rem;
+  height: 1.7rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  outline-color: #141414;
+  color: #ffffff;
+  margin-left: 1rem;
+}
+.cvs .main .filedTel > div:nth-child(4) {
+  width: 16rem;
+  height: 2rem;
+  border: 1px solid #333333;
+}
+.cvs .main .filedTel > div:nth-child(4) input {
+  width: 16rem;
+  height: 1.7rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  outline-color: #141414;
+  color: #ffffff;
+  margin-left: 1rem;
+}
+.cvs .main .filedTel .line {
+  width: 1rem;
+  height: 1px;
+  background-color: #333333;
+  margin: 1rem 1rem 0 1rem;
+}
+.cvs .main .filedTel > p {
+  font-size: 1rem;
+  color: #ffffff;
+}
+.cvs .main .butBox {
+  margin: 2rem 0 2rem 7rem;
+  /*.mycheck label:hover::after {*/
+  /*opacity: 0.5;*/
+  /*}*/
+}
+.cvs .main .butBox .mycheck {
+  width: 1.5rem;
+  position: relative;
+}
+.cvs .main .butBox .mycheck input[type=checkbox] {
+  visibility: hidden;
+}
+.cvs .main .butBox .mycheck label {
+  cursor: pointer;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 0;
+  left: 0;
+  background: #141414;
+  border: 2px solid #333333;
+}
+.cvs .main .butBox .mycheck label:after {
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 0.5rem;
+  height: 0.4rem;
+  background: transparent;
+  top: 0.2rem;
+  left: 0.2rem;
+  border: 2px solid #333;
+  border-top: none;
+  border-right: none;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.cvs .main .butBox .mycheck input[type=checkbox]:checked + label:after {
+  opacity: 1;
+}
+.cvs .main .sub {
+  width: 15rem;
+  height: 3rem;
+  border: 1px solid #BE9D70;
+  border-radius: 0.5rem;
+  margin-left: 7rem;
+  overflow: hidden;
+}
+.cvs .main .sub .saveadd {
+  display: block;
+  width: 15rem;
+  height: 3rem;
+  color: #BE9D70;
+  text-decoration: none;
+  text-align: center;
+  line-height: 3rem;
+}

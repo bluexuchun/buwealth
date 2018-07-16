@@ -1,0 +1,143 @@
+@media screen and (min-width:1680px){
+
+}
+@media screen and (max-width: 1680px) {
+  .heroes-banner-content .word-desc{
+    line-height:2.5rem;
+  }
+}
+@media screen and (max-width:1400px){
+}
+@media screen and (max-width: 1280px) {
+  .heroes-banner-content .word-desc{
+    font-size:0.875rem;
+  }
+  .heroes-lists{
+    margin-top:6rem;
+  }
+  .heroes-lists .contents{
+    width:90%;
+  }
+}
+@media screen and (max-width:900px){
+  .heroes-banner-content .word-desc {
+    line-height: 1.5rem;
+  }
+  .heroes-lists .contents .content {
+      padding: 5rem 4rem 4rem 4rem;
+  }
+  .heroes-lists .contents .hoping {
+      font-size: 1.2rem;
+  }
+  .heroes-lists .contents{
+    min-height:55vh;
+  }
+}
+@media screen and (max-width:700px){
+  .heroes-banner-icon{
+    width:100%;
+  }
+  .heroes-lists {
+    margin-top: 15rem;
+  }
+  .heroes-lists .contents .content {
+    padding: 10rem 2rem 4rem 2rem;
+  }
+  .heroes-banner-content {
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    left:50%;
+    margin-left: -40%;
+  }
+  .heroes-banner-content .word-desc{
+    line-height: 2.5rem;
+  }
+  .heroes-lists .contents{
+    background: url('../../images/heroes/bakimg.png') no-repeat;
+    background-size:100%;
+    width:85%;
+    margin:5rem 0rem;
+  }
+  .heroes-lists .contents .pc-show{
+    display: none;
+  }
+  .heroes-lists .contents .mobile-show{
+    display: flex;
+  }
+  .hoping{
+    display: none;
+  }
+  .heroes-lists .hoping-img{
+    display: block;
+    width:80%;
+    margin: 5rem auto;
+
+  }
+  .hoping-img img{
+    width:100%;
+  }
+  .heroes-lists .contents .content-item{
+    margin-bottom:.875rem;
+  }
+  .heroes-lists .contents .content-spe{
+    margin-bottom:.875rem;
+  }
+  .heroes-lists .contents .content-item a{
+    flex-direction: column;
+  }
+  .heroes-lists .contents .content-item-icon{
+    width:100%;
+  }
+  .heroes-lists .common-content-item .content{
+    padding:2rem;
+  }
+  .heroes-lists .common-content-item .content .content-desc{
+    padding:.575rem 0rem;
+  }
+  .heroes-lists .common-content-item .content .content-footer{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .heroes-lists .common-content-item .content .content-footer img{
+    height:3.5rem;
+  }
+  .heroes-lists .common-color .content .content-title{
+    color:#bd9c6f;
+  }
+  .heroes-lists .contents .content-spe a{
+    flex-direction: column;
+    color:#1C1C1C;
+  }
+}
+@media screen and (max-width:500px){
+  .heroes-banner-content .word {
+    padding: 1rem 0rem;
+    min-height:20rem;
+  }
+  .heroes-banner-content{
+    height:auto;
+  }
+  .heroes-banner-content .word-desc {
+    line-height: 2rem;
+  }
+  .heroes-lists {
+    margin-top: 11rem;
+  }
+
+}
+@media screen and (min-width:415px) and (max-width:800px){
+}
+@media screen and (min-width:360px) and (max-width: 415px) {
+
+}
+@media screen and (min-width:321px) and (max-width:360px){
+
+}
+@media screen and (max-width:320px){
+
+}

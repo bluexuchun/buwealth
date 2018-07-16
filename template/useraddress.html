@@ -1,0 +1,58 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('user',array('op'=>'all'))}">返回用户信息</a></li>
+    <li class="active"><a>详情记录</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">地址管理</div>
+            <div class="panel-body">
+              {loop $useraddress $key $address}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">用户姓名</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$address['username']}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {php $newkey = $this->numToString($key);}
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">用户地址{$newkey}</label>
+                    <div class="col-xs-12 col-sm-9">
+
+                      <div class="form-group">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">省:</label>
+                        <div class="col-xs-12 col-sm-9">
+                          <input type="text" class="form-control" readonly="readonly" value="{$address['province']}">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">市:</label>
+                        <div class="col-xs-12 col-sm-9">
+                          <input type="text" class="form-control" readonly="readonly" value="{$address['city']}">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">区:</label>
+                        <div class="col-xs-12 col-sm-9">
+                          <input type="text" class="form-control" readonly="readonly" value="{$address['district']}">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">详细地址：</label>
+                        <div class="col-xs-12 col-sm-9">
+                          <input type="text" class="form-control" readonly="readonly" value="{$address['address']}">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                {/loop}
+            </div>
+        </div>
+    </form>
+</div>
+{template 'common/footer'}

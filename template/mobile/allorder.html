@@ -1,0 +1,326 @@
+{template 'header'}
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/allorder/allorder.css" />
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/allorder/media.css" />
+
+<div class="box">
+    <div class="main">
+        <h3 ><a href="#" class="font_color" style="text-decoration: none"><< 返回个人中心</a></h3>
+        <div class="nav">
+            <ul class="float_l allnav" data-id="2">
+                <li class="nav-active" data-id="2">所有订单</li>
+                <li data-id="0">待发货</li>
+                <li data-id="1">已完成</li>
+            </ul>
+            <div class="nav_r float_r">
+                <div class="float_l inpBox">
+                    <input type="text" placeholder="商品名称/订单号" name="ordersearch">
+                </div>
+                <div class="float_l search">
+                    <div class="search_l float_l" id="ordersearch">
+                        <img src="{MODULE_URL}template/mobile/images/allorder/eye.png" alt="">
+                    </div>
+                    <div class="font_color search_r float_l" id="opennav" data-status="0">高级
+                        <img class="icon-open" src="{MODULE_URL}template/mobile/images/allorder/arrowup.png" alt="" style="margin-left: 1rem;">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="orderclass">
+            <p class="font_color float_l">订单类型：</p>
+            <ul class="float_l order-nav" data-id="0">
+                <li data-id="0">
+                  <div class="active order-cate">全部类型</div>
+                </li>
+                {loop $cates $key $value}
+                <li data-id="{$value['id']}">
+                  <div class="order-cate">{$value['name']}</div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+        <ul id="orderlists">
+            {loop $orders $key $order}
+            <li class="" onclick="openBox(this)">
+                <div class="li_header">
+                    <p class="font_color float_l">{$order['creattime']}<span style="display: inline-block;margin-left: 2rem">订单号：{$order['oid']}</span></p>
+                    <p class="float_r font_color li_change" id="liup" onclick="closeBox(this,event)">收起<img class="li_header_img" src="{MODULE_URL}template/mobile/images/allorder/arrowup.png" alt=""></p>
+                </div>
+                <div class="center_list">
+                    <img src="{MODULE_URL}template/mobile/images/allorder/shop.jpg" alt="" style="margin-right: 3rem" class="float_l" >
+                    <div class="text float_l">
+                        <p>{$goodlist[$key]['title']}</p>
+                        <p style="margin: 0 6rem 0 9rem">{$goodlist[$key]['marketprice']}积分</p>
+                        <p style="margin-right: 6rem">X1</p>
+                        <p>已兑换</p>
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="details_l">
+                        <p>收货人信息</p>
+                        <p style="margin-top: 2rem">兑换信息</p>
+                    </div>
+                    <div class="details_r">
+                        <p style="margin-bottom: 2rem">{$addlist[$key]['username']}     {$addlist[$key]['provice']} {$addlist[$key['city']]} {$addlist[$key]['district']} {$addlist[$key]['address']} {$addlist[$key]['phone']}</p>
+                        <div>
+                            <span style="display: inline-block;margin-right: 2rem">兑换方式：在线兑换  </span><span>创建时间：{$order['creattime']}</span>
+                            <p>兑换时间：{$order['creattime']}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    <div class="m-main">
+        <div class="top" style="position: relative;border-bottom:1px solid #B69570   ">
+            <p class="float_l" style="margin-left: 1rem;line-height: 3rem"><a href="#" style="text-decoration: none;color: #B69570"><</a></p>
+            <p  class="float_l" style="font-size: 1.2rem;position: absolute;left: 50%;top: 50%;
+                margin-top: -0.7rem;margin-left: -2rem;">我的订单</p>
+            <p class="float_r" style="margin-right: 1.5rem;line-height: 3rem    "><a href="#" style="text-decoration: none;color: #B69570;line-height: 3rem"><img src="{MODULE_URL}template/mobile/images/allorder/home.png" alt=""></a></p>
+        </div>
+        <div class="input_box">
+            <div class="inser">
+                <img class="float_l" src="{MODULE_URL}template/mobile/images/allorder/eye.png" alt="" style="margin-left: 1rem;width: 2rem">
+                <input class="float_l" type="text" name="m_ordersearch" placeholder="商品名称/订单号">
+            </div>
+        </div>
+        <div class="allnav">
+            <ul class="head-nav">
+                <li><a href="#">所有订单</a></li>
+                <li><a href="#">待发货</a></li>
+                <li><a href="#">已完成</a></li>
+            </ul>
+            <ul class="nav_list">
+               {loop $orders $key $order}
+                <li class="single">
+                    <div class="li_top">
+                        <span style="margin-right: 1rem">{$order['creattime']}</span>
+                        <span>订单号：{$order['oid']}</span>
+                        <span style="display: inline-block;float: right;color: #ffffff">已兑换</span>
+                    </div>
+                    <div class="li_bott">
+                        <img class="float_l" src="{MODULE_URL}template/mobile/images/allorder/shop.jpg" alt="">
+                        <div  class="Vnum float_r">
+                            <span>{$goodlist[$key]['title']}</span>
+                            <span>{$goodlist[$key]['marketprice']} 积分</span>
+                            <span>X1</span>
+                        </div>
+                    </div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+  function openBox(obj){
+    console.log('234');
+    $(obj).addClass('show_brd');
+    $(obj).children('.details').css({
+      'display':'flex'
+    })
+    $(obj).find('#liup').css({
+      'display':'flex'
+    });
+  }
+  function closeBox(obj,e){
+    stopBubble(e);
+    console.log('123');
+    $(obj).parent().parent().removeClass('show_brd');
+    $(obj).parent().parent().children('.details').css({
+      'display':'none'
+    })
+    $(obj).css({'display':'none'});
+  }
+  function stopBubble(e){
+    if (e && e.stopPropagation)
+        e.stopPropagation()
+    else
+        window.event.cancelBubble=true
+  }
+  $('#opennav').on('click',function(){
+    var status = $(this).attr('data-status');
+    if(status == 0){
+      $('.icon-open').removeClass('remove_transform').addClass('add_transform');
+      $(this).attr('data-status',1);
+      $('.orderclass').css({
+        'display':'block'
+      })
+    }else{
+      $('.icon-open').addClass('remove_transform');
+      $('.icon-open').removeClass('add_transform');
+      $(this).attr('data-status',0);
+      $('.orderclass').css({
+        'display':'none'
+      })
+    }
+  })
+  // 改变分类
+  $('.order-nav li').on('click',function(){
+    var id = $(this).attr('data-id');
+    $(this).siblings().find('.order-cate').removeClass('active');
+    $(this).find('.order-cate').addClass('active');
+    var allid = $('.allnav').attr('data-id');
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('code')}",
+      data:{
+        'uid':"{$member['uid']}",
+        'cid':id,
+        'status':allid,
+      },
+      dataType:'JSON',
+      type:'post',
+      success:function(res){
+        console.log(res);
+        if(res.status == 1){
+          var data = res.data;
+          $('#orderlists').empty();
+          for(var i=0;i<data.length;i++){
+            $('#orderlists').append(
+              '<li class="" onclick="openBox(this)">'+
+                  '<div class="li_header">'+
+                      '<p class="font_color float_l">'+data[i].creattime+'<span style="display: inline-block;margin-left: 2rem">订单号：'+data[i].oid+'</span></p>'+
+                      '<p class="float_r font_color li_change" id="liup" onclick="closeBox(this,event)">收起<img class="li_header_img" src="{MODULE_URL}template/mobile/images/allorder/arrowup.png" alt=""></p>'+
+                  '</div>'+
+                  '<div class="center_list">'+
+                      '<img src="{MODULE_URL}template/mobile/images/allorder/shop.jpg" alt="" style="margin-right: 3rem" class="float_l" >'+
+                      '<div class="text float_l">'+
+                          '<p>'+data[i].title+'</p>'+
+                          '<p style="margin: 0 6rem 0 9rem">'+data[i].price+'积分</p>'+
+                          '<p style="margin-right: 6rem">X1</p>'+
+                          '<p>已兑换</p>'+
+                      '</div>'+
+                  '</div>'+
+                  '<div class="details">'+
+                      '<div class="details_l">'+
+                          '<p>收货人信息</p>'+
+                          '<p style="margin-top: 2rem">兑换信息</p>'+
+                      '</div>'+
+                      '<div class="details_r">'+
+                          '<p style="margin-bottom: 2rem">'+data[i].username+' '+data[i].province+' '+data[i].city+' '+data[i].district+ ' '+ data[i].address + ' '+data[i].phone+'</p>'+
+                          '<div>'+
+                              '<span style="display: inline-block;margin-right: 2rem">兑换方式：在线兑换  </span><span>创建时间：'+data[i].creattime+'</span>'+
+                              '<p>兑换时间：'+data[i].creattime+'</p>'+
+                          '</div>'+
+                      '</div>'+
+                  '</div>'+
+              '</li>'
+            );
+          }
+        }
+      }
+    })
+  })
+  $('.allnav li').on('click',function(){
+    $(this).addClass('nav-active').siblings().removeClass('nav-active');
+    var id = $(this).attr('data-id');
+    $(this).parent().attr('data-id',id);
+    console.log(id);
+    $('.order-nav li').each(function(){
+      $(this).children('.order-cate').removeClass('active');
+    })
+    $('.order-nav li').eq(0).children('.order-cate').addClass('active');
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('code')}",
+      data:{
+        'uid':"{$member['uid']}",
+        'status':id,
+      },
+      dataType:'JSON',
+      type:'post',
+      success:function(res){
+        if(res.status == 1){
+          var data = res.data;
+          $('#orderlists').empty();
+          for(var i=0;i<data.length;i++){
+            $('#orderlists').append(
+              '<li class="" onclick="openBox(this)">'+
+                  '<div class="li_header">'+
+                      '<p class="font_color float_l">'+data[i].creattime+'<span style="display: inline-block;margin-left: 2rem">订单号：'+data[i].oid+'</span></p>'+
+                      '<p class="float_r font_color li_change" id="liup" onclick="closeBox(this,event)">收起<img class="li_header_img" src="{MODULE_URL}template/mobile/images/allorder/arrowup.png" alt=""></p>'+
+                  '</div>'+
+                  '<div class="center_list">'+
+                      '<img src="{MODULE_URL}template/mobile/images/allorder/shop.jpg" alt="" style="margin-right: 3rem" class="float_l" >'+
+                      '<div class="text float_l">'+
+                          '<p>'+data[i].title+'</p>'+
+                          '<p style="margin: 0 6rem 0 9rem">'+data[i].price+'积分</p>'+
+                          '<p style="margin-right: 6rem">X1</p>'+
+                          '<p>已兑换</p>'+
+                      '</div>'+
+                  '</div>'+
+                  '<div class="details">'+
+                      '<div class="details_l">'+
+                          '<p>收货人信息</p>'+
+                          '<p style="margin-top: 2rem">兑换信息</p>'+
+                      '</div>'+
+                      '<div class="details_r">'+
+                          '<p style="margin-bottom: 2rem">'+data[i].username+' '+data[i].province+' '+data[i].city+' '+data[i].district+ ' '+ data[i].address + ' '+data[i].phone+'</p>'+
+                          '<div>'+
+                              '<span style="display: inline-block;margin-right: 2rem">兑换方式：在线兑换  </span><span>创建时间：'+data[i].creattime+'</span>'+
+                              '<p>兑换时间：'+data[i].creattime+'</p>'+
+                          '</div>'+
+                      '</div>'+
+                  '</div>'+
+              '</li>'
+            );
+          }
+        }
+      }
+    })
+  })
+  // 搜索
+  $('#ordersearch').on('click',function(){
+    var value = $('input[name="ordersearch"]').val();
+    var uid = '{$member['uid']}';
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('search')}",
+      data:{
+        'value':value,
+        'uid':uid
+      },
+      dataType:'JSON',
+      type:'post',
+      success:function(res){
+        if(res.data == 1){
+          var data = res.data;
+          $('#orderlists').empty();
+          for(var i=0;i<data.length;i++){
+            $('#orderlists').append(
+              '<li class="" onclick="openBox(this)">'+
+                  '<div class="li_header">'+
+                      '<p class="font_color float_l">'+data[i].creattime+'<span style="display: inline-block;margin-left: 2rem">订单号：'+data[i].oid+'</span></p>'+
+                      '<p class="float_r font_color li_change" id="liup" onclick="closeBox(this,event)">收起<img class="li_header_img" src="{MODULE_URL}template/mobile/images/allorder/arrowup.png" alt=""></p>'+
+                  '</div>'+
+                  '<div class="center_list">'+
+                      '<img src="{MODULE_URL}template/mobile/images/allorder/shop.jpg" alt="" style="margin-right: 3rem" class="float_l" >'+
+                      '<div class="text float_l">'+
+                          '<p>'+data[i].title+'</p>'+
+                          '<p style="margin: 0 6rem 0 9rem">'+data[i].price+'积分</p>'+
+                          '<p style="margin-right: 6rem">X1</p>'+
+                          '<p>已兑换</p>'+
+                      '</div>'+
+                  '</div>'+
+                  '<div class="details">'+
+                      '<div class="details_l">'+
+                          '<p>收货人信息</p>'+
+                          '<p style="margin-top: 2rem">兑换信息</p>'+
+                      '</div>'+
+                      '<div class="details_r">'+
+                          '<p style="margin-bottom: 2rem">'+data[i].username+' '+data[i].province+' '+data[i].city+' '+data[i].district+ ' '+ data[i].address + ' '+data[i].phone+'</p>'+
+                          '<div>'+
+                              '<span style="display: inline-block;margin-right: 2rem">兑换方式：在线兑换  </span><span>创建时间：'+data[i].creattime+'</span>'+
+                              '<p>兑换时间：'+data[i].creattime+'</p>'+
+                          '</div>'+
+                      '</div>'+
+                  '</div>'+
+              '</li>'
+            );
+          }
+        }
+      }
+    })
+  })
+
+</script>
+{template 'footer'}

@@ -1,0 +1,492 @@
+{template 'header'}
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/station/station.less">
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/station/station-media.css">
+<script src="{MODULE_URL}template/mobile/js/less-1.7.0.js" type="text/javascript"></script>
+<div class="invest">
+  <div class="invest-header">
+    <img src="{MODULE_URL}template/mobile/images/station/station.jpg" alt="">
+    <div class="invest-header-img">
+      <img class="img1" src="{MODULE_URL}template/mobile/images/media/sta1.png" alt="">
+    </div>
+    <!-- 首要位置 -->
+    <!-- {php $first = $contents[0]}
+    <div class="recruit">
+      {if $inits['isMobile']}
+      <img src="{MODULE_URL}template/mobile/images/media/sta1.png" alt="">
+      {else}
+      <img src="{MODULE_URL}template/mobile/images/station/sta1.png" alt="">
+      {/if}
+
+      <div class="recruit-all">
+        <ul class="recruit-nav">
+          <div class="recruit-nav-title">
+            <p>POSITION</p>
+            <p>职位</p>
+          </div>
+          <li>理财顾问</li>
+          <li>理财顾问</li>
+          <li>理财顾问</li>
+        </ul>
+        <div class="recruit-item">
+          <div class="recruit-sta">{$first['staName']}</div>
+          <div class="item-left">
+            <div class="title">岗位职责</div>
+            <ul class="left-ul">
+              {php $firstDutys = iunserializer($first['staDuty'])}
+              {loop $firstDutys $key $duty}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$duty['content']}</div>
+              </li>
+              {/loop}
+            </ul>
+          </div>
+          <div class="item-right">
+            <div class="title">岗位要求</div>
+            <ul class="right-ul">
+              {php $firstReqs = iunserializer($first['staRequire'])}
+              {loop $firstReqs $key $req}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$req['content']}</div>
+              </li>
+              {/loop}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="recruit-content">
+
+
+  </div> -->
+  <!-- 第二位置 -->
+  <!-- {php $second = $contents[1]}
+  <div class="invest-content">
+    <div class="invest-item-1">
+      <div class="item-left">
+        <div class="item-content">
+          <div class="sta-title">{$second['staName']}</div>
+          <div class="item-top  ul-spe">
+            <div class="title">岗位职责</div>
+            <ul class="left-ul">
+              {php $secondDutys = iunserializer($second['staDuty'])}
+              {loop $secondDutys $key $duty}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$duty['content']}</div>
+              </li>
+              {/loop}
+              <div class="ul-spe-img">
+                <img src="{MODULE_URL}template/mobile/images/media/sta2.png" alt="">
+              </div>
+            </ul>
+          </div>
+          <div class="item-bottom">
+            <div class="title">岗位要求</div>
+            <ul class="right-ul">
+              {php $secondReqs = iunserializer($second['staRequire'])}
+              {loop $secondReqs $key $req}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$req['content']}</div>
+              </li>
+              {/loop}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="item-right">
+        <img src="{MODULE_URL}template/mobile/images/station/sta2.jpg" alt="">
+      </div>
+    </div> -->
+    <!-- 第三位置 -->
+    <!-- {php $third = $contents[2]}
+    <div class="invest-item-2">
+      <div class="item-left">
+        <div class="item-content">
+          <div class="sta-title">{$third['staName']}</div>
+          <div class="sta-spe-title">
+            <div class="sta-spe-img">
+              <img src="{MODULE_URL}template/mobile/images/media/sta3.png" alt="">
+            </div>
+            <div class="sta-spe-word">
+              <div class="sta-word">{$third['staName']}</div>
+              <div class="title">岗位职责</div>
+            </div>
+          </div>
+          <div class="item-top">
+            <div class="title">岗位职责</div>
+            <ul class="left-ul">
+              {php $thirdDutys = iunserializer($third['staDuty'])}
+              {loop $thirdDutys $key $duty}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$duty['content']}</div>
+              </li>
+              {/loop}
+            </ul>
+          </div>
+          <div class="item-bottom">
+            <div class="title">岗位要求</div>
+            <ul class="right-ul">
+              {php $thirdReqs = iunserializer($third['staRequire'])}
+              {loop $thirdReqs $key $req}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$req['content']}</div>
+              </li>
+              {/loop}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="item-right">
+        <div class="zfx">
+          <img src="{MODULE_URL}template/mobile/images/station/sta3.png" alt="">
+        </div>
+        <div class="zfx1"></div>
+      </div>
+    </div> -->
+    <!-- <div class="invest-multi"> -->
+      <!-- 左位置 -->
+      <!-- <div class="multi-left"> -->
+        <!-- 左位置-1(4) -->
+        <!-- {php $four = $contents[3]}
+        <div class="multi-one">
+          <div class="sta-title">{$four['staName']}</div>
+          <div class="item-top">
+            <div class="title">岗位职责</div>
+            <ul class="left-ul">
+              {php $fourDutys = iunserializer($four['staDuty'])}
+              {loop $fourDutys $key $duty}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$duty['content']}</div>
+              </li>
+              {/loop}
+            </ul>
+          </div>
+          <div class="item-bottom">
+            <div class="title">岗位要求</div>
+            <ul class="right-ul">
+              {php $fourReqs = iunserializer($four['staRequire'])}
+              {loop $fourReqs $key $req}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$req['content']}</div>
+              </li>
+              {/loop}
+            </ul>
+          </div>
+        </div> -->
+        <!-- 左位置-2(6) -->
+        <!-- {php $six = $contents[5]}
+        <div class="multi-two">
+          <div class="sta-title">{$six['staName']}</div>
+          <div class="item-top">
+            <div class="title">岗位职责</div>
+            <ul class="left-ul">
+              {php $sixDutys = iunserializer($six['staDuty'])}
+              {loop $sixDutys $key $duty}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$duty['content']}</div>
+              </li>
+              {/loop}
+            </ul>
+          </div>
+          <div class="item-bottom">
+            <div class="title">岗位要求</div>
+            <ul class="right-ul">
+              {php $sixReqs = iunserializer($six['staRequire'])}
+              {loop $sixReqs $key $req}
+              <li>
+                <div class="line"></div>
+                <div class="li-word">{$req['content']}</div>
+              </li>
+              {/loop}
+            </ul>
+            <div class="tips">
+              公司将提供完善的福利和有强大竞争力的薪酬及考核机制
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- 位置右 -->
+      <!-- <div class="multi-right"> -->
+          <!-- 右位置-1 (5)-->
+          <!-- {php $five = $contents[4]}
+          <div class="multi-one">
+            <div class="sta-title">{$five['staName']}</div>
+            <div class="item-top">
+              <div class="title">岗位职责</div>
+              <ul class="left-ul">
+                {php $fiveDutys = iunserializer($five['staDuty'])}
+                {loop $fiveDutys $key $duty}
+                <li>
+                  <div class="line"></div>
+                  <div class="li-word">{$duty['content']}</div>
+                </li>
+                {/loop}
+              </ul>
+            </div>
+            <div class="item-bottom">
+              <div class="title">岗位要求</div>
+              <ul class="right-ul">
+                {php $fiveReqs = iunserializer($five['staRequire'])}
+                {loop $fiveReqs $key $req}
+                <li>
+                  <div class="line"></div>
+                  <div class="li-word">{$req['content']}</div>
+                </li>
+                {/loop}
+              </ul>
+            </div>
+          </div> -->
+          <!-- 右位置-2 (7)-->
+          <!-- {php $seven = $contents[6]}
+          <div class="multi-two">
+            <div class="sta-title">{$seven['staName']}</div>
+            <div class="item-top">
+              <div class="title">岗位职责</div>
+              <ul class="left-ul">
+                {php $sevenDutys = iunserializer($seven['staDuty'])}
+                {loop $sevenDutys $key $duty}
+                <li>
+                  <div class="line"></div>
+                  <div class="li-word">{$duty['content']}</div>
+                </li>
+                {/loop}
+              </ul>
+            </div>
+            <div class="item-bottom">
+              <div class="title">岗位要求</div>
+              <ul class="right-ul">
+                {php $firstReqs = iunserializer($first['staRequire'])}
+                {loop $firstReqs $key $req}
+                <li>
+                  <div class="line"></div>
+                  <div class="li-word">{$req['content']}</div>
+                </li>
+                {/loop}
+              </ul>
+            </div>
+          </div> -->
+          <!-- 右位置图片 -->
+          <!-- <div class="multi-pic">
+            {if $inits['isMobile']}
+            <img src="{MODULE_URL}template/mobile/images/media/sta4.jpg" alt="">
+            {else}
+            <img src="{MODULE_URL}template/mobile/images/station/sta4.jpg" alt="">
+            {/if} -->
+            <!-- 左位置-2(6) -->
+            <!-- {php $six = $contents[5]}
+            <div class="multi-two">
+              <div class="sta-title">{$six['staName']}</div>
+              <div class="item-top">
+                <div class="title">岗位职责</div>
+                <ul class="left-ul">
+                  {php $sixDutys = iunserializer($six['staDuty'])}
+                  {loop $sixDutys $key $duty}
+                  <li>
+                    <div class="line"></div>
+                    <div class="li-word">{$duty['content']}</div>
+                  </li>
+                  {/loop}
+                </ul>
+              </div>
+              <div class="item-bottom">
+                <div class="title">岗位要求</div>
+                <ul class="right-ul">
+                  {php $sixReqs = iunserializer($six['staRequire'])}
+                  {loop $sixReqs $key $req}
+                  <li>
+                    <div class="line"></div>
+                    <div class="li-word">{$req['content']}</div>
+                  </li>
+                  {/loop}
+                </ul>
+                <div class="tips">
+                  公司将提供完善的福利和有强大竞争力的薪酬及考核机制
+                </div>
+              </div>
+            </div> -->
+            <!-- 右位置-3 -->
+            <!-- {php $eight = $contents[7]}
+            <div class="multi-three">
+              <div class="sta-title">{$eight['staName']}</div>
+              <div class="item-top">
+                <div class="title">岗位职责</div>
+                <ul class="left-ul">
+                  {php $eightDutys = iunserializer($eight['staDuty'])}
+                  {loop $eightDutys $key $duty}
+                  <li>
+                    <div class="line"></div>
+                    <div class="li-word">{$duty['content']}</div>
+                  </li>
+                  {/loop}
+                </ul>
+              </div>
+              <div class="item-bottom">
+                <div class="title">岗位要求</div>
+                <ul class="right-ul">
+                  {php $eightReqs = iunserializer($eight['staRequire'])}
+                  {loop $eightReqs $key $req}
+                  <li>
+                    <div class="line"></div>
+                    <div class="li-word">{$req['content']}</div>
+                  </li>
+                  {/loop}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+      </div> -->
+
+      <!-- 右位置图片 -->
+      <!-- <div class="multi-pic phone-pic">
+        {if $inits['isMobile']}
+        <img src="{MODULE_URL}template/mobile/images/media/sta4.jpg" alt="">
+        {else}
+        <img src="{MODULE_URL}template/mobile/images/station/sta4.jpg" alt="">
+        {/if} -->
+        <!-- 左位置-2(6) -->
+        <!-- <div class="multi-pic-content">
+          {php $six = $contents[5]}
+          <div class="multi-two">
+            <div class="sta-title">{$six['staName']}</div>
+            <div class="item-top">
+              <div class="title">岗位职责</div>
+              <ul class="left-ul">
+                {php $sixDutys = iunserializer($six['staDuty'])}
+                {loop $sixDutys $key $duty}
+                <li>
+                  <div class="line"></div>
+                  <div class="li-word">{$duty['content']}</div>
+                </li>
+                {/loop}
+              </ul>
+            </div>
+            <div class="item-bottom">
+              <div class="title">岗位要求</div>
+              <ul class="right-ul">
+                {php $sixReqs = iunserializer($six['staRequire'])}
+                {loop $sixReqs $key $req}
+                <li>
+                  <div class="line"></div>
+                  <div class="li-word">{$req['content']}</div>
+                </li>
+                {/loop}
+              </ul>
+              <div class="tips">
+                公司将提供完善的福利和有强大竞争力的薪酬及考核机制
+              </div>
+            </div>
+          </div> -->
+          <!-- 右位置-3 -->
+          <!-- {php $eight = $contents[7]}
+          <div class="multi-three">
+            <div class="sta-title">{$eight['staName']}</div>
+            <div class="item-top">
+              <div class="title">岗位职责</div>
+              <ul class="left-ul">
+                {php $eightDutys = iunserializer($eight['staDuty'])}
+                {loop $eightDutys $key $duty}
+                <li>
+                  <div class="line"></div>
+                  <div class="li-word">{$duty['content']}</div>
+                </li>
+                {/loop}
+              </ul>
+            </div>
+            <div class="item-bottom">
+              <div class="title">岗位要求</div>
+              <ul class="right-ul">
+                {php $eightReqs = iunserializer($eight['staRequire'])}
+                {loop $eightReqs $key $req}
+                <li>
+                  <div class="line"></div>
+                  <div class="li-word">{$req['content']}</div>
+                </li>
+                {/loop} -->
+              <!-- </ul>
+            </div>
+          </div>
+        </div> -->
+      <!-- </div>
+    </div>
+  </div> -->
+  <!-- 底部信息 -->
+  <!-- <div class="multi-foot"> -->
+    <!-- 简历 -->
+    <!-- <div class="multi-eml">
+      <div class="eml-content">
+        <div class="eml-word">简历请发送至: zhangss@buwealth.com</div>
+        <div class="city">以上职位的招聘包括</div>
+        <div class="city-content">上海，北京，天津，成都等</div>
+      </div>
+    </div>
+
+    <img src="{MODULE_URL}template/mobile/images/station/star.png" alt="">
+  </div> -->
+  </div>
+  <div class="invest-recruit">
+    <div class="recruit-all">
+      <ul class="recruit-nav">
+        <div class="recruit-nav-title">
+          <p>POSITION</p>
+          <p>职位</p>
+        </div>
+        {loop $contents $key $value}
+        <li class="recruit-nav-li" data-key="{$key}">{$value['staName']}</li>
+        {/loop}
+      </ul>
+      {loop $contents $key $value}
+      <div class="recruit-item" data-key="{$key}">
+        <div class="recruit-sta">{$value['staName']}</div>
+        <div class="item-left">
+          <div class="title">岗位职责</div>
+          <ul class="left-ul">
+            {php $firstDutys = iunserializer($value['staDuty'])}
+            {loop $firstDutys $key $duty}
+            <li>
+              <div class="line"></div>
+              <div class="li-word">{$duty['content']}</div>
+            </li>
+            {/loop}
+          </ul>
+        </div>
+        <div class="item-right">
+          <div class="title">岗位要求</div>
+          <ul class="right-ul">
+            {php $firstReqs = iunserializer($value['staRequire'])}
+            {loop $firstReqs $key $req}
+            <li>
+              <div class="line"></div>
+              <div class="li-word">{$req['content']}</div>
+            </li>
+            {/loop}
+          </ul>
+        </div>
+      </div>
+      {/loop}
+    </div>
+  </div>
+  <script>
+    $(function(){
+      $('.recruit-item').hide().eq(0).show();
+      $('.recruit-nav-li').eq(0).addClass('recruit-active').siblings().removeClass('recruit-active');
+      $('.recruit-nav-li').on('click',function(){
+        var _this = this;
+        var key = $(_this).attr('data-key');
+        $(_this).addClass('recruit-active').siblings().removeClass('recruit-active')
+        $('.recruit-item').hide().eq(key).show();
+      })
+
+    })
+  </script>
+</div>
+{template 'footer'}

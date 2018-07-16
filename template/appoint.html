@@ -1,0 +1,248 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li {if $op == 'all'}class="active"{/if}><a href="{php echo $this->createWebUrl('appoint',array('op'=>'all'))}">全部记录</a></li>
+    <li {if $op == 'confrim'}class="active"{/if}><a href="{php echo $this->createWebUrl('appoint',array('op'=>'confrim'))}">待确认</a></li>
+    <li {if $op == 'isConfrim'}class="active"{/if}><a href="{php echo $this->createWebUrl('appoint',array('op'=>'isConfrim'))}">已确认</a></li>
+    <li {if $op == 'detail'}class="active"{/if}><a href="{php echo $this->createWebUrl('appoint',array('op'=>'detail'))}">详情记录</a></li>
+</ul>
+{if $op == 'all'}
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">活动管理</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th>姓名</th>
+                      <th>手机</th>
+                      <th>状态</th>
+                      <th>地区</th>
+                      <th>何处预约</th>
+                      <th style="width:200px;">提交时间</th>
+                      <th style="width:200px;">受理时间</th>
+                      <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($appoints)}
+                    {loop $appoints $key $appoint}
+                    <tr>
+                        <td>{$appoint['name']}</td>
+                        <td>{$appoint['phone']}</td>
+                        <td>
+                          {if $appoint['status'] == 0}
+                          <span class="btn btn-sm btn-default">待受理</span>
+                          {/if}
+                          {if $appoint['status'] == 1}
+                          <span class="btn btn-sm btn-primary">已处理</span>
+                          {/if}
+                        </td>
+                        <td>{$appoint['area1']} {$appoint['area2']}</td>
+                        <td>{$appoint['from']}</td>
+                        <th>{php echo date('Y-m-d H:i:s',$appoint['createtime'])}</th>
+                        <th>{if !empty($appoint['statustime'])}{php echo date('Y-m-d H:i:s',$appoint['statustime'])}{/if}</th>
+                        <td>
+                            <a href="{php echo $this->createWebUrl('appoint', array('op'=>'detail', 'id'=>$appoint['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑"><i class="fa fa-edit"></i></a>
+                            <a onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" href="{php echo $this->createWebUrl('appoint', array('op'=>'delete', 'id'=>$appoint['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">尚未添加主题</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{/if}
+{if $op == 'confrim'}
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">活动管理</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th style="width:150px;">姓名</th>
+                      <th>手机</th>
+                      <th>状态</th>
+                      <th>地区</th>
+                      <th>何处预约</th>
+                      <th style="width:200px;">提交时间</th>
+                      <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($appoints)}
+                    {loop $appoints $key $appoint}
+                    <tr>
+                        <td>{$appoint['name']}</td>
+                        <td>{$appoint['phone']}</td>
+                        <td>
+                          {if $appoint['status'] == 0}
+                          <span class="btn btn-sm btn-default">待受理</span>
+                          {/if}
+                          {if $appoint['status'] == 1}
+                          <span class="btn btn-sm btn-primary">已处理</span>
+                          {/if}
+                        </td>
+                        <td>{$appoint['area1']} {$appoint['area2']}</td>
+                        <td>{$appoint['from']}</td>
+                        <th>{php echo date('Y-m-d H:i:s',$appoint['createtime'])}</th>
+                        <td>
+                            <a href="{php echo $this->createWebUrl('appoint', array('op'=>'detail', 'id'=>$appoint['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑"><i class="fa fa-edit"></i></a>
+                            <a onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" href="{php echo $this->createWebUrl('appoint', array('op'=>'delete', 'id'=>$appoint['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">尚未添加主题</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{/if}
+{if $op == 'isConfrim'}
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">活动管理</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th style="width:150px;">姓名</th>
+                      <th>手机</th>
+                      <th>状态</th>
+                      <th>地区</th>
+                      <th>何处预约</th>
+                      <th style="width:200px;">提交时间</th>
+                      <th style="width:200px;">受理时间</th>
+                      <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($appoints)}
+                    {loop $appoints $key $appoint}
+                    <tr>
+                        <td>{$appoint['name']}</td>
+                        <td>{$appoint['phone']}</td>
+                        <td>
+                          {if $appoint['status'] == 0}
+                          <span class="btn btn-sm btn-default">待受理</span>
+                          {/if}
+                          {if $appoint['status'] == 1}
+                          <span class="btn btn-sm btn-primary">已处理</span>
+                          {/if}
+                        </td>
+                        <td>{$appoint['area1']} {$appoint['area2']}</td>
+                        <td>{$appoint['from']}</td>
+                        <th>{php echo date('Y-m-d H:i:s',$appoint['createtime'])}</th>
+                        <th>{if !empty($appoint['statustime'])}{php echo date('Y-m-d H:i:s',$appoint['statustime'])}{/if}</th>
+                        <td>
+                            <a href="{php echo $this->createWebUrl('appoint', array('op'=>'detail', 'id'=>$appoint['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑"><i class="fa fa-edit"></i></a>
+                            <a onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" href="{php echo $this->createWebUrl('appoint', array('op'=>'delete', 'id'=>$appoint['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">尚未添加主题</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{/if}
+{if $op == 'detail'}
+<div class="main">
+    <form appointion="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">用户记录</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">用户姓名</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['name']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">用户手机</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['phone']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">省</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['area1']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">市</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['area2']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">何处预约</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['from']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">提交时间</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{php echo date('Y-m-d H:i:s',$content['createtime'])}">
+                    </div>
+                </div>
+                {if !empty($content['statustime'])}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">受理时间</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{php echo date('Y-m-d H:i:s',$content['statustime'])}">
+                    </div>
+                </div>
+                {/if}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">状态</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <select name="status" class="form-control">
+                          <option {if $content['status'] == 0}selected{/if} value="0">待受理</option>
+                          <option {if $content['status'] == 1}selected{/if} value="1">已处理</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">备注</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="remark" value="{$content['remark']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="{$content['id']}">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{/if}
+{template 'common/footer'}

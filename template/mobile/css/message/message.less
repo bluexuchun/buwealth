@@ -1,0 +1,168 @@
+.msgs{
+  width:100%;
+  min-height:80vh;
+  background: url('../../images/message.png') no-repeat;
+  background-size:cover;
+  background-position: center center;
+  position: relative;
+  &-content{
+    padding:10rem 12rem;
+  }
+  &-ul{
+    width:100%;
+    .item{
+      width:100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      position: relative;
+      background: rgba(0,0,0,0.5);
+      cursor: pointer;
+      &-img{
+        width:58%;
+        img{
+          width:100%;
+        }
+      }
+      &-word{
+        width:42%;
+        height:100%;
+        position: absolute;
+        left:0px;
+        top:0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        &-title{
+          width:80%;
+          font-size:1.5rem;
+          color:rgb(190,157,112);
+        }
+        &-desc{
+          width:100%;
+          margin-top:2rem;
+          font-size:1rem;
+          color:rgb(170,170,170);
+        }
+        &-btn{
+          width:80%;
+          img{
+            height:4rem;
+          }
+        }
+      }
+      &-word-phone{
+        width:100%;
+        min-height:15rem;
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        &-title{
+          width:80%;
+          font-size:1.5rem;
+          color:rgb(190,157,112);
+        }
+        &-desc{
+          width:100%;
+          margin-top:2rem;
+          font-size:1rem;
+          color:rgb(170,170,170);
+        }
+        &-btn{
+          width:80%;
+          img{
+            height:4rem;
+          }
+        }
+      }
+    }
+    .line{
+      width:100%;
+      padding:2rem 0rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      img{
+        width:50%;
+      }
+    }
+  }
+}
+.msgs-window{
+  width:100%;
+  height:100vh;
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  top:0px;
+  left:0px;
+  z-index:4;
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  &-black{
+    width: 100%;
+    height:100%;
+    position: fixed;
+    top:0px;
+    left:0px;
+    z-index:5;
+  }
+  &-content{
+    width:70%;
+    height:100vh;
+    position: absolute;
+    top:0px;
+    left:50%;
+    margin-left:-35%;
+    z-index:6;
+    overflow: hidden;
+    overflow-y: auto;
+    color:#fff;
+  }
+  &-close{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top:3rem;
+    .content{
+      width:3rem;
+      margin-right:2rem;
+      cursor: pointer;
+      img{
+        width:100%;
+      }
+      &-word{
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding:0.5rem 0rem 1.5rem 0rem;
+      }
+    }
+  }
+  &-article{
+    padding:0.5rem 2rem;
+    img{
+      width: 100%;
+    }
+  }
+  /*滚动条样式*/
+  &-content::-webkit-scrollbar {/*滚动条整体样式*/
+      width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+      height: 4px;
+  }
+  &-content::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+      border-radius: 5px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.2);
+  }
+  &-content::-webkit-scrollbar-track {/*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      border-radius: 0;
+      background: rgba(0,0,0,0.1);
+  }
+}

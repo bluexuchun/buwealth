@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{MODULE_URL}template/mobile/css/collectlist/collectlist.css">
+    <link rel="stylesheet" href="{MODULE_URL}template/mobile/css/collectlist/media.css">
+    <link rel="stylesheet" href="{MODULE_URL}template/mobile/css/collectlist/LArea.css">
+    <style>
+        .default_text::after{
+            content: '默认地址';
+            border: 1px solid #ffffff;
+            bottom: 0;
+            right: 1rem;
+        }
+        .collect_box .list_ul > ul li .li_box .input_box .collect_lab{
+            background: url('{MODULE_URL}template/mobile/images/collectlist/selction.png');
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="collect_box">
+        <div class="box_top">
+            <div class="box_main_top">
+                <div class="box_main_top_a float_l">
+                    <a href="javascript:history.back(-1)"><</a>
+                </div>
+                <p class="float_l">收货地址</p>
+            </div>
+        </div>
+        <div class="list_ul">
+            <ul>
+                {loop $address $key $value}
+                <li data-id="{$value['id']}" onclick="chooseitem(this)">
+                    <div class="li_box" >
+                        <div class="float_l input_box">
+                            <label for="redio_deful{$value['id']}" {if $value['isdefault'] == 1}class="collect_lab seel"{else}class="seel"{/if}>
+                                <input class="radio_style" type="radio" checked="" name="sel" id="redio_deful{$value['id']}">
+                            </label>
+                        </div >
+                        <div {if $value['isdefault'] == 1}class="test_person float_l default_text"{else}class="test_person float_l"{/if}>
+                            <span style="display: inline-block;margin-bottom: 0.5rem;">{$value['province']} {$value['city']} {$value['district']} {$value['address']}</span><br>
+                            <span style="margin-right: 1rem;">{$value['username']}</span><span> {$value['phone']}</span>
+                        </div>
+                        <div  class="float_r test_footer"><img class="collect_address" src="{MODULE_URL}template/mobile/images/collectlist/pen.png" alt=""></div>
+                    </div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+        <div class="add-addess">
+            <div class="add_box">
+                <p class="float_l">新增收货地址</p>
+                <img  class="float_r add_addess" src="{MODULE_URL}template/mobile/images/collectlist/add.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="cvs" style="display: none;">
+        <dis class="close PC_style">
+        <img src="{MODULE_URL}template/mobile/images/createorder/close.png" alt="">
+        </dis>
+        <div class="main">
+        <h3 class="PC_style" style="color: #BE9D70;margin-bottom: 2rem">新增收货地址</h3>
+        <p class="PC_style" style="width: 1rem;height: 1px;background-color: #BE9D70;margin-bottom: 2rem"></p>
+        <div class="colladd">
+            <p class="float_l" style="margin: 0;line-height: 3rem;margin-left: 2rem;">
+                <a href="#" class="back_cat" style="font-size: 1.5rem;text-decoration: none;color: #BE9D70;line-height: 3rem"><</a>
+            </p>
+            <p class="float_l" style="margin: 0;line-height: 3rem;color: #BE9D70;margin-left: 7.5rem;">收货地址</p>
+        </div>
+        <div class="place PC_style">
+            <p class="float_l" style="margin: 0 2rem 0 0">* 所在地区</p>
+            <div class="float_l bck leave_out">
+                <div class="optionO" style="position: relative;display: flex ">
+                    <span id="province" style="display: inline-block;margin-left: 1.5rem;margin-right: 2rem;">省份</span>
+                    <span class="ico"
+                          style="display: inline-block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden">
+                    </span>
+                </div>
+                <ul class="leave_out_op" data-status="0">
+                </ul>
+            </div>
+            <div class="float_l bck city">
+                <div class="optionT" style="position: relative;display: flex ">
+                    <span id="city" style="display: inline-block;margin-left: 1.5rem;margin-right: 2rem;">市</span>
+                    <span class="ico"
+                          style="display: inline-block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden">
+                    </span>
+                </div>
+                <ul class="city_op" data-status="0">
+                </ul>
+            </div>
+            <div class="float_l bck area">
+                <div class="areaS" style="position: relative;display: flex ">
+                    <span id="area" class="" style="display: inline-block;margin-left: 1.5rem;margin-right: 2rem;">区</span>
+                    <span class="ico float_r"
+                          style="display:block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden;">
+                    </span>
+                </div>
+                <ul class="areaS_op" data-status="0">
+                </ul>
+            </div>
+        </div>
+        <div class="name place">
+            <p class="float_l"><span class="star">*</span>收货人姓名</p>
+            <div class="float_l">
+                <input class="PC_style" type="text" name="addaccount" value="">
+                <input  class="m_input m_style" type="text" value="" name="m_addccount" placeholder="姓名">
+            </div>
+        </div>
+        <div class="name m_input m_style" >
+            <p class="float_l" style="margin-left: 2rem" >联系方式</p>
+            <div class="float_l tran" style="margin-left: 1rem">
+                <input type="text" value="" name="m_addphone" placeholder="手机号码">
+            </div>
+        </div>
+        <div class="name m_input m_style" >
+            <p class="float_l" style="margin-left: 2rem" >所在地区</p>
+            <div class="float_l tran" style="margin-left: 1rem">
+                <input type="text" value="广东省,深圳市,南山区" id="demo1" readonly=""  name="m_address" placeholder="">
+            </div>
+        </div>
+        <div class="name move">
+            <p class="float_l spe" style="margin-right: 2rem" ><span class="star">*</span> 详细地址</p>
+            <div class="float_l tran1">
+                <input class="PC_style" type="text" name="addaddress" value="">
+                  <textarea class="m_style" id="mobileaddress" placeholder="详细地址需填写楼栋楼层或房间号信息" name="m_addaddress"></textarea>
+            </div>
+        </div>
+        <div class="name PC_style">
+            <p class="float_l" style="margin-right: 2rem">* 手机号码</p>
+            <div class="float_l">
+                <input type="tel" name="addphone" value="">
+            </div>
+        </div>
+        <div class="filedTel PC_style">
+            <p class="float_l text" style="margin-right: 2rem"><span style="color: #141414;">* </span>固定电话</p>
+            <div class="float_l">
+                <input type="tel" name="telfor" value="">
+            </div>
+            <p class="line float_l"></p>
+            <div class="float_l">
+                <input type="tel" name="teltail" value="">
+            </div>
+        </div>
+        <div class="name PC_style">
+            <p class="float_l" style="margin-right: 2rem"><span style="color: #141414;">* </span>邮箱地址</p>
+            <div class="float_l">
+                <input type="email" name="addemail" value="">
+            </div>
+        </div>
+        <p class="PC_style" style="color: #ffffff;margin-left: 7rem;font-size: 0.8rem">用来接收订单提醒邮件，便于您及时了解订单状态</p>
+        <div class="butBox">
+            <div class="mycheck float_l">
+                <input type="checkbox" value="0" id="checkbox1" name="default"/>
+                <label for="checkbox1" id="changeDefault"></label>
+            </div>
+            <span class="float_l" style="color: #ffffff;font-size: 0.8rem">设为默认地址</span>
+            <div style="clear: both"></div>
+        </div>
+        <div class="sub PC_style">
+            <div class="saveadd" id="saveadd">保存收货人信息</div>
+        </div>
+        <div class="m_input qsq m_style">
+            <div class="save-btn" onclick="saveAdd()">确认</div>
+            <div class="delete-btn" onclick="deleteAdd()">删除收货地址</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/LAreaData1.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/LAreaData2.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/LArea.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/jquery-2.1.4.js"></script>
+<script>
+var area1 = new LArea();
+area1.init({
+    'trigger': '#demo1', //触发选择控件的文本框，同时选择完毕后name属性输出到该位置
+    'valueTo': '#value1', //选择完毕后id属性输出到该位置
+    'keys': {
+        id: 'id',
+        name: 'name'
+    }, //绑定数据源相关字段 id对应valueTo的value属性输出 name对应trigger的value属性输出
+    'type': 1, //数据源类型
+    'data': LAreaData //数据源
+});
+area1.value=[1,13,3];//控制初始位置，注意：该方法并不会影响到input的value
+var area2 = new LArea();
+area2.init({
+    'trigger': '#demo2',
+    'valueTo': '#value2',
+    'keys': {
+        id: 'value',
+        name: 'text'
+    },
+    'type': 2,
+    'data': [provs_data, citys_data, dists_data]
+});
+</script>
+<script type="text/javascript">
+    ;$(function(){
+        $('.add_addess').on('click',function(){
+          console.log('123123');
+          clearForm();
+          $('.collect_box').css({'display': 'none'});
+          $('.cvs').css({'display':'block'});
+        });
+
+        $('.back_cat').on('click',function(){
+            $('.collect_box').css({'display': 'block'});
+            $('.cvs').css({'display':'none'});
+        })
+        $('.collect_address').on('click',function(){
+            $('.collect_box').css({'display': 'none'});
+            $('.cvs').css({'display':'block'});
+            var thisSpan=$(this).parent().parent().parent();
+            var id = thisSpan.attr('data-id');
+            console.log(id);
+            $('.cvs').attr('data-eid',id);
+            $.ajax({
+              url:"{php echo $this->createMobileUrl('edit')}",
+              data:{
+                id:id
+              },
+              dataType:'JSON',
+              type:'post',
+              success:function(res){
+                if(res.status == 1){
+                  var data = res.data;
+                  console.log(data);
+                  clearForm();
+                  $('.delete-btn').css({
+                    'display':'block',
+                  })
+                  var detailaddress;
+                  if(data.city == '' || data.city == null || data.city == undefined){
+                    detailaddress = data.province + ',' + data.district;
+                  }else{
+                    detailaddress = data.province + ',' + data.city + ',' + data.district;
+                  }
+
+                  $('input[name="m_address"]').val(detailaddress);
+                  $('input[name="m_addccount"]').val(data.username);
+                  $('textarea[name="m_addaddress"]').val(data.address);
+                  $('input[name="m_addphone"]').val(data.phone);
+                  if(data.isdefault == 1){
+                    // $('input[name="default"]').attr('checked',checked);
+                    $('#checkbox1').prop('checked',true).attr('value',1);
+
+                  }
+                  $('.cvs').css({'display':'block'});
+                }
+              }
+            })
+            return false;
+        });
+
+        $('.radio_style').on('click',function(event) {
+            $('.radio_style').each(function(index, el) {
+                $(this).parent().removeClass('collect_lab')
+            });
+            $(this).parent().addClass('collect_lab');
+        });
+    })
+    $('#changeDefault').on('click',function(){
+      console.log($('input[name="default"]').val());
+      if($('input[name="default"]').val() == 0){
+        $('input[name="default"]').attr('value',1);
+      }else{
+        $('input[name="default"]').attr('value',0);
+      }
+    })
+    // 选择地址
+    function chooseitem(obj){
+      var id = $(obj).attr('data-id');
+      console.log(id);
+      location.href = "{php echo $this->createMobileUrl('createorder',array('goodid'=>$_GPC['goodid'],'cid'=>$_GPC['cid']))}&chooseid="+id;
+    }
+    // 删除订单
+    function deleteAdd(){
+      console.log('123');
+      if(confirm('确认是否删除?')){
+        var id = $('.cvs').attr('data-eid');
+        console.log(id);
+        $.ajax({
+          url:"{php echo $this->createMobileUrl('delete')}",
+          data:{
+            id:id
+          },
+          dataType:'JSON',
+          type:'post',
+          success:function(res){
+            if(res.status == 1){
+              alert('删除成功');
+              location.reload();
+            }else{
+              alert('删除失败');
+            }
+          }
+        })
+      }else{
+        console.log('no');
+      }
+    }
+    // 保存订单
+    function saveAdd(){
+      var eid = $('.cvs').attr('data-eid');
+      console.log(eid);
+      if(eid == '' || eid == null || eid == undefined){
+        console.log('123');
+        var name = $('input[name="m_addccount"]').val();
+        if(name == '' || name == undefined || name == null){
+          alert('请填写姓名');
+          return;
+        }
+        var phone = $('input[name="m_addphone"]').val();
+        if(phone == '' || phone == undefined || phone == null){
+          alert('请填写手机号码');
+          return;
+        }
+        var province;
+        var city;
+        var area;
+        var address = $('input[name="m_address"]').val();
+        var addresslists = address.split(',');
+        if(addresslists.length == 2){
+          province = addresslists[0];
+          area = addresslists[1];
+        }else{
+          province = addresslists[0];
+          city = addresslists[1];
+          area = addresslists[2];
+        }
+
+        var isdefault = $('input[name="default"]').val();
+        var addaddress = $('textarea[name="m_addaddress"]').val();
+        if(addaddress == '' || addaddress == undefined || addaddress == null){
+          alert('请填写详细地址');
+          return;
+        }
+        console.log(name + '~' + phone + '~' + address + '~' + isdefault+'~'+province+'~'+city+'~'+area);
+        $.ajax({
+          url:"{php echo $this->createMobileUrl('receipt')}",
+          data:{
+            'uid':'{$userid}',
+            'ausername':name,
+            'phone':phone,
+            'province':province,
+            'city':city,
+            'district':area,
+            'address':addaddress,
+            'isdefault':isdefault
+          },
+          dataType:'JSON',
+          type:'post',
+          success:function(res){
+            if(res.status == 1){
+              var data = res.date;
+              alert('添加成功');
+              location.reload();
+            }
+          }
+        });
+      }else{
+        console.log('更新');
+        var province;
+        var city;
+        var area;
+        var address = $('input[name="m_address"]').val();
+        var addresslists = address.split(',');
+        if(addresslists.length == 2){
+          province = addresslists[0];
+          area = addresslists[1];
+        }else{
+          province = addresslists[0];
+          city = addresslists[1];
+          area = addresslists[2];
+        }
+        var name = $('input[name="m_addccount"]').val();
+        var address = $('textarea[name="m_addaddress"]').val();
+        var phone = $('input[name="m_addphone"]').val();
+        var isDefault = $('input[name="default"]').val();
+        $.ajax({
+          url:"{php echo $this->createMobileUrl('gx')}",
+          data:{
+            'id':eid,
+            'type':'post',
+            'uid':'{$userid}',
+            'ausername':name,
+            'phone':phone,
+            'province':province,
+            'city':city,
+            'district':area,
+            'address':address,
+            'isdefault':isDefault
+          },
+          type:'post',
+          dataType:'JSON',
+          success:function(res){
+            if(res.status == 1){
+              alert('更新成功');
+              location.reload();
+            }
+          }
+        })
+      }
+    }
+    // 清空表单
+    function clearForm(){
+      $('#checkbox1').prop('checked',false);
+      $('input[name="m_address"]').val('广东省,深圳市,南山区');
+      $('input[name="m_addccount"]').val('');
+      $('textarea[name="m_addaddress"]').val('');
+      $('input[name="m_addphone"]').val('');
+      $('input[name="default"]').val('');
+      $('.delete-btn').css({
+        'display':'none',
+      })
+    }
+</script>
+</body>
+</html>

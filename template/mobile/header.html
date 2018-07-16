@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<title>{$inits['setting']['bu_title']}</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/common.less">
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/media.css">
+<script src="{MODULE_URL}template/mobile/js/jquery-2.1.4.js"></script>
+<script src="{MODULE_URL}template/mobile/js/main.js"></script>
+<script src="{MODULE_URL}template/mobile/js/less-1.7.0.js" type="text/javascript"></script>
+<script src="{MODULE_URL}template/mobile/js/area.js"></script>
+</head>
+
+<body {if $inits['isMobile'] == 0}style="min-width:500px;overflow-x:auto;"{/if}>
+    <!-- 公共头部 -->
+    <!-- <div class="common-header" style="{if $action == 'index'}position:absolute;top:0;left:0;background: rgba(0,0,0,0.1);{else}position:relative;background: rgba(0,0,0,0.3);{/if}"> -->
+    <div class="common-header" style="position:relative;background: rgba(0,0,0,0.3);">
+      <div class="common-header-content">
+        <div class="common-header-logo">
+          <a href="{php echo $this->createMobileUrl('index')}">
+            <img src="{php echo tomedia($inits['setting']['bu_logo'])}" alt="{$inits['setting']['logo_title']}">
+          </a>
+        </div>
+        <ul class="common-header-nav">
+          {loop $inits['navs'] $key $nav}
+          <li {if !empty($id)}{if $id == $key}class="active"{/if}{/if}{if $key == count($inits['navs'])}id="hover"{/if}><a href="{$nav['link']}">{$nav['title']}</a></li>
+          {/loop}
+        </ul>
+        <div class="common-ham">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+    <!-- 移动端下拉导航 -->
+    <div class="common-ham-content">
+      <div class="ham-black"></div>
+      <div class="ham-content">
+        <div class="ham-close">
+          <div class="ham-close-content">
+            <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+            <div class="close-content">Close</div>
+          </div>
+        </div>
+        <ul class="ham-list">
+          {loop $inits['navs'] $key $nav}
+          <li {if !empty($id)}{if $id == $key}{if $key == count($inits['navs'])}class="lilast active"{else}class="ham-list-li active"{/if}{/if}{/if} {if $key == count($inits['navs'])}class="lilast"{else}class="ham-list-li"{/if}>
+            <a {if $key == count($inits['navs'])}id="upabout"{else}href="{$nav['link']}"{/if}>
+              <span>{$nav['title']}</span>
+            </a>
+          </li>
+          {if $key == count($inits['navs'])}
+          <ul class="common-about-nav" {if $id == '8'}style="display:flex;"data-status="open"{else}data-status="close" style="display:none;"{/if}>
+            {loop $inits['aboutnav'] $key $about}
+            <li {if $childId == $about['id']}class="about-active"{/if} style="background:url({MODULE_URL}template/mobile/images/about/nav/{$about['icon']}) no-repeat;background-size:cover;background-position:center center;">
+              <a href="{php echo $this->createMobileUrl('about',array('id'=>'8','childId'=>$about['id']))}">
+                {$about['title']}
+              </a>
+            </li>
+            {/loop}
+          </ul>
+          {/if}
+          {/loop}
+        </ul>
+      </div>
+    </div>
+    <script>
+      $('.common-ham').on('click',function(){
+        $('.common-ham-content').animate({
+          'top':'0%'
+        });
+        $('body,html').css({
+          'overflow-y':'hidden'
+        })
+      });
+      $('.ham-close').on('click',function(){
+        $('.common-ham-content').animate({
+          'top':'-100%'
+        });
+        $('body,html').css({
+          'overflow-y':'auto'
+        })
+      })
+      $('#upabout').on('click',function(){
+        $('.ham-list-li').removeClass('active');
+        $('.lilast').addClass('active');
+        if($('.common-about-nav').attr('data-status') == 'close'){
+          $('.common-about-nav').css({
+            'display':'flex'
+          },500);
+          $('.common-about-nav').attr('data-status','open');
+        }else{
+          $('.common-about-nav').css({
+            'display':'none'
+          },500);
+          $('.common-about-nav').attr('data-status','close');
+        }
+      })
+    </script>
+    <!-- 登录注册 -->
+      <ul class="common-func">
+        <div class="li-personal" {if !empty($_GPC['user_id'])}style="display:block;"{else}style="display:none;"{/if}>
+          <a href="{php echo $this->createMobileUrl('personal')}">
+            <img src="{MODULE_URL}template/mobile/images/personal/pericon.png" alt="">
+          </a>
+        </div>
+        <li id="li-login" data-li="0"  {if !empty($inits['username'])}data-login="1" data-username="{$inits['username']}" data-userphone="{$inits['userphone']}" data-isQuestion="{$inits['isQuestion']}" style="display:none;" {else}data-username="" data-userphone="" data-login="0" data-isQuestion="" onclick="openLi(this);"{/if}>
+          {if !empty($inits['username'])}{$inits['call']}{else}登录{/if}
+        </li>
+        <li id="li-register" {if !empty($inits['username'])}style="display:none;"{/if} data-li="1" onclick="openLi(this)">
+          注册
+        </li>
+        <div class="li-welcome" id="li-welcome" {if $inits['do'] == 'product' || $inits['do'] == 'detail'}style="display:none"{/if}{if !empty($inits['username'])}style="display:flex;"{else}style="display:none;"{/if}>
+          <span>BU</span>
+          <span>财</span>
+          <span>富</span>
+          <span>欢</span>
+          <span>迎</span>
+          <span>您</span>
+        </div>
+        <li {if $inits['do'] == 'product' || $inits['do'] == 'detail'}style="display:none;"{/if} data-li="2" data-type="appoint" onclick="openLi(this)">
+          预约
+        </li>
+        {if $inits['do'] == 'product' || $inits['do'] == 'detail'}
+        <div class="li-app" id="li-app" data-li="2" data-type="product" onclick="openLi(this)">
+          <span>预</span>
+          <span>约</span>
+          <span>理</span>
+          <span>财</span>
+          <span>师</span>
+        </div>
+        {/if}
+        <li id="li-cancel"  {if !empty($inits['username'])}style="display:flex;"{else}style="display:none;"{/if}>
+          注销
+        </li>
+        <script>
+        // 注销
+          $('#li-cancel').on('click',function(){
+            if(window.confirm('确定要注销此账号吗？')){
+              console.log('yes');
+              $.ajax({
+                url:"{php echo $this->createMobileUrl('cancel')}",
+                type:'post',
+                data:{'type':'cancel'},
+                dataType:'json',
+                success:function(res){
+                  if(res.success == 1){
+                    window.location.reload();
+                  }else{
+                    alert(res.message);
+                  }
+                }
+              })
+            }else{
+              console.log('no');
+            }
+          })
+        </script>
+        <!-- 登录 -->
+        <div class="tools" id="tLogin">
+          <div class="tools-success">
+            <div class="tools-success-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+              <div class="tools-title">
+                <img src="{MODULE_URL}template/mobile/images/success.png" alt="">
+                <div class="success-word">登录成功</div>
+                <div>LOGIN SUCCESS</div>
+              </div>
+            </div>
+          </div>
+          <div class="tools-content">
+            <div class="tools-content-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+
+              <div class="tools-title">
+                <div>登 录</div>
+                <div>LOGIN</div>
+              </div>
+
+              <div class="form">
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>姓</span>
+                    <span>名</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="text" autocomplete="off" name="username" data-name="姓名">
+                  </div>
+                </div>
+
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>电</span>
+                    <span>话</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="text" autocomplete="off" name="userphone" data-name="手机号">
+                  </div>
+                </div>
+
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>密</span>
+                    <span>码</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="password" autocomplete="off" name="userpassword" data-name="密码">
+                  </div>
+                </div>
+
+                <div class="login-btn" id="login">
+                  <span>登录</span><span style="margin-left:0.7rem;">LOGIN</span>
+                </div>
+
+                <div class="forget">
+                  <span id="toForget">忘记密码</span><span id="toChange">更换手机号</span>
+                </div>
+
+                <div class="register">
+                  还没有账号？<span id="toRegister">REGISTER</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 注册 -->
+        <div class="tools" id="tRegister">
+          <div class="tools-success">
+            <div class="tools-success-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+              <div class="tools-title">
+                <img src="{MODULE_URL}template/mobile/images/success.png" alt="">
+                <div class="success-word">注册成功</div>
+                <div>REGISTER SUCCESS</div>
+              </div>
+              <div class="goOn" id="goOnRegister">
+                <span>继续</span>
+              </div>
+            </div>
+          </div>
+          <div class="tools-content">
+            <div class="tools-content-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+              <div class="tools-title">
+                <div>注 册</div>
+                <div>REGISTER</div>
+              </div>
+              <div class="form">
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>姓</span>
+                    <span>名</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="text" autocomplete="off" name="name" data-name="姓名">
+                  </div>
+                </div>
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>电</span>
+                    <span>话</span>
+                  </div>
+                  <div class="form-input form-spe">
+                    <input type="text" autocomplete="off" name="phone" data-name="手机号">
+                    <input type="hidden" id="is_use" value="0">
+                    <div class="form-tips" id="tips"></div>
+                  </div>
+                </div>
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>验</span>
+                    <span>证</span>
+                    <span>码</span>
+                  </div>
+                  <div class="form-input form-spe">
+                    <input type="text" name="yzm" data-name="验证码">
+                    <button class="getYzm" id="getYzm">获取验证码</button>
+                  </div>
+                </div>
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>密</span>
+                    <span>码</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="password" autocomplete="off" name="password" data-name="密码">
+                  </div>
+                </div>
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>确</span>
+                    <span>认</span>
+                    <span>密</span>
+                    <span>码</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="password" autocomplete="off" name="Apassword" data-name="密码">
+                  </div>
+                </div>
+                <div class="login-btn" id="register">
+                  <span>注册</span><span style="margin:0rem 0.6rem;">REGISTER</span><img src="{MODULE_URL}template/mobile/images/right.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 预约 -->
+        <div class="tools" id="tAppoint">
+          <div class="tools-success">
+            <div class="tools-success-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+              <div class="tools-title">
+                <img src="{MODULE_URL}template/mobile/images/success.png" alt="">
+                <div class="success-word">预约成功</div>
+                <div>RESERVATIONS</div>
+              </div>
+              <div class="tools-appoint">
+                <div class="atitle">BU理财师</div>
+                <div class="adesc">会尽快与你联系</div>
+              </div>
+            </div>
+          </div>
+          <div class="tools-content">
+            <div class="tools-content-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+
+              <div class="tools-title">
+                <div>预 约</div>
+                <div>MAKE AN</div>
+                <div>APPOINTMENT</div>
+              </div>
+
+              <div class="form">
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>姓</span>
+                    <span>名</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="text" autocomplete="off" name="appname" data-name="姓名">
+                  </div>
+                </div>
+
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>电</span>
+                    <span>话</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="text" autocomplete="off" name="appphone" data-name="手机号">
+                  </div>
+                </div>
+                <div class="area" id="area-1">
+                  <div class="area-word">
+                    <span id="area1-show">省份</span>
+                    <img id="control-area1" data-status="close" src="{MODULE_URL}template/mobile/images/ut.png" alt="">
+                  </div>
+                  <!-- 下拉列表开始 -->
+                  <ul class="area-content" id="area1-content">
+                    <input type="hidden" name="area-1" data-name="省">
+                  </ul>
+                </div>
+                <div class="area" id="area-2">
+                  <div class="area-word">
+                    <span id="area2-show">市</span>
+                    <img id="control-area2" data-status="close" src="{MODULE_URL}template/mobile/images/ut.png" alt="">
+                  </div>
+                  <!-- 下拉列表开始 -->
+                  <ul class="area-content" id="area2-content">
+
+                  </ul>
+                </div>
+                <div class="login-btn" id="appoint">
+                  <input type="hidden" name="area-2" data-name="市">
+                  <input type="hidden" name="apptype">
+                  <span>预约</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 忘记密码 -->
+        <div class="tools" id="tAppoint">
+          <div class="tools-success">
+            <div class="tools-success-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+              <div class="tools-title">
+                <img src="{MODULE_URL}template/mobile/images/success.png" alt="">
+                <div class="success-word">修改成功</div>
+              </div>
+            </div>
+          </div>
+          <div class="tools-content">
+            <div class="tools-content-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+
+              <div class="tools-title">
+                <div>忘记密码</div>
+                <div>FORGET</div>
+              </div>
+
+              <div class="form">
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>电</span>
+                    <span>话</span>
+                  </div>
+                  <div class="form-input form-spe">
+                    <input type="text" autocomplete="off" name="setphone" data-name="手机号">
+                    <div class="form-tips" id="ftips"></div>
+                  </div>
+                </div>
+
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>验</span>
+                    <span>证</span>
+                    <span>码</span>
+                  </div>
+                  <div class="form-input form-spe">
+                    <input type="text" name="setyzm" data-name="验证码">
+                    <button class="getYzm" id="reYzm">获取验证码</button>
+                  </div>
+                </div>
+
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>重</span>
+                    <span>置</span>
+                    <span>密</span>
+                    <span>码</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="password" autocomplete="off" name="setpassword" data-name="密码">
+                  </div>
+                </div>
+
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>确</span>
+                    <span>认</span>
+                    <span>密</span>
+                    <span>码</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="password" autocomplete="off" name="setApassword" data-name="密码">
+                  </div>
+                </div>
+
+                <div class="login-btn" id="setbtn">
+                  <span>完成FINISH</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 更换手机号 -->
+        <div class="tools" id="tAppoint">
+          <div class="tools-success">
+            <div class="tools-success-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+              <div class="tools-title">
+                <img src="{MODULE_URL}template/mobile/images/success.png" alt="">
+                <div class="success-word">更换成功</div>
+              </div>
+            </div>
+          </div>
+          <div class="tools-content">
+            <div class="tools-content-content">
+              <div class="tools-close">
+                <div class="tools-close-content">
+                  <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+                  <div class="close">Close</div>
+                </div>
+              </div>
+
+              <div class="tools-title">
+                <div>更换手机号</div>
+                <div>CHANGE</div>
+              </div>
+
+              <div class="form">
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>原</span>
+                    <span>电</span>
+                    <span>话</span>
+                  </div>
+                  <div class="form-input form-spe">
+                    <input type="text" autocomplete="off" name="oriphone" data-name="原手机号">
+                    <div class="form-tips" id="ctips"></div>
+                  </div>
+                </div>
+
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>密</span>
+                    <span>码</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="password" autocomplete="off" name="oripassword" data-name="密码">
+                  </div>
+                </div>
+
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>现</span>
+                    <span>电</span>
+                    <span>话</span>
+                  </div>
+                  <div class="form-input">
+                    <input type="text" autocomplete="off" name="nowphone" data-name="现手机号">
+                  </div>
+                </div>
+
+                <div class="form-content">
+                  <div class="form-label">
+                    <span>验</span>
+                    <span>证</span>
+                    <span>码</span>
+                  </div>
+                  <div class="form-input form-spe">
+                    <input type="text" name="changeyzm" data-name="验证码">
+                    <button class="getYzm" id="changeYzm">获取验证码</button>
+                  </div>
+                </div>
+
+                <div class="login-btn" id="changebtn">
+                  <span>完成FINISH</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </ul>
+    <script>
+      $(function(){
+        // 计时器
+        // 注册验证码
+        var regTimer = null;
+        // 重置验证码
+        var setTimer = null;
+        // 更换手机号验证码
+        var changetimer = null;
+        // 使tools的高度填满
+        var height = $(window).height() - $('.common-header').height() + 'px';
+        // var height = $(window).height() + 'px';
+        $('.tools').css({
+            'height':height,
+            'margin-top':$('.common-header').height()+'px'
+        });
+
+        // 判断滚动轴的距离
+        if($(window).width() > 500){
+          $(window).scroll(function(){
+            var headerHeight = $('.common-header').height();
+            var scrollTop = $(this).scrollTop();
+            var windowHeight = $(window).height();
+            if(scrollTop > 0){
+              $('.tools').css({
+                'margin-top':'0px',
+                'height':windowHeight+'px'
+              });
+            }else{
+              $('.tools').css({
+                'margin-top':$('.common-header').height() + 'px',
+                'height':height
+              });
+            }
+          })
+        }
+
+        // 预约地区province
+        var provinces = dsy['Items'][0];
+        for (var i = 0; i < provinces.length; i++) {
+          $('#area1-content').append('<li data-id="0_'+i+'" value="'+provinces[i]+'">'+provinces[i]+'</li>');
+        }
+        // 省市选择的时候
+        $('#area1-content li').on('click',function(){
+          var value = $(this).attr('value');
+          var dataid = $(this).attr('data-id')+'_0';
+          var district = dsy['Items'][dataid];
+          $('#area2-content').empty();
+          for (var i = 0; i < district.length; i++) {
+            $('#area2-content').append('<li onclick="areaChoose(this)" data-id="0_'+i+'" value="'+district[i]+'">'+district[i]+'</li>');
+          }
+          $('input[name="area-1"]').val(value);
+          $('#control-area1').attr('data-status','close');
+
+          $(this).parent().animate({
+            'max-height':'0rem'
+          },'1000');
+          $('#area1-show').html(value);
+        })
+        // 打开关闭下拉列表
+        $('#control-area1').on('click',function(){
+          if($(this).attr('data-status') == 'close'){
+            $('#area1-content').animate({
+              'max-height':'8rem'
+            },'600');
+            $(this).attr('data-status','open');
+            $('#area2-content').animate({
+              'max-height':'0rem'
+            },'600');
+            $('#control-area2').attr('data-status','close');
+          }else{
+            $('#area1-content').animate({
+              'max-height':'0rem'
+            },'600');
+            $(this).attr('data-status','close');
+          }
+        });
+        // 打开关闭下拉列表
+        $('#control-area2').on('click',function(){
+          if($(this).attr('data-status') == 'close'){
+            $('#area2-content').animate({
+              'max-height':'8rem'
+            },'600');
+            $(this).attr('data-status','open');
+            $('#area1-content').animate({
+              'max-height':'0rem'
+            },'600');
+            $('#control-area1').attr('data-status','close');
+          }else{
+            $('#area2-content').animate({
+              'max-height':'0rem'
+            },'600');
+            $(this).attr('data-status','close');
+          }
+        });
+
+        // 注册 验证码
+        $('#getYzm').on('click',function(){
+          var _this = this;
+          var time = 60;
+          var yzm = null;
+          var phone = $('input[name="phone"]').val();
+          var is_use = $('#is_use').val();
+          // 判断手机号是否已经使用
+          if(is_use == 1){
+            // 发送验证码
+            $.ajax({
+              url: "{php echo $this->createMobileUrl('register')}",
+              type:'post',
+              data: {'phone':phone,'type':'sendSms','yzmType':'register'},
+              dataType: 'json',
+              success:function(data){
+                console.log(data);
+                if(data.success == 1){
+                  alert('验证码发送成功');
+                  regTimer = setInterval(function(){
+                    if(time > 0){
+                      yzm = '重新获取'+time+'s';
+                      $(_this).attr('disabled',true).html(yzm);
+                      time -- ;
+                    }else{
+                      yzm = '获取验证码';
+                      clearInterval(regTimer);
+                      $(_this).attr('disabled',false).html(yzm);
+                    }
+                  },1000);
+                }else{
+                  alert('验证码发送失败')
+                }
+              }
+            })
+          }else{
+            var value = $('input[name="phone"]').val();
+            var text = '';
+            if(value == '' || value == null || value == undefined){
+              text = '手机号不能为空';
+            }else{
+              text = '该手机号已经注册';
+            }
+            $('#tips').css('color','rgba(254,67,101,0.8)').html(text).show();
+          }
+        });
+
+        // 重置密码
+        $('input[name="setphone"]').blur(function(){
+          var value = $(this).val();
+          var text = null;
+          var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+          if(value == '' || value == null || value == undefined){
+            text = '请输入手机号码';
+            $('#ftips').css('color','rgba(254,67,101,0.8)').html(text).show();
+          }else{
+            if(value.length != 11){
+              text = '请输入有效的手机号码';
+              $('#ftips').css('color','rgba(254,67,101,0.8)').html(text).show();
+            }else if(!myreg.test(value)){
+              text = '请输入有效的手机号码';
+              $('#ftips').css('color','rgba(254,67,101,0.8)').html(text).show();
+            }else{
+              $.ajax({
+                url: "{php echo $this->createMobileUrl('Check')}",
+                type:'post',
+                data: {'phone':value},
+                dataType: 'json',
+                success:function(data){
+                  console.log(data);
+                  if(data.success == 0){
+                    text = data.message;
+                    $('#ftips').css('color','rgba(254,67,101,0.8)').html(text).show();
+                  }
+                }
+              })
+            }
+          }
+        });
+        $('#reYzm').on('click',function(){
+          var _this = this;
+          var time = 60;
+          var yzm = null;
+          var phone = $('input[name="setphone"]').val();
+          // 发送验证码
+          $.ajax({
+            url: "{php echo $this->createMobileUrl('register')}",
+            type:'post',
+            data: {'phone':phone,'type':'sendSms','yzmType':'reset'},
+            dataType: 'json',
+            success:function(data){
+              console.log(data);
+              if(data.success == 1){
+                alert('验证码发送成功');
+                setTimer = setInterval(function(){
+                  if(time > 0){
+                    yzm = '重新获取'+time+'s';
+                    $(_this).attr('disabled',true).html(yzm);
+                    time -- ;
+                  }else{
+                    yzm = '获取验证码';
+                    clearInterval(setTimer);
+                    $(_this).attr('disabled',false).html(yzm);
+                  }
+                },1000);
+              }else{
+                alert('验证码发送失败')
+              }
+            }
+          })
+        });
+        $('#setbtn').on('click',function(){
+          var phone = $('input[name="setphone"]').val();
+          var code = $('input[name="setyzm"]').val();
+          var password = $('input[name="setpassword"]').val();
+          var Apassword = $('input[name="setApassword"]').val();
+          var params = new Array('setphone','setyzm','setpassword','setApassword');
+          checkEmpty(params);
+          if(password == Apassword){
+            $.ajax({
+              url: "{php echo $this->createMobileUrl('forget')}",
+              type:'post',
+              data: {'phone':phone,'code':code,'password':password},
+              dataType: 'json',
+              success:function(data){
+                console.log(data);
+                if(data.success == 1){
+                  $('.tools-success').animate({
+                       'left':'0px'
+                     },'normal');
+                  $('.tools-content').animate({
+                       'left':'-100%'
+                  },'normal');
+                  setTimeout(function(){
+                    $('.tools').hide();
+                    $('body,html').css({
+                      'position':'relative'
+                    });
+                    $('input[name="setphone"]').val("");
+                    $('input[name="setyzm"]').val("");
+                    $('input[name="setpassword"]').val("");
+                    clearInterval(setTimer);
+                    $('#reYzm').attr('disabled',false).html('获取验证码');
+                    $('.tools-success').animate({
+                         'left':'100%'
+                       },'normal');
+                    $('.tools-content').animate({
+                         'left':'0px'
+                    },'normal');
+                    $('.tools').eq(0).show().find('input[name="name"]').focus();
+                  },2000);
+                }else{
+                  var alertWord = data.message;
+                  alert(alertWord);
+                }
+              }
+            })
+          }else{
+            alert('请检查密码，两次输入密码不同');
+          }
+
+        })
+
+        // 更换手机号码
+        $('input[name="oriphone"]').blur(function(){
+          var value = $(this).val();
+          var text = null;
+          var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+          if(value == '' || value == null || value == undefined){
+            text = '请输入手机号码';
+            $('#ctips').css('color','rgba(254,67,101,0.8)').html(text).show();
+          }else{
+            if(value.length != 11){
+              text = '请输入有效的手机号码';
+              $('#ctips').css('color','rgba(254,67,101,0.8)').html(text).show();
+            }else if(!myreg.test(value)){
+              text = '请输入有效的手机号码';
+              $('#ctips').css('color','rgba(254,67,101,0.8)').html(text).show();
+            }else{
+              $.ajax({
+                url: "{php echo $this->createMobileUrl('Check')}",
+                type:'post',
+                data: {'phone':value},
+                dataType: 'json',
+                success:function(data){
+                  console.log(data);
+                  if(data.success == 0){
+                    text = data.message;
+                    $('#ctips').css('color','rgba(254,67,101,0.8)').html(text).show();
+                  }
+                }
+              })
+            }
+          }
+        });
+        $('#changeYzm').on('click',function(){
+          var _this = this;
+          var time = 60;
+          var yzm = null;
+          var phone = $('input[name="nowphone"]').val();
+          // 发送验证码
+          $.ajax({
+            url: "{php echo $this->createMobileUrl('register')}",
+            type:'post',
+            data: {'phone':phone,'type':'sendSms','yzmType':'change'},
+            dataType: 'json',
+            success:function(data){
+              console.log(data);
+              if(data.success == 1){
+                alert('验证码发送成功');
+                changetimer = setInterval(function(){
+                  if(time > 0){
+                    yzm = '重新获取'+time+'s';
+                    $(_this).attr('disabled',true).html(yzm);
+                    time -- ;
+                  }else{
+                    yzm = '获取验证码';
+                    clearInterval(changetimer);
+                    $(_this).attr('disabled',false).html(yzm);
+                  }
+                },1000);
+              }else{
+                alert('验证码发送失败')
+              }
+            }
+          })
+        });
+        // 更换手机号
+        $('#changebtn').on('click',function(){
+          var oriphone = $('input[name="oriphone"]').val();
+          var password = $('input[name="oripassword"]').val();
+          var nowphone = $('input[name="nowphone"]').val();
+          var code = $('input[name="changeyzm"]').val();
+
+          var params = new Array('oriphone','oripassword','nowphone','changeyzm');
+          checkEmpty(params);
+          $.ajax({
+            url: "{php echo $this->createMobileUrl('change')}",
+            type:'post',
+            data: {'oriphone':oriphone,'code':code,'password':password,'nowphone':nowphone},
+            dataType: 'json',
+            success:function(data){
+              console.log(data);
+              if(data.success == 1){
+                $('.tools-success').animate({
+                     'left':'0px'
+                   },'normal');
+                $('.tools-content').animate({
+                     'left':'-100%'
+                },'normal');
+                setTimeout(function(){
+                  $('.tools').hide();
+                  $('body,html').css({
+                    'position':'relative'
+                  });
+                  $('input[name="oriphone"]').val("");
+                  $('input[name="oripassword"]').val("");
+                  $('input[name="nowphone"]').val("");
+                  $('input[name="changeyzm"]').val("");
+                  clearInterval(changetimer);
+                  $('#changeYzm').attr('disabled',false).html('获取验证码');
+                  $('.tools-success').animate({
+                       'left':'100%'
+                     },'normal');
+                  $('.tools-content').animate({
+                       'left':'0px'
+                  },'normal');
+                  $('.tools').eq(0).show().find('input[name="name"]').focus();
+                },2000);
+              }else{
+                var alertWord = data.message;
+                alert(alertWord);
+              }
+            }
+          })
+        })
+
+        // 失去焦点
+        $('input[name="phone"]').blur(function(){
+          var value = $(this).val();
+          var text = null;
+          var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+          if(value == '' || value == null || value == undefined){
+            text = '请输入手机号码';
+            $('#tips').css('color','rgba(254,67,101,0.8)').html(text).show();
+          }else{
+            if(value.length != 11){
+              text = '请输入有效的手机号码';
+              $('#tips').css('color','rgba(254,67,101,0.8)').html(text).show();
+            }else if(!myreg.test(value)){
+              text = '请输入有效的手机号码';
+              $('#tips').css('color','rgba(254,67,101,0.8)').html(text).show();
+            }else{
+              $.ajax({
+                url: "{php echo $this->createMobileUrl('register')}",
+                type:'post',
+                data: {'phone':value,'type':'check'},
+                dataType: 'json',
+                success:function(data){
+                  console.log(data);
+                  if(data.success == 1){
+                    text = data.message;
+                    $('#is_use').val(1);
+                    $('#tips').css('color','rgb(190,157,112)').html(text).show();
+                  }else{
+                    $('#is_use').val(0);
+                    text = data.message;
+                    $('#tips').css('color','rgba(254,67,101,0.8)').html(text).show();
+                  }
+                }
+              })
+            }
+          }
+        });
+
+        // 注册
+        $('#register').on('click',function(){
+          var name = $('input[name="name"]').val();
+          var phone = $('input[name="phone"]').val();
+          var code = $('input[name="yzm"]').val();
+          var password = $('input[name="password"]').val();
+          var Apassword = $('input[name="Apassword"]').val();
+          var params = new Array('name','phone','yzm','password','Apassword');
+          checkEmpty(params);
+          if(password == Apassword){
+            $.ajax({
+              url: "{php echo $this->createMobileUrl('register')}",
+              type:'post',
+              data: {'name':name,'phone':phone,'code':code,'password':password,'type':'register'},
+              dataType: 'json',
+              success:function(data){
+                console.log(data);
+                if(data.success == 1){
+                  $('.tools-success').animate({
+                       'left':'0px'
+                     },'normal');
+                  $('.tools-content').animate({
+                       'left':'-100%'
+                  },'normal');
+                  var userid = data.userid;
+                  var name = data.name;
+                  var phone = data.phone;
+                  $('input[name="name"]').val("");
+                  $('input[name="phone"]').val("");
+                  $('input[name="yzm"]').val("");
+                  $('input[name="password"]').val("");
+                  $('input[name="Apassword"]').val("");
+                  clearInterval(regTimer);
+                  $('#getYzm').attr('disabled',false).html('获取验证码');
+                  $('#goOnRegister').attr('data-id',userid).attr('data-name',name).attr('data-phone',phone);
+                }else{
+                  alert('注册失败');
+                  $('input[name="name"]').val("");
+                  $('input[name="phone"]').val("");
+                  $('input[name="yzm"]').val("");
+                  $('input[name="password"]').val("");
+                  $('input[name="Apassword"]').val("");
+                  clearInterval(regTimer);
+                  $('#tips').html("").hide();
+                  $('input[name="name"]').focus();
+                  $('#getYzm').attr('disabled',false).html('获取验证码');
+                }
+              }
+            })
+          }else{
+            alert('两次密码输入不相同');
+          }
+        })
+
+        // 点击继续关闭
+        $('#goOnAppoint').on('click',function(){
+          $('.tools').hide();
+          $('body,html').css({
+            'position':'relative'
+          });
+        })
+        // 前往注册
+        $('#goOnRegister').on('click',function(){
+          console.log('123');
+          $('.tools').hide();
+          var userid = $(this).attr('data-id');
+          var name = $(this).attr('data-name');
+          var phone = $(this).attr('data-phone');
+          $('.tools').eq(0).find('input[name="username"]').val(name);
+          $('.tools').eq(0).find('input[name="userphone"]').val(phone);
+          $('.tools-success').animate({
+               'left':'100%'
+             },'normal');
+          $('.tools-content').animate({
+               'left':'0px'
+          },'normal');
+          $('.tools').eq(0).show().find('input[name="userpassword"]').focus();
+        })
+        // 登录
+        $('#login').on('click',function(){
+          var username = $('input[name="username"]').val();
+          var userphone = $('input[name="userphone"]').val();
+          var userpassword = $('input[name="userpassword"]').val();
+          var params = new Array('username','userphone','userpassword');
+          var doIndex = "{$inits['do']}";
+          checkEmpty(params);
+          $.ajax({
+            url: "{php echo $this->createMobileUrl('login')}",
+            type:'post',
+            data: {'username':username,'userphone':userphone,'userpassword':userpassword},
+            dataType: 'json',
+            success:function(data){
+              console.log(data);
+
+              if(data.success == 1){
+                var name = data.name.substring(0,1) + '..';
+                $('#li-login').attr('data-login',1).attr('data-username',data.name).attr('data-userphone',data.phone).attr('data-isQuestion',data.isQuestion);
+                $('.tools-success').animate({
+                     'left':'0px'
+                   },'normal');
+                $('.tools-content').animate({
+                     'left':'-100%'
+                },'normal');
+                $('#li-login').removeAttr('onclick');
+                if(doIndex == 'product' || doIndex == 'detail'){
+                  setTimeout(function(){
+                    $('.tools').hide();
+                    $('body').css({
+                      'position':'relative'
+                    });
+                    $('.li-personal').css('display','block');
+                    $('#li-cancel').css('display','flex');
+                    $('#li-register').css('display','none');
+                    $('#tRegister').css('dispplay','none');
+                    $('#li-login').css('display','none');
+                  },2000);
+                }else{
+                  setTimeout(function(){
+                    $('.tools').hide();
+                    $('body').css({
+                      'position':'relative'
+                    });
+                    $('.li-personal').css('display','block');
+                    $('#li-cancel').css('display','flex');
+                    $('#li-welcome').css('display','flex');
+                    $('#li-register').css('display','none');
+                    $('#tRegister').css('dispplay','none');
+                    $('#li-login').css('display','none');
+                  },2000);
+                }
+              }else if(data.success == 2){
+                alert(data.message);
+              }else if(data.success == 3){
+                alert(data.message);
+              }else{
+                alert(data.message);
+              }
+            }
+          });
+        });
+
+        // 预约
+        $('#appoint').on('click',function(){
+          var name = $('input[name="appname"]').val();
+          var phone = $('input[name="appphone"]').val();
+          var area1 = $('input[name="area-1"]').val();
+          var area2 = $('input[name="area-2"]').val();
+          var type = $('input[name="apptype"]').val();
+          // var from = "{$inits['do']}";
+          var from = null;
+          var doFrom = "{$inits['do']}";
+          if(doFrom == 'detail'){
+            from = doFrom + '&' + "{$inits['childId']}";
+          }else{
+            from = doFrom;
+          }
+          var params = new Array('appname','appphone');
+          checkEmpty(params);
+          $.ajax({
+            url:"{php echo $this->createMobileUrl('appoint')}",
+            type:'post',
+            data: {'name':name,'phone':phone,'area1':area1,'area2':area2,'from':from,'type':type},
+            dataType: 'json',
+            success:function(data){
+              console.log(data);
+              if(data.status == 1){
+                $('.tools-success').animate({
+                     'left':'0px'
+                   },'normal');
+                $('.tools-content').animate({
+                     'left':'-100%'
+                },'normal');
+                setTimeout(function(){
+                  $('.tools').hide();
+                  $('body,html').css({
+                    'position':'relative'
+                  });
+                  $('input[name="appname"]').val("");
+                  $('input[name="appphone"]').val("");
+                  $('input[name="area-1"]').val("");
+                  $('#area1-show').html('省份');
+                  $('input[name="area-2"]').val("");
+                  $('#area2-show').html('市');
+                  $('#area2-content').remove();
+                  $('input[name="apptype"]').val("");
+                },2000);
+              }else{
+                alert('预约失败');
+              }
+            }
+          })
+        })
+
+        // 注册登录关闭
+        $('.tools-close-content').on('click',function(){
+          $(this).parent().parent().parent().parent().hide();
+          $('body,html').css({
+            'position':'relative'
+          });
+        });
+
+        // 前往注册
+        $('#toRegister').on('click',function(){
+          $('.tools').hide();
+          $('.tools-success').css('left','100%');
+          $('.tools-content').css('left','0px');
+
+          $('.tools').eq(1).css('display','flex').find('input[name="name"]').focus();
+        })
+
+        // 前往忘记密码
+        $('#toForget').on('click',function(){
+          $('.tools').hide();
+          $('.tools-success').css('left','100%');
+          $('.tools-content').css('left','0px');
+
+          $('.tools').eq(3).css('display','flex').find('input[name="setphone"]').focus();
+        })
+
+        // 前往更换手机号
+        $('#toChange').on('click',function(){
+          $('.tools').hide();
+          $('.tools-success').css('left','100%');
+          $('.tools-content').css('left','0px');
+
+          $('.tools').eq(4).css('display','flex').find('input[name="oriphone"]').focus();
+        })
+      });
+      //  注册登录预约打开
+      function openLi(obj){
+        var height = $('.common-header').height() - $('body').height();
+        var _this = obj;
+        var index = $(_this).attr('data-li');
+        if($(window).width() < 500){
+          $('body').css({
+            'position':'fixed'
+          });
+        }
+        console.log(index);
+        var datatype = $(_this).attr('data-type');
+        if(datatype != ''){
+          $('input[name="apptype"]').val(datatype);
+          if(datatype == 'product'){
+            if($('#li-login').attr('data-login') == 0){
+              alert('请先登录');
+              $('.tools').eq(0).css({
+                'display':'block'
+              })
+              $('.tools').eq(0).find('input[name="username"]').focus();
+              return false;
+            }
+          }
+        }
+        console.log($('.tools').eq(index).find('.tools-content'));
+
+        $('.tools-success').css('left','100%');
+        $('.tools-content').css('left','0px');
+        $('.tools').hide();
+        $('.tools').eq(index).css({
+          'display':'block',
+        });
+        $('.tools').eq(index).find('input[name="name"]').focus();
+        $('.tools').eq(index).find('input[name="username"]').focus();
+        if(index == 2){
+          // 判断用户是否登录
+          if($('#li-login').attr('data-login') == 1){
+            var username = $('#li-login').attr('data-username');
+            var userphone = $('#li-login').attr('data-userphone');
+            if(username != '' || userphone != ''){
+                $('.tools').eq(index).find('input[name="appname"]').val(username);
+                $('.tools').eq(index).find('input[name="appphone"]').val(userphone);
+            }
+          }else{
+              $('.tools').eq(index).find('input[name="appname"]').focus();
+          }
+        }
+      }
+      // 区选择
+      function areaChoose(obj){
+        var _this = obj;
+        var value = $(_this).attr('value');
+        console.log(value);
+        $('#control-area2').attr('data-status','close');
+        $('input[name="area-2"]').val(value);
+        $('#area2-show').html(value);
+        $(_this).parent().animate({
+          'max-height':'0rem'
+        },'1000');
+      }
+    </script>

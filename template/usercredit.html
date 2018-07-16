@@ -1,0 +1,164 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('user',array('op'=>'all'))}">返回用户信息</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('userappoint',array('op'=>'detail','userid'=>$userid))}">详情记录</a></li>
+</ul>
+<div class="main">
+    <form appointion="" method="post" class="form-horizontal form" id="form" onsubmit="return checkCredit();">
+        <div class="panel panel-info">
+            <div class="panel-heading">积分操作</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">用户姓名</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$member['realname']}">
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">用户手机</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$member['mobile']}">
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">原积分</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" value="{$member['credit1']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">积分</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="credit1" value="">
+                        <h5><small>积分仅限大于等于零，不能为负数</small></h5>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">获取积分方式</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <select name="gettype" id="changeSelect" style="width:100%;">
+                                <option name="gettype" class="form-control" value="1" data-to="product"> 产品认购</option>
+                                <option name="gettype" class="form-control" value="2" data-to="activity"> 活动参与奖励</option>
+                                <option name="gettype" class="form-control" value="3" data-to="tjuser"> 推荐客户奖励</option>
+                                <option name="gettype" class="form-control" value="4" data-to="other"> 其他</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group" data-name="product">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">购买产品</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <select name="productid" style="width:100%;">
+                            {loop $product $key $credit}
+                                <option class="form-control" value="{$credit['id']}">{$credit['productTitle']}</option>
+                            {/loop}
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group" data-name="product">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">金额</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="money" value="">
+                    </div>
+                </div>
+                <div class="form-group" data-name="product">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">项目期限</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="date" value="">
+                    </div>
+                </div>
+
+                <div class="form-group" data-name="activity">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">活动</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="content" value="">
+                    </div>
+                </div>
+                <div class="form-group" data-name="tjuser">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">推荐客户</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="content1" value="">
+                    </div>
+                </div>
+                <div class="form-group" data-name="other">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">其他</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" name="content2" value="">
+                    </div>
+                </div>
+
+                <script>
+                  $(function(){
+                    $('div[data-name="activity"],div[data-name="tjuser"],div[data-name="other"]').css({
+                      'display':'none'
+                    })
+                  })
+                  $('#changeSelect').change(function(){
+                    var datato = $('#changeSelect option:selected').attr('data-to');
+                    changeDiv(datato);
+                  })
+                  function changeDiv(target){
+                    $('div[data-name="product"],div[data-name="activity"],div[data-name="tjuser"],div[data-name="other"]').css({
+                      'display':'none'
+                    })
+                    $('div[data-name="'+target+'"]').css({
+                      'display':'block'
+                    })
+                  }
+                  function checkCredit(){
+                    var credit = $('input[name="credit1"]').val();
+                    if(credit < 0){
+                      alert('积分请输入大于零的数字');
+                      $('input[name="credit1"]').focus();
+                      return false;
+                    }
+                  }
+                </script>
+
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="uid" value="{$member['uid']}">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="panel panel-info">
+        <div class="panel-heading">积分记录</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th>操作人员</th>
+                      <th>积分增减</th>
+                      <th>操作时间</th>
+                      <th>内容</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($credits)}
+                    {loop $credits $key $credit}
+                    <tr>
+                        <td>{$credit['operator']}</td>
+                        <td>{$credit['num']}</td>
+                        <td>{php echo date('Y-m-d H:i:s',$credit['createtime'])}</td>
+                        <td>{$credit['remark']}</td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">还没有记录</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{template 'common/footer'}

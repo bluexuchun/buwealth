@@ -1,0 +1,455 @@
+{template 'header'}
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/personal/personal.less">
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/personal/personal-media.css">
+<script src="{MODULE_URL}template/mobile/js/less-1.7.0.js" type="text/javascript"></script>
+<div class="dark">
+  <div class="tc">
+    <div class="tc-close" id="closetc">
+      <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+      <div class="tc-close-word" >close</div>
+    </div>
+    <div class="tc-content" showType="rz">
+      <div class="tc-title" id="tctitle">请填写身份证信息，以完成实名认证</div>
+      <div class="tc-form" id="rz">
+        <div class="tc-form-input">
+          <div class="tc-form-label">
+            <span>姓</span>
+            <span>名</span>
+          </div>
+          <span>|</span>
+          <input type="text" name="identifyname" value="" placeholder="请输入真实姓名">
+        </div>
+        <div class="tc-form-input">
+          <div class="tc-form-label">
+            <span>证</span>
+            <span>件</span>
+            <span>类</span>
+            <span>型</span>
+          </div>
+          <div class="tc-select">
+            <div class="tc-selected" id="changeSelect" data-type="close">
+              <span id="chooseType">请选择证件类型</span>
+              <img src="{MODULE_URL}template/mobile/images/ut.png" alt="">
+            </div>
+            <ul class="tc-lists">
+              <input type="hidden" name="identifytype" value="">
+              <li class="tc-item" value="0">身份证</li>
+              <li class="tc-item" value="1">护照</li>
+              <li class="tc-item" value="2">港澳通行证</li>
+              <li class="tc-item" value="3">台胞证</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tc-form-input">
+          <div class="tc-form-label">
+            <span>证</span>
+            <span>件</span>
+            <span>号</span>
+          </div>
+          <span>|</span>
+          <input type="text" name="identifynum" value="" placeholder="请输入证件号">
+        </div>
+        <div class="tc-btn" id="confrimId"><span>确</span><span>定</span></div>
+       </div>
+      <div class="tc-form" style="padding-top:0rem;" id="wechat">
+        <div class="tc-img">
+          <img src="{MODULE_URL}template/mobile/images/personal/ewm.jpeg" alt="">
+          <div class="tc-tipssss">（长按二维码保存图片）</div>
+        </div>
+        <div class="tc-tips">请使用微信扫描二维码绑定</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="detail">
+  <div class="detail-close" onclick="openDetail('close')">
+    <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+    <div class="detail-close-word">close</div>
+  </div>
+
+  <!-- 购买记录 -->
+  <div class="decon" data-name="shop">
+
+    <div class="decon-head">
+      <div class="decon-head-img">
+        <img src="{MODULE_URL}template/mobile/images/personal/icon-shop.png" alt="">
+      </div>
+      <div class="decon-head-word">
+        个人产品购买记录
+      </div>
+    </div>
+    <div class="decon-content">
+      <ul class="deul">
+        <li class="deul-item deul-yellow item-4">
+          <div class="deul-item-word">日期</div>
+          <div class="deul-item-word">项目名称</div>
+          <div class="deul-item-word">投资金额</div>
+          <div class="deul-item-word">项目期限</div>
+        </li>
+        <ul class="deul-scroll">
+          {loop $creditProduct $key $value}
+          <li class="deul-item deul-white item-4">
+            <div class="deul-item-word">{$value['createtime']}</div>
+            <div class="deul-item-word">{$value['product']}</div>
+            <div class="deul-item-word">{$value['money']}</div>
+            <div class="deul-item-word">{$value['date']}</div>
+          </li>
+          {/loop}
+        </ul>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 积分获取 -->
+  <div class="decon" data-name="credit">
+
+    <div class="decon-head">
+      <div class="decon-head-img">
+        <img src="{MODULE_URL}template/mobile/images/personal/icon-credit.png" alt="">
+      </div>
+      <div class="decon-head-word">
+        <span>积分获取记录</span>
+        <span style="color:#B69570;">{$allCredit}</span>
+      </div>
+    </div>
+    <div class="decon-content">
+      <ul class="deul">
+        <li class="deul-item deul-yellow item-4">
+          <div class="deul-item-word">日期</div>
+          <div class="deul-item-word">获得方式</div>
+          <div class="deul-item-word">摘要</div>
+          <div class="deul-item-word">积分数量</div>
+        </li>
+        <ul class="deul-scroll">
+          {loop $getCredit $key $value}
+          <li class="deul-item deul-white item-4">
+            <div class="deul-item-word">{$value['createtime']}</div>
+            <div class="deul-item-word">{$value['type']}</div>
+            <div class="deul-item-word">{$value['product']}</div>
+            <div class="deul-item-word deul-yellow">{$value['num']}</div>
+          </li>
+          {/loop}
+        </ul>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- 积分兑换记录 -->
+  <div class="decon" data-name="ucred">
+
+    <div class="decon-head">
+      <div class="decon-head-img">
+        <img src="{MODULE_URL}template/mobile/images/personal/icon-ucred.png" alt="">
+      </div>
+      <div class="decon-head-word">
+        <span>积分兑换记录</span>
+      </div>
+    </div>
+    <div class="decon-content">
+      <ul class="deul">
+        <li class="deul-item deul-yellow item-4">
+          <div class="deul-item-word">日期</div>
+          <div class="deul-item-word">商品名称</div>
+          <div class="deul-item-word">使用积分</div>
+          <div class="deul-item-word">状态</div>
+        </li>
+        <ul class="deul-scroll">
+          {loop $useCredit $key $value}
+          <li class="deul-item deul-white item-4">
+            <div class="deul-item-word">{$value['createtime']}</div>
+            <div class="deul-item-word">{$value['goodname']}</div>
+            <div class="deul-item-word">{$value['money']}</div>
+            <div class="deul-item-word">{$value['status']}</div>
+          </li>
+          {/loop}
+        </ul>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+<div class="personal">
+  <div class="personal-head">
+    <img class="perhead" src="{MODULE_URL}template/mobile/images/personal/perimg.png" alt="">
+    <img class="perhead-mob" src="{MODULE_URL}template/mobile/images/personal/perimg.jpeg" alt="">
+  </div>
+  <div class="personal-content">
+    <div class="perhead">
+      <!-- 用户信息 -->
+      <div class="perhead-user">
+        <div class="userc">
+          <div class="userc-head">
+            {if $userInfo['isbind'] == 0}
+            <img src="{MODULE_URL}template/mobile/images/personal/perava.png" alt="">
+            {else}
+            <img src="{$userNickname['avatar']}" alt="">
+            {/if}
+            <div class="userc-info">
+              <ul class="userc-ul">
+                <li class="userc-item">用户名 | {$userInfo['name']}</li>
+                <li class="userc-item">上次登录 | {$userInfo['loginTime']}</li>
+                <li class="userc-item">绑定手机 | {$userInfo['phone']}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="userc-foot">
+            <div class="usercrz">
+              <div class="usercrz-word dl" {if $userInfo['isauth'] == 1}style="color:#B69570;"{else}style="display:none"{/if}>
+                待认证
+              </div>
+              <div class="usercrz-word dla" {if $userInfo['isauth'] == 2}style="color:#B69570;"{else}style="display:none"{/if}>
+                已实名认证
+              </div>
+              {if $userInfo['isauth'] == 0}
+              <div class="usercrz-word udl udlrz">未实名认证</div>
+              <div class="usercrz-btn" onclick="opentc('rz')"><span>认</span><span>证</span></div>
+              {/if}
+            </div>
+            <div class="usercbd">
+              {if $userInfo['isbind'] == 1}
+                <div class="usercbd-word">已绑定微信</div>
+                <div class="usercbd-word" style="display:flex;flex-direction:column;justify-content:center;margin-left:1.2rem;">{$userNickname['nickname']}</div>
+              {else}
+                <div class="usercbd-word udl urdlbd">未绑定微信</div>
+                <div class="usercbd-btn" data-isWeixin="{$is_weixin}" data-userid="{$user_id}" {if $is_weixin == true}id="bdurl"{else}onclick="opentc('wechat')"{/if}><span>绑</span><span>定</span></div>
+              {/if}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 理财师 -->
+      <div class="perhead-fi">
+        <div class="userf">
+          <div class="userf-head">您的专属理财师</div>
+          <div class="userf-content">
+            <div class="userf-ava">
+              <img src="{MODULE_URL}template/mobile/images/personal/picava2.png" alt="">
+            </div>
+            <ul class="userf-info">
+              <li class="userf-item">李四</li>
+              <li class="userf-item">13988888888</li>
+              <li class="userf-item">高级理财师</li>
+            </ul>
+            <div class="userf-footm">
+              <div class="userf-footm-word">更多介绍</div>
+              <img src="{MODULE_URL}template/mobile/images/personal/arrow.png" alt="">
+            </div>
+          </div>
+          <div class="userf-foot">
+            <div class="userf-foot-word">更多介绍</div>
+            <img src="{MODULE_URL}template/mobile/images/personal/arrow.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    {if $inits['setting']['showCredit'] == 1}
+    <div class="pernav">
+      <img src="{MODULE_URL}template/mobile/images/personal/pernav.png" alt="">
+    </div>
+    {/if}
+    <div class="perul">
+
+      <div class="perul-invest">
+        <div class="perulin black">
+          <div class="perulin-left">
+            <div class="perulin-left-title">个人存量投资</div>
+            <div class="perulin-left-money">{$allNum}</div>
+            <div class="perulin-left-date">截止{$timeY}年{$timem}月{$timed}日</div>
+          </div>
+          <div class="perulin-right black-border" onclick="openDetail('shop')">
+            <span>明&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;细</span>
+          </div>
+        </div>
+      </div>
+
+      {if $inits['setting']['showCredit'] == 1}
+      <div class="perul-invest">
+        <div class="perulin dark-yellow">
+          <div class="perulin-left">
+            <div class="perulin-left-title">剩余积分</div>
+            <div class="perulin-left-money">{php echo intval($uid['credit1'])}<span style="font-size:.75rem;">分</span></div>
+          </div>
+          <div class="perulin-right yellow-border" onclick="openDetail('credit')">
+            <span>积&nbsp;</span>
+            <span>分&nbsp;</span>
+            <span>历&nbsp;</span>
+            <span>史</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="perul-invest">
+        <div class="perulin yellow">
+          <div class="perulin-left">
+            <div class="perulin-left-title">已使用积分</div>
+            <div class="perulin-left-money">{php echo abs($useNum)}<span style="font-size:.75rem;">分</span></div>
+          </div>
+          <div class="perulin-right yellow-border" onclick="openDetail('ucred')">
+            <span>明&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;细</span>
+          </div>
+        </div>
+      </div>
+      {/if}
+
+      <div class="perul-invest">
+        <div class="perulin dark-yellow">
+          <div class="perulin-left result-d">
+            <div class="perulin-left-title">风险承受能力</div>
+            <div class="perulin-left-money result-m">{$result}</div>
+          </div>
+          <div class="pertime">{if $userInfo['isQuestion'] == 1}最后更新日期&nbsp;{$userQ['createtime']}{else}您还没有答题{/if}</div>
+          <div class="perulin-right yellow-border" data-id="{$userInfo['id']}" id="update">
+            <span>更&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;新</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<script src="{MODULE_URL}template/mobile/js/main.js"></script>
+<script>
+  $(function(){
+    if("{$bind}" == 'bind'){
+      alert('绑定成功');
+    }
+    if("{$user_id}" == '' || "{$user_id}" == null){
+      location.href = "{php echo $this->createMobileUrl('index')}";
+    }
+  })
+  $('#changeSelect').on('click',function(){
+    var type = $(this).attr('data-type');
+    if(type == 'close'){
+      $('.tc-lists').animate({
+        'max-height':'8rem'
+      },300);
+      $(this).attr('data-type','open');
+    }else{
+      $('.tc-lists').animate({
+        'max-height':'0rem'
+      },300);
+      $(this).attr('data-type','close');
+    }
+  });
+  $('.tc-item').on('click',function(){
+    $('.tc-lists').animate({
+      'max-height':'0rem'
+    },300);
+    $('#changeSelect').attr('data-type','close');
+    $('#chooseType').html($(this).text())
+    $('input[name="identifytype"]').val($(this).val());
+  });
+  $('#closetc').on('click',function(){
+    $('.dark').css({
+      'display':'none'
+    });
+    $('body,html').css({
+      'overflow-y':'auto'
+    });
+    $('#rz,#wechat').css({
+      'display':'none'
+    })
+  })
+
+  // 认证
+  $('#confrimId').on('click',function(){
+    console.log("{$user_id}");
+    var user_id = "{$user_id}";
+    var identifyname = $('input[name="identifyname"]').val();
+    var identifytype = $('input[name="identifytype"]').val();
+    var identifynum = $('input[name="identifynum"]').val();
+    if(identifyname == '' || identifyname == null || identifyname == undefined){
+      alert('请输入姓名!');
+      $('input[name="identifyname"]').focus();
+      return;
+    }
+    if(identifytype == 0){
+      console.log(identifytype);
+      if(identifytype == '' || identifytype == null || identifytype == undefined){
+        alert('请选择证件类型');
+        return;
+      }else{
+        if(identifynum.length != 18){
+          alert('请输入有效的身份证号!');
+          $('input[name="identifynum"]').focus();
+          return;
+        }
+      }
+    }
+
+
+    // console.log('identifytype='+identifytype+'&identifynum='+identifynum);
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('rz')}",
+      data:{
+        'id':user_id,
+        'identifytype':identifytype,
+        'identifynum':identifynum
+      },
+      type:'POST',
+      dataType:'json',
+      success:function(res){
+        console.log(res);
+        if(res.status == 1){
+          alert('提交成功');
+          $('.dark').css({
+            'display':'none'
+          });
+          $('body,html').css({
+            'overflow-y':'auto'
+          });
+          $('#rz,#wechat').css({
+            'display':'none'
+          });
+          $('.dl').css({
+            'display':'block'
+          });
+          $('.udlrz').css({
+            'display':'none'
+          });
+          $('.usercrz-btn').css({
+            'display':'none'
+          })
+        }else{
+          alert(res.message);
+        }
+      }
+    })
+  })
+
+  $('#bdurl').on('click',function(){
+    var user_id = "{$user_id}"
+    location.href = "{php echo $this->createMobileUrl('wechatbd')}"+'&userid='+user_id;
+  })
+
+  // 更新数据
+  $('#update').on('click',function(){
+    var user_id = $(this).attr('data-id');
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('update')}",
+      data:{
+        'userid':user_id
+      },
+      type:'post',
+      dataType:'json',
+      success:function(res){
+        if(res.status == 1){
+          alert(res.message);
+          location.href = "{php echo $this->createMobileUrl('product')}";
+        }else{
+          alert(res.message);
+          location.href = "{php echo $this->createMobileUrl('product')}";
+        }
+      }
+    })
+  })
+
+</script>
+{template 'footer'}

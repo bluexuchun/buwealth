@@ -1,0 +1,355 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li {if $op == 'display'}class="active"{/if}><a href="{php echo $this->createWebUrl('abouts',array('op'=>'display'))}">BU简介</a></li>
+    <li {if $op == 'display1'}class="active"{/if}><a href="{php echo $this->createWebUrl('abouts',array('op'=>'display1'))}">财富梦想</a></li>
+    <li {if $op == 'display2'}class="active"{/if}><a href="{php echo $this->createWebUrl('abouts',array('op'=>'display2'))}">价值原力</a></li>
+    <li {if $op == 'display3'}class="active"{/if}><a href="{php echo $this->createWebUrl('abouts',array('op'=>'display3'))}">荣耀心程</a></li>
+    <li {if $op == 'display4'}class="active"{/if}><a href="{php echo $this->createWebUrl('abouts',array('op'=>'display4'))}">核心动力</a></li>
+    <li {if $op == 'display5'}class="active"{/if}><a href="{php echo $this->createWebUrl('abouts',array('op'=>'display5'))}">联系我们</a></li>
+</ul>
+{if $op == 'display'}
+<div class="main">
+    <form production="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">{$info['title']}</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品封面</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('header',$content['header'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：418px * 238px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('banner',$content['banner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">内容</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('content',$content['content']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('mobileBanner',$content['mobileBanner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端内容</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('mobileContent',$content['mobileContent']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="1">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </form>
+</div>
+{/if}
+{if $op == 'display1'}
+<div class="main">
+    <form production="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">{$info['title']}</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品封面</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('header',$content['header'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：418px * 238px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('banner',$content['banner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">内容</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('content',$content['content']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('mobileBanner',$content['mobileBanner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端内容</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('mobileContent',$content['mobileContent']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="1">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </form>
+</div>
+{/if}
+{if $op == 'display2'}
+<div class="main">
+    <form production="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">{$info['title']}</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品封面</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('header',$content['header'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：418px * 238px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('banner',$content['banner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('mobileBanner',$content['mobileBanner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="1">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </form>
+</div>
+{/if}
+{if $op == 'display3'}
+<div class="main">
+    <form production="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">{$info['title']}</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品封面</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('header',$content['header'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：418px * 238px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('banner',$content['banner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">内容</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('content',$content['content']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('mobileBanner',$content['mobileBanner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端内容</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('mobileContent',$content['mobileContent']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="1">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </form>
+</div>
+{/if}
+{if $op == 'display4'}
+<div class="main">
+    <form production="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">{$info['title']}</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品封面</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('header',$content['header'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：418px * 238px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('banner',$content['banner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">内容</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('content',$content['content']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('mobileBanner',$content['mobileBanner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端内容</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_ueditor('mobileContent',$content['mobileContent']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="1">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </form>
+</div>
+{/if}
+{if $op == 'display5'}
+<div class="main">
+    <form production="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">{$info['title']}</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">产品封面</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('header',$content['header'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：418px * 238px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('banner',$content['banner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">背景图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('content',$content['content'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1273px * 1579px)</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端banner图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('mobileBanner',$content['mobileBanner'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1250px * 534px)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机端背景图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php echo tpl_form_field_image('mobileContent',$content['mobileContent'])}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1273px * 1579px)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="1">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </form>
+</div>
+{/if}
+
+{template 'common/footer'}

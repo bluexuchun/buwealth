@@ -1,0 +1,124 @@
+{template 'common/header'}
+<style>
+    .table>tbody>tr>td{
+        vertical-align: middle;
+    }
+</style>
+<ul class="nav nav-tabs">
+	<li {if $op == 'display'}class="active"{/if}>
+        <a href="{php echo $this->createWebUrl('remind', array('op' => 'display'))}">消息模板管理</a>
+    </li>
+    {if empty($id)}
+        <li {if $op == 'edit'}class="active"{/if}>
+        <a href="{php echo $this->createWebUrl('remind', array('op' => 'edit'))}">添加消息模板</a>
+        </li>
+    {else}
+        <li {if $op == 'edit'}class="active"{/if}>
+            <a href="{php echo $this->createWebUrl('remind', array('op' => 'edit','id'=>$id))}">编辑消息模板</a>
+        </li>
+    {/if}
+</ul>
+{if $op == 'display'}
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">模板管理</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th style="width:80px;">编号</th>
+                      <th>模板名称</th>
+                      <th style="width:230px;">所属板块</th>
+                      <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($remind)}
+                    {loop $remind $key $item}
+                    <tr>
+                        <td style="text-align:middle">{php echo $key+1}</td>
+                        <td>{$item['name']}</td>
+
+                        <td style="width:230px;">
+                            <div style="width:230px;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:5;-webkit-box-orient:vertical;">
+                                {$item['zdytext']}
+                            </div>
+                        </td>
+                        <td>
+                            <a href="{php echo $this->createWebUrl('remind', array('op'=>'edit', 'id'=>$item['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="编辑"><i class="fa fa-edit"></i></a>
+                            <a onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" href="{php echo $this->createWebUrl('remind', array('op'=>'delete', 'id'=>$item['id']));}" class="btn btn-default btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">尚未添加模板</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{elseif $op == 'edit'}
+<div class="main">
+    <div class="panel panel-info">
+        {if empty($content)}
+	    <div class="panel-heading">添加模板</div>
+        {else}
+        <div class="panel-heading">编辑模板</div>
+        {/if}
+	    <div class="panel-body">
+            <form action="" method="post" class="form-horizontal">
+                <input type="hidden" name="op" value="edit" />
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">模板名称</label>
+                    <div class="col-sm-8 col-lg-9 col-xs-12">
+                        <input class="form-control" name="name" id="" type="text" value="{$content['name']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">所属板块</label>
+                    <div class="col-sm-8 col-lg-9 col-xs-12">
+                        <select name="template_number" class="form-control">
+                            <option {if $content['template_number'] == 'shengri'}selected{/if} value="shengri">生日</option>
+                            <option {if $content['template_number'] == 'goumai'}selected{/if} value="goumai">产品认购</option>
+                            <option {if $content['template_number'] == 'huodong'}selected{/if} value="huodong">活动参与奖励</option>
+                            <option {if $content['template_number'] == 'kehu'}selected{/if} value="kehu">推荐客户奖励</option>
+                            <option {if $content['template_number'] == 'duihuan'}selected{/if} value="duihuan">积分兑换</option>
+                            <option {if $content['template_number'] == 'qita'}selected{/if} value="qita">其他</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">自定义文本</label>
+                    <div class="col-sm-8 col-lg-9 col-xs-12">
+                        <textarea name="zdytext" id="" cols="92" rows="5" value="" placeholder="">{$content['zdytext']}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="{$content['id']}">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+            </form>
+	    </div>
+	</div>
+
+
+</div>
+{/if}
+<script>
+	// require(['bootstrap'],function($){
+	// 	$('.btn').hover(function(){
+	// 		$(this).tooltip('show');
+	// 	},function(){
+	// 		$(this).tooltip('hide');
+	// 	});
+	// });
+</script>
+{template 'common/footer'}

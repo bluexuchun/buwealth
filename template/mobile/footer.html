@@ -1,0 +1,129 @@
+  <div class="common-footer">
+    <div class="content">
+
+      <div class="content-detail">
+        <div class="logo">
+          <img src="{php echo tomedia($inits['setting']['foot_logo'])}" alt="">
+        </div>
+        <div class="contact pc-show">
+          <div class="contact-title">联系我们  CONTACT US</div>
+          <ul class="contact-ul">
+            <li>
+              <div class="content">
+                <div class="content-icon">
+                  <img class="time" src="{MODULE_URL}template/mobile/images/time.png" alt="">
+                </div>
+                {php $serviceTime = iunserializer($inits['setting']['serviceTime'])}
+                <div class="content-word">
+                   周一到周五 AM:{$serviceTime[0]['fTime']}-{$serviceTime[0]['sTime']}&nbsp;&nbsp;PM:{$serviceTime[1]['fTime']}-{$serviceTime[1]['sTime']}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="content">
+                <div class="content-icon">
+                  <img class="msg" src="{MODULE_URL}template/mobile/images/msg.png" alt="">
+                </div>
+                <div class="content-word">
+                  {if !empty($inits['setting']['message'])}
+                  {$inits['setting']['message']}
+                  {else}
+                  暂无
+                  {/if}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="content">
+                <div class="content-icon">
+                  <img class="location" src="{MODULE_URL}template/mobile/images/location.png" alt="">
+                </div>
+                <div class="content-word">
+                  {$inits['setting']['address']}
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="content">
+                <div class="content-icon">
+                  <img class="phone" src="{MODULE_URL}template/mobile/images/hotphone.png" alt="">
+                </div>
+                <div class="content-word">
+                  {$inits['setting']['contact']}
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="ewm">
+          <img src="{php echo tomedia($inits['setting']['bu_ewm'])}" alt="">
+          <div class="tTop" id="goToTop">
+            <img src="{MODULE_URL}template/mobile/images/toTop.png" alt="">
+            <p>回到<br>顶部</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact phone-show">
+        <div class="contact-title">联系我们  CONTACT US</div>
+        <ul class="contact-ul">
+          <li>
+            <div class="content">
+              <div class="content-icon">
+                <img class="time" src="{MODULE_URL}template/mobile/images/time.png" alt="">
+              </div>
+              {php $serviceTime = iunserializer($inits['setting']['serviceTime'])}
+              <div class="content-word">
+                 周一到周五 AM:{$serviceTime[0]['fTime']}-{$serviceTime[0]['sTime']}&nbsp;&nbsp;PM:{$serviceTime[1]['fTime']}-{$serviceTime[1]['sTime']}
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="content">
+              <div class="content-icon">
+                <img class="msg" src="{MODULE_URL}template/mobile/images/msg.png" alt="">
+              </div>
+              <div class="content-word">
+                {if !empty($inits['setting']['message'])}
+                {$inits['setting']['message']}
+                {else}
+                暂无
+                {/if}
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="content">
+              <div class="content-icon">
+                <img class="location" src="{MODULE_URL}template/mobile/images/location.png" alt="">
+              </div>
+              <div class="content-word">
+                {$inits['setting']['address']}
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="content">
+              <div class="content-icon">
+                <img class="phone" src="{MODULE_URL}template/mobile/images/hotphone.png" alt="">
+              </div>
+              <div class="content-word">
+                {$inits['setting']['contact']}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="content-copy">
+        <div class="word">{$inits['setting']['copyright']}</div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(function(){
+      $('#goToTop').click(function(){
+        $('html , body').animate({scrollTop: 0},'normal');
+      });
+    });
+  </script>
+  </body>
+</html>

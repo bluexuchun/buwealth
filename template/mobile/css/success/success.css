@@ -1,0 +1,102 @@
+.float_l {
+  float: left;
+}
+.float_r {
+  float: right;
+}
+.p_style {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.f_color {
+  color: #BE9D70;
+}
+.createOlder {
+  width: 100%;
+  background-color: #232323;
+}
+.createOlder .createOlder_main {
+  width: 56rem;
+  margin: 0 auto;
+}
+.createOlder .createOlder_main .su-icon{
+  width:60%;
+}
+.createOlder .createOlder_main h2 {
+  margin: 0;
+  padding-top: 3rem;
+  color: #BE9D70;
+}
+.createOlder .createOlder_main .minline {
+  width: 2rem;
+  height: 1px;
+  background-color: #BE9D70;
+  margin: 0 0 4rem 0;
+}
+.createOlder .createOlder_main .detail {
+  width: 56rem;
+  height: 26rem;
+  display: flex;
+  border: 1px solid #333333;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #ffffff;
+  margin:1rem 0rem 3rem 0rem;
+}
+.createOlder .createOlder_main .detail .top {
+  width:100%;
+  height: 3rem;
+  margin: 0 auto;
+  margin-bottom: 1rem ;
+  display: flex;
+  flex-direction: row;
+}
+.createOlder .createOlder_main .detail .top .top-left{
+  width:30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.createOlder .createOlder_main .detail .top .top-left img{
+  width:4rem;
+}
+.createOlder .createOlder_main .detail .top .top-right{
+  width:70%;
+}
+.createOlder .createOlder_main .detail .top p {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+.createOlder .createOlder_main .detail .top span {
+  font-size: 1.5rem;
+  display: inline-block;
+  line-height: 3rem;
+  margin: 0;
+}
+.createOlder .createOlder_main .detail .center {
+  width:70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.createOlder .createOlder_main .detail .footer {
+  padding:1.5rem 0rem;
+  width:70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.createOlder .createOlder_main .detail .footer .footer-title{
+  margin-right:10px;
+}
+.createOlder .createOlder_main .detail .footer p{
+  margin-bottom:1rem;
+}
+/* .PC_style{
+  display: none;
+} */
+.m_style{
+  display: none;
+}

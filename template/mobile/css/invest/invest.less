@@ -1,0 +1,190 @@
+.invest{
+  width:100%;
+  min-height:50vh;
+  background: url('../../images/invest.png') no-repeat;
+  background-size: cover;
+  background-position: center center;
+  &-content{
+    padding:6rem 16rem;
+    .invest-border{
+      width:100%;
+      padding:2rem 0rem;
+      img{
+        width:100%;
+      }
+    }
+    .invest-ul{
+      width:100%;
+      &-li-spe{
+        width:100%;
+        display: flex;
+        margin:1rem 0rem;
+        flex-direction: row;
+        justify-content: flex-end;
+        position: relative;
+        cursor: pointer;
+        .li-img{
+          width:41%;
+          img{
+            width:100%;
+          }
+        }
+        .li-word{
+          width:58%;
+          position: absolute;
+          height:100%;
+          top:0px;
+          left:0px;
+          background: rgb(190,157,112);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          .li-content{
+            width:80%;
+            font-size:1rem;
+            color:#000;
+            &-title{
+              margin-bottom:5px;
+            }
+            &-desc{
+              line-height:2rem;
+            }
+          }
+          &-more{
+            width:80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            img{
+              height:4rem;
+            }
+          }
+        }
+      }
+      &-li{
+        width:100%;
+        display: flex;
+        margin:1rem 0rem;
+        flex-direction: row;
+        justify-content: flex-start;
+        position: relative;
+        cursor: pointer;
+        .li-img{
+          width:41%;
+          img{
+            width:100%;
+          }
+        }
+        .li-word{
+          width:58%;
+          position: absolute;
+          height:100%;
+          top:0px;
+          right:0px;
+          background: rgb(190,157,112);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          .li-content{
+            width:80%;
+            font-size:1rem;
+            color:#000;
+            &-title{
+              margin-bottom:5px;
+            }
+            &-desc{
+              line-height:2rem;
+            }
+          }
+          &-more{
+            width:80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            img{
+              height:4rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.invest-article{
+  width:100%;
+  height:100vh;
+  background: rgba(0,0,0,0.6);
+  position: fixed;
+  top:0px;
+  left:0px;
+  z-index:4;
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .invest-black{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0px;
+    left:0px;
+    z-index: 5;
+  }
+  .articles{
+    width:65%;
+    height:100%;
+    position: absolute;
+    top:0px;
+    left:50%;
+    margin-left:-32.5%;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index:6;
+    &-detail{
+      width:100%;
+      img{
+        width:100%;
+      }
+    }
+    &-close{
+      width:100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      padding:2rem 0rem;
+      color:#fff;
+      &-content{
+        width:6rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        img{
+          width:50%;
+          margin-bottom:0.35rem;
+        }
+        .close-word{
+          width:100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+  /*滚动条样式*/
+  .articles::-webkit-scrollbar {/*滚动条整体样式*/
+      width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+      height: 4px;
+  }
+  .articles::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+      border-radius: 5px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.2);
+  }
+  .articles::-webkit-scrollbar-track {/*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      border-radius: 0;
+      background: rgba(0,0,0,0.1);
+  }
+}

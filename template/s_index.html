@@ -1,0 +1,189 @@
+{template 'common/header'}
+{if $op == 'display'}
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">首页设置</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">轮播图</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php $banner_imgs = iunserializer($content['i_banner'])}
+                        {php echo tpl_form_field_multi_image('i_banner',$banner_imgs)}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：1280px * 935px)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">轮播图(移动版)</label>
+                    <div class="col-xs-12 col-sm-9">
+                        {php $pbanner_imgs = iunserializer($content['i_pbanner'])}
+                        {php echo tpl_form_field_multi_image('i_pbanner',$pbanner_imgs)}
+                        <div style="width:100%;">
+                            <div style="font-size:12px;color:#999;">(尺寸标注：781px * 937px)</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">链接</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <textarea class="form-control" rows="3" name="i_link">{$content['i_link']}</textarea>
+                        <h5><small>注意：按轮播图的顺序放，以 ; 分割</small></h5>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">活动公告弹窗</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <label>
+                            <div class="switch switch{php echo $content['is_show'] == 1?'On':'Off'}" onclick="changeStatus(this)"></div>
+                            <input type="hidden" name="is_show" value="{$content['is_show']}">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <div class="btn btn-success" onclick="addNavItem()">添加导航</div>
+                    </div>
+                </div>
+                {php $navs = iunserializer($content['navs'])}
+                <div class="row" id="navtitle" {if count($navs) == 0}style="display:none;"{/if}>
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label"></label>
+                    <div class="col-xs-12 col-sm-9">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-4 text-center">
+                                标题
+                            </div>
+                            <div class="col-xs-6 col-sm-4 text-center">
+                                排序
+                            </div>
+                             <div class="col-xs-6 col-sm-4 text-center">
+                                导航链接
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="nav-children" style="margin-top:15px;">
+                    {loop $navs $key $nav}
+                    <div class="form-group nav-item">
+                        <label class="col-xs-12 col-sm-3 col-lg-2 control-label">导航</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-4">
+                                    <input type="text" class="form-control" name="navs[{$key}][title]" value="{$nav['title']}">
+                                </div>
+                                <div class="col-xs-6 col-sm-4">
+                                    <input type="text" class="form-control" name="navs[{$key}][displayorder]" value="{$nav['displayorder']}">
+                                </div>
+                                <div class="col-xs-6 col-sm-4">
+                                    <input type="text" class="form-control" name="navs[{$key}][link]" value="{$nav['link']}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-1">
+                            <div class="btn btn-danger" onclick="delNavItem(this)">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </div>
+                        </div>
+                    </div>
+                    {/loop}
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="{$content['id']}">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $(function(){
+        $('#dosubmit').on('click',function(){
+            console.log('submit');
+            var num = $('.nav-item').length;
+            for (var i = 0; i < num; i++) {
+                var url = $('input[name="navs['+i+'][link]"]').val();
+                var id = GetId(url,'id');
+                if(id == null || id == undefined || id == ''){
+                  url = url + '&id='+(i+1);
+                  $('input[name="navs['+i+'][link]"]').val(url);
+                }
+            };
+        })
+        $('select[name="navposition"]').change(function(){
+            if($(this).val() == 3){
+                $('#navIcon').show();
+            }else{
+                $('#navIcon').hide();
+            }
+            if($(this).val() != 1){
+                $('select[name="is_hover"]').attr('disabled','disabled');
+            }else{
+                $('select[name="is_hover"]').removeAttr('disabled');
+            }
+        })
+    })
+    function GetId(url,name){
+      var _url = url;
+      var num = _url.lastIndexOf('&');
+      var lastnum = _url.lastIndexOf('=');
+      var key = _url.substring(num+1,lastnum);
+      var _value = _url.substring(lastnum+1);
+      if(key == name){
+        return _value;
+      }else{
+        return null;
+      }
+
+    }
+    function addNavItem() {
+        $('#navtitle').show();
+        var num = $('.nav-item').length;
+        var html = '<div class="form-group nav-item">'+
+        '<label class="col-xs-12 col-sm-3 col-lg-2 control-label">导航</label>'+
+                '<div class="col-xs-12 col-sm-8">'+
+                    '<div class="row">'+
+                        '<div class="col-xs-6 col-sm-4">'+
+                            '<input type="text" class="form-control" name="navs['+num+'][title]">'+
+                        '</div>'+
+                        '<div class="col-xs-6 col-sm-4">'+
+                            '<input type="text" class="form-control" name="navs['+num+'][displayorder]">'+
+                        '</div>'+
+                        '<div class="col-xs-6 col-sm-4">'+
+                            '<input type="text" class="form-control" name="navs['+num+'][link]">'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-xs-12 col-sm-1">'+
+                    '<div class="btn btn-danger" onclick="delNavItem(this)">'+
+                        '<span class="glyphicon glyphicon-remove"></span>'+
+                    '</div>'+
+                '</div>'+
+            '</div>';
+        $('#nav-children').append(html);
+        num++;
+    }
+    function delNavItem(obj) {
+        $(obj).parent().parent().remove();
+        var num = $('.nav-item').length;
+        console.log(num);
+        if(num == 0){
+            $('#navtitle').hide();
+        }
+    }
+    function changeStatus (obj) {
+        if($(obj).hasClass('switchOn')){
+            $(obj).removeClass('switchOn').addClass('switchOff');
+            $('input[name="is_show"]').val(0);
+        }else{
+            $(obj).removeClass('switchOff').addClass('switchOn');
+            $('input[name="is_show"]').val(1);
+        }
+
+    }
+</script>
+{/if}
+{template 'common/footer'}

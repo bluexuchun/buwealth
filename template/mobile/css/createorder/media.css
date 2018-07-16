@@ -1,0 +1,504 @@
+@media screen and (max-width: 500px){
+    html,body{
+        background-color: #232323;
+        width: 100%;
+        height: 100%;
+    }
+    .PC-style{
+        display: none;
+    }
+
+    .createOlder{
+        width: 100%;
+    }
+    .createOlder .createOlder_main{
+        width: 100%;
+        margin: 0;
+    }
+    .createOlder .createOlder_main .PC-box1{
+        display: none;
+    }
+    .createOlder .createOlder_main .m-box1{
+        width: 100%;
+        display: block;
+
+        position: relative;
+        background-color: #232323;
+        border-bottom: 1px solid #BE9D70;
+    }
+    .createOlder .createOlder_main .m-box1>a{
+        margin-left: 1rem;
+        color: #BE9D70;
+        font-size: 2rem;
+        text-decoration: none;
+        line-height: 4rem;
+        margin-right: 10rem;
+
+    }
+    .createOlder .createOlder_main .m-box1>span {
+        color: #BE9D70;
+        font-size: 1rem;
+        position: absolute;
+        top: 1.4rem;
+        font-size: 1.2rem;
+
+
+    }
+    .createOlder .createOlder_main .address{
+        display: none;
+    }
+    .createOlder .createOlder_main .m-address{
+        display: block;
+        width: 100%;
+        background-color: #232323;
+        position: relative;
+        box-sizing: border-box;
+    }
+    .createOlder .createOlder_main .m-address>span{
+        color: #BE9D70;
+        line-height: 4rem;
+        margin-left: 1rem;
+    }
+    .createOlder .createOlder_main .m-address>a{
+        line-height: 4rem;
+        position: absolute;right: 0;
+        display: inline-block;
+        margin-right: 1.5rem;
+        top: 0.3em;
+    }
+    .createOlder .createOlder_main .shoptext{
+        display: none;
+    }
+
+    .createOlder .createOlder_main > ul{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .createOlder .createOlder_main > ul li{
+        padding: 0;
+        border: none;
+        background-color: #1d1d1f;
+        padding: 1.5rem 0;
+ 
+    }
+    .createOlder .createOlder_main > ul li > img{
+        width: 9rem;
+        height: 6rem;
+        margin: 0;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+
+    }
+    .createOlder .createOlder_main > ul li .Vnum{
+        display: block;
+        position: relative;
+
+    
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span{
+        line-height: 3rem;
+        display: block;
+
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span:nth-child(1){
+        margin-right: 0;
+        width: 100%;
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span:nth-child(2){
+        margin-right: 0;
+    
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span:nth-child(3){
+        margin-right: 0;
+        position: absolute;
+        bottom: 0;
+        right: -9rem;
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span:nth-child(4){
+        display: none;
+    }
+    .createOlder .createOlder_main .palynum{
+        display: none;
+    }
+    .createOlder .createOlder_main .m-palynum{
+        color: #ffffff;
+        display: block;
+    }
+    .createOlder .createOlder_main .m-palynum>p{
+        margin: 0;
+        line-height: 3rem;
+        margin-left: 1.5rem;
+        font-size: 1rem;
+        height: 3rem;
+    }
+    .createOlder .createOlder_main .m-palynum>p>span{
+        display: inline-block;
+        /*float: left;*/
+    }
+    .createOlder .createOlder_main .gross{
+        display: none;
+    }
+    .createOlder .createOlder_main .lastbutton {
+        width: 100%;
+        height: 2rem;
+        background-color: #BE9D70;
+        border-radius: 0.3rem;
+        margin: 0 auto;
+        margin-top: 2rem;
+    }
+     .createOlder .createOlder_main .lastbutton .submitbtn{
+        background-color: #BE9D70;
+     }
+     .lastbutton{
+        width: 100%;
+    }
+    .lastbutton .submitbtn{
+        margin: 0 auto;
+    }
+    .createOlder .createOlder_main .lastbutton a {
+        text-align: center;
+        line-height: 2rem;
+        display: block;
+        width: 18.5rem;
+        height: 3rem;
+        text-decoration: none;
+        font-size: 1rem;
+        color: #232323;
+    }
+    .createOlder .createOlder_main>.logo{
+        display: block;
+        width: 127px;
+        margin: 0 auto;
+        margin-top: 2rem;
+
+    }
+    .m_style{
+        display: block;
+    }
+    /* cvs */
+        html,body{
+        background-color: #232323;
+    }
+    .cvs{
+        background-color: #141414;
+        display: none;
+    }
+    .cvs .close{
+        display: none;
+
+    }
+        .cvs .main{
+        width: 100%;
+        /*height: 10rem;*/
+        background-color: #141414;
+        height: 100%;
+        margin: 0 auto;
+        margin-top: 0;
+        padding: 0;
+    }
+    .cvs .main .m_h,.m_h1{
+        display: none ;
+    }
+        .cvs .main .colladd{
+        width: 100%;
+        height: 3rem;
+        display: block;
+        border-bottom: 1px solid #333333;
+
+    }
+        .star{
+        display: none;
+    }
+     .cvs .main .name{
+        /*padding: 1rem 0;*/
+        width: 100%;
+        height: 3rem;
+        margin-bottom: 0;
+        border-bottom: 1px solid #333333;
+    }
+    .cvs .main .move{
+        height: 4.5rem;
+    }
+
+    .cvs .main .name > p{
+        margin-left: -1rem;
+        font-size: 14px;
+        margin-top: 0.5rem;
+    }
+    .cvs .main .name > div{
+        width: 14rem;
+        border: none;
+        margin-top: 0.6rem;
+    }
+    .cvs .main .move>div{
+        height: 3rem;
+        width: 15rem;
+    }
+    .cvs .main .name > div>input{
+        border: none;
+    }
+.cvs .main .move>div>input{
+    }
+    .PC_input{
+        display: none;
+    }
+    .m_input{
+        display: block;
+    }
+    .cvs .main .name >.spe{
+        margin-left: 2rem;
+    }
+    .PC_style{
+        display: none;
+    }
+    .cvs .main .name >.tran{
+        margin-top: 0.5rem;
+    }
+    .cvs .main .name >div>textarea{
+        width: 15rem;
+        margin-top: 0.4rem;
+        margin-left: 0.9rem;
+        font-size: 1rem;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        outline-color: #141414;
+        color: #ffffff;
+        height: 3rem;
+    }
+     .cvs .main .butBox{
+        margin:1rem 0 1.5rem 2rem;
+    }
+    .cvs .main .qsq{
+        width: 20rem;
+        height: 2rem;
+        background-color: #BE9D70;
+        margin: 0 auto;
+        border-radius: 0.3rem;
+        text-align: center;
+    }
+    .cvs .main .qsq a{
+        display: inline-block;
+        width: 20rem;
+        line-height: 2rem;
+        text-decoration: none;
+        color: black;
+    }
+
+
+
+
+
+    html,body{
+        background-color: #232323;
+        width: 100%;
+        height: 100%;
+    }
+    .m-cvs{
+        width: 100%;
+
+    }
+    .m-cvs  .m-box1{
+        width: 100%;
+        position: relative;
+        background-color: #232323;
+        border-bottom: 1px solid #BE9D70;
+    }
+    .m-cvs  .m-box1>a{
+        margin-left: 1rem;
+        color: #BE9D70;
+        font-size: 2rem;
+        text-decoration: none;
+        line-height: 4rem;
+        margin-right: 7rem;
+
+    }
+    .m-cvs  .m-box1>span {
+        color: #BE9D70;
+        font-size: 1rem;
+        position: absolute;
+        top: 1.4rem;
+        font-size: 1.2rem;
+    }
+    .name1{
+        width: 100%;
+        height: 4rem;
+        border-bottom: 1px solid #292929;
+    }
+    .name1>p{
+
+        margin: 0;
+        line-height: 4rem;
+        margin-right: 1rem;
+        margin-left: 1.5rem;
+        color: #ffffff;
+    }
+    .name1>div>input{
+        width: 14rem;
+        font-size: 1rem;
+        margin-top: 1.4rem;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        outline-color: #232323;
+        color: #ffffff;
+    }
+    .name1>div>p{
+        color: #ffffff;
+        margin: 0;
+        line-height: 4rem;
+        position: relative;
+
+    }
+    .name1>div>p>span{
+        position: absolute;
+        right: -5.5rem;
+        top: 0;
+    }
+
+    .name1>div>textarea{
+        width: 15rem;
+        margin-top: 1.5rem;
+        font-size: 1rem;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        outline-color: #232323;
+        color: #ffffff;
+        height: 3rem;
+    }
+    /**/
+    .m-cvs .butBox{
+        margin-top: 1rem;
+    }
+    .m-cvs .butBox .mycheck {
+        width: 1.5rem;
+        position: relative;
+        margin-left: 1.5rem;
+        margin-top: 0.1rem;
+    }
+    .m-cvs .butBox .mycheck input[type=checkbox] {
+        visibility: hidden;
+    }
+    .m-cvs .butBox .mycheck label {
+        cursor: pointer;
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        top: 0;
+        left: 0;
+        background: #141414;
+        border: 1px solid #ffffff;
+    }
+    .m-cvs .butBox .mycheck label:after {
+        opacity: 0;
+        content: '';
+        position: absolute;
+        width: 0.5rem;
+        height: 0.4rem;
+        background: transparent;
+        top: 0.2rem;
+        left: 0.2rem;
+        border: 2px solid #ffffff;
+        border-top: none;
+        border-right: none;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    .m-cvs .butBox .mycheck input[type=checkbox]:checked + label:after {
+        opacity: 1;
+    }
+    .m-cvs .butBox>span{
+    }
+    .m-cvs .con{
+        width: 16.5rem;
+        height: 2rem;
+        background-color: #BE9D70;
+        border-radius: 0.3rem;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 2rem;
+    }
+    .m-cvs .con a{
+        line-height: 2rem;
+        text-decoration: none;
+        color: black;
+    }
+
+    /* box */
+    .box .main {
+    width: 20rem;
+    height: 14rem;
+    margin-left: -10rem;
+    margin-top: -7rem;
+    border-radius: 0.3rem;
+  }
+    .box .main .icon-close{
+    display: none
+  }
+  .box .main img {
+    margin-bottom: 0;
+    margin-top: 2rem;
+  }
+  .box .main h3 {
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.1rem;
+  }
+  .box .main > div {
+    border-top: 1px solid #222222;
+  }
+  .box .main > div .cfm {
+    width: 10rem;
+    height: 3.1rem;
+    border: none;
+    margin: 0;
+    float: left;
+    border-radius: 0;
+    border-right: 1px solid #222222;
+  }
+  .box .main > div .cfm a {
+    width: 10rem;
+    height: 2.5rem;
+  }
+  .box .main > div .cancel {
+    width: 9.9rem;
+    height: 3.1rem;
+    border: none;
+    margin: 0;
+    float: left;
+    border-radius: 0;
+  }
+  .box .main > div .cancel a {
+    width: 10rem;
+    height: 2.5rem;
+  }
+.sorry-box{
+
+}
+  .sorry-box .main{
+    width: 80%;
+    height: 35%;
+    margin-left: -40%;
+    margin-top: -12.5%;
+    border-radius: 0.3rem;
+  }
+  .sorry-box .main img{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+   .sorry-box .main>h3{
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+   }
+  .sorry-box .main .confim{
+    width: 100%;
+    height: 4rem;
+    line-height: 4.5rem;
+    text-align: center;
+    color: #BE9D70;
+    border-top: 1px solid #282828;
+
+  }
+}

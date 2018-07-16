@@ -1,0 +1,288 @@
+@media screen and (max-width: 500px){
+    html,body{
+        background-color: #232323;
+        width: 100%;
+        height: 100%;
+    }
+    .createOlder{
+        width: 100%;
+    }
+    .createOlder .createOlder_main{
+        width: 100%;
+        margin: 0;
+    }
+    .createOlder .createOlder_main .PC-box1{
+        display: none;
+    }
+    .createOlder .createOlder_main .m-box1{
+        width: 100%;
+        display: block;
+
+        position: relative;
+        background-color: #232323;
+        border-bottom: 1px solid #BE9D70;
+    }
+    .createOlder .createOlder_main .m-box1>a{
+        margin-left: 1rem;
+        color: #BE9D70;
+        font-size: 2rem;
+        text-decoration: none;
+        line-height: 4rem;
+        margin-right: 7rem;
+
+    }
+    .createOlder .createOlder_main .m-box1>span {
+        color: #BE9D70;
+        font-size: 1rem;
+        position: absolute;
+        top: 1.4rem;
+        font-size: 1.2rem;
+
+
+    }
+    .createOlder .createOlder_main .address{
+        display: none;
+    }
+    .createOlder .createOlder_main .m-address{
+        display: block;
+        width: 100%;
+        background-color: #232323;
+        position: relative;
+        box-sizing: border-box;
+    }
+    .createOlder .createOlder_main .m-address>span{
+        color: #BE9D70;
+        line-height: 4rem;
+        margin-left: 1rem;
+    }
+    .createOlder .createOlder_main .m-address>a{
+        line-height: 4rem;
+        position: absolute;right: 0;
+        display: inline-block;
+        margin-right: 1.5rem;
+        top: 0.3em;
+    }
+    .createOlder .createOlder_main .shoptext{
+        display: none;
+    }
+
+    .createOlder>.createOlder_main > ul{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .createOlder >.createOlder_main > ul li{
+        padding: 0;
+        border: none;
+        background-color: #1d1d1f;
+        padding: 1.5rem 0;
+    }
+    .createOlder> .createOlder_main > ul li > img{
+        width: 9rem;
+        height: 6rem;
+        margin: 0;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span{
+        line-height: 3rem;
+
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span:nth-child(1){
+        margin-right: 0;
+        width: 100%;
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span:nth-child(2){
+        margin-right: 5rem;
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span:nth-child(3){
+        margin-right: 0;
+    }
+    .createOlder .createOlder_main > ul li .Vnum> span:nth-child(4){
+        display: none;
+    }
+    .createOlder .createOlder_main .palynum{
+        display: none;
+    }
+    .createOlder .createOlder_main .m-palynum{
+        color: #ffffff;
+        display: block;
+    }
+    .createOlder .createOlder_main .m-palynum>p{
+        margin: 0;
+        line-height: 3rem;
+        margin-left: 1.5rem;
+        font-size: 1rem;
+        height: 3rem;
+    }
+    .createOlder .createOlder_main .m-palynum>p>span{
+        display: inline-block;
+        /*float: left;*/
+    }
+    .createOlder .createOlder_main .gross{
+        display: none;
+    }
+    .createOlder .createOlder_main .lastbutton {
+        width: 18.5rem;
+        height: 2rem;
+        background-color: #BE9D70;
+        border-radius: 0.3rem;
+        margin: 0 auto;
+        margin-top: 2rem;
+    }
+    .createOlder .createOlder_main .lastbutton a {
+        text-align: center;
+        line-height: 2rem;
+        display: block;
+        width: 18.5rem;
+        height: 3rem;
+        text-decoration: none;
+        font-size: 1rem;
+        color: #232323;
+    }
+    .createOlder .createOlder_main>.logo{
+        display: block;
+        width: 127px;
+        margin: 0 auto;
+        margin-top: 2rem;
+
+    }
+
+    html,body{
+        background-color: #232323;
+        width: 100%;
+        height: 100%;
+    }
+    .m-cvs{
+        width: 100%;
+
+    }
+    .m-cvs  .m-box1{
+        width: 100%;
+        position: relative;
+        background-color: #232323;
+        border-bottom: 1px solid #BE9D70;
+    }
+    .m-cvs  .m-box1>a{
+        margin-left: 1rem;
+        color: #BE9D70;
+        font-size: 2rem;
+        text-decoration: none;
+        line-height: 4rem;
+        margin-right: 7rem;
+
+    }
+    .m-cvs  .m-box1>span {
+        color: #BE9D70;
+        font-size: 1rem;
+        position: absolute;
+        top: 1.4rem;
+        font-size: 1.2rem;
+    }
+    .name1{
+        width: 100%;
+        height: 4rem;
+        border-bottom: 1px solid #292929;
+    }
+    .name1>p{
+
+        margin: 0;
+        line-height: 4rem;
+        margin-right: 1rem;
+        margin-left: 1.5rem;
+        color: #ffffff;
+    }
+    .name1>div>input{
+        width: 14rem;
+        font-size: 1rem;
+        margin-top: 1.4rem;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        outline-color: #232323;
+        color: #ffffff;
+    }
+    .name1>div>p{
+        color: #ffffff;
+        margin: 0;
+        line-height: 4rem;
+        position: relative;
+
+    }
+    .name1>div>p>span{
+        position: absolute;
+        right: -5.5rem;
+        top: 0;
+    }
+
+    .name1>div>textarea{
+        width: 15rem;
+        margin-top: 1.5rem;
+        font-size: 1rem;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        outline-color: #232323;
+        color: #ffffff;
+        height: 3rem;
+    }
+    /**/
+    .m-cvs .butBox{
+        margin-top: 1rem;
+    }
+    .m-cvs .butBox .mycheck {
+        width: 1.5rem;
+        position: relative;
+        margin-left: 1.5rem;
+        margin-top: 0.1rem;
+    }
+    .m-cvs .butBox .mycheck input[type=checkbox] {
+        visibility: hidden;
+    }
+    .m-cvs .butBox .mycheck label {
+        cursor: pointer;
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        top: 0;
+        left: 0;
+        background: #141414;
+        border: 1px solid #ffffff;
+    }
+    .m-cvs .butBox .mycheck label:after {
+        opacity: 0;
+        content: '';
+        position: absolute;
+        width: 0.5rem;
+        height: 0.4rem;
+        background: transparent;
+        top: 0.2rem;
+        left: 0.2rem;
+        border: 2px solid #ffffff;
+        border-top: none;
+        border-right: none;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    .m-cvs .butBox .mycheck input[type=checkbox]:checked + label:after {
+        opacity: 1;
+    }
+    .m-cvs .butBox>span{
+    }
+    .m-cvs .con{
+        width: 16.5rem;
+        height: 2rem;
+        background-color: #BE9D70;
+        border-radius: 0.3rem;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 2rem;
+    }
+    .m-cvs .con a{
+        line-height: 2rem;
+        text-decoration: none;
+        color: black;
+    }
+
+}

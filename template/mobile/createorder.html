@@ -1,0 +1,861 @@
+ {template 'header'}
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/createorder/createorder.css">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/createorder/confirm.css">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/createorder/sorry.css">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/createorder/LArea.css">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/createorder/media.css">
+<style>
+    /*点击li的样式*/
+      .address-list .active{
+        margin-right: 2rem;
+        padding: 0.5rem 3rem;
+        background: url("{MODULE_URL}template/mobile/images/createorder/selected.png") no-repeat;
+        background-size: 100% 100%;
+      }
+    .place .bck>div>.ico::after{
+        content: "";
+        display: inline-block;
+        width: .875rem;
+        height: .75rem;
+        border: 1px solid #333333;
+        transform: rotate(45deg);
+        position: absolute;
+        top: -0.7rem;
+        left: 0.2rem;
+    }
+</style>
+<div class="createOlder">
+    <div class="createOlder_main">
+        <div class="PC-box1">
+            <h2>创建订单</h2>
+            <img class="min-nav float_r" src="{MODULE_URL}template/mobile/images/createorder/process.png" alt="">
+            <div style="clear: both"></div>
+            <p class="minline"></p>
+        </div>
+        <div class="m-box1">
+            <a href="javascript:history.back(-1)"><</a>
+            <span>创建订单</span>
+        </div>
+        <div class="address">
+            <p class="float_l">确认收货地址</p>
+            <div class="float_r address-dom" style="margin-bottom: 1rem">
+              <div class="pc-add">新增收货地址</div>
+              <img src="{MODULE_URL}template/mobile/images/createorder/addicon.png" alt="" class="icon-add">
+            </div>
+            <div style="clear: both"></div>
+            <p class="min-line"></p>
+            <ul class="address-lists">
+                {loop $address $key $item}
+                <li class="address-list" data-id="{$item['id']}" {if $item['isdefault'] == 1}data-active="1"{else}data-active="0"{/if}>
+                    <span {if $item['isdefault'] == 1}class="active pub"{else}class="pub"{/if}>{$item['username']}</span>
+                    <span {if $item['isdefault'] == 1}class="default tar"{else}class="tar"{/if} data-province="{$item['province']}" data-city="{$item['city']}" data-area="{$item['district']}" data-address="{$item['address']}" data-phone="{$item['phone']}" data-username="{$item['username']}">{$item['province']} {$item['city']} {$item['district']} {$item['address']} {$item['phone']}</span>
+                    <div class="float_r editor"  style="margin-left: 4rem;">
+                        <span style="font-size: .875rem;color: #BE9D70;">
+                             <a href="#" class="Qdefault" style="color: #BE9D70">设为默认地址</a>
+                            <a href="#" class="Qedit" style="margin-left: 1.5rem;color: #BE9D70">编辑</a>
+                            <a href="#" class="Qdelete" style="margin-left: 1.5rem;color: #BE9D70">删除</a>
+                        </span>
+                    </div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+        <div class="m-address">
+            <!--<span>新增收货地址</span>-->
+            <!--<a href="#" class="m-add"><img src="images/createolder5/icon添加.png" alt=""></a>-->
+            <ul style="width: 100%;margin: 0;padding: 0;">
+                {if !empty($chooseitem)}
+                <a href="{php echo $this->createMobileUrl('collectlist',array('goodid'=>$goodid,'cid'=>$_GPC['cid']))}">
+                    <li style="list-style: none;width: 100%;height: 4.5rem;padding:.875rem 0rem;">
+                        <div class="float_l" style="margin-left: 1.5rem;margin-top:0.7rem ;">
+                            <span style="color: #ffffff">{$chooseitem['username']}   &nbsp;    &nbsp;{$chooseitem['phone']}</span>
+                            {if $chooseitem['isdefault'] == 1}
+                            <span style="display: inline-block;color: #ffffff;border: 1px solid #ffffff;margin-left:1rem ;">默认地址</span>
+                            {/if}
+                            <p style="margin: 0;margin-top: 0.2rem;color: #ffffff">{$chooseitem['province']} {$chooseitem['city']} {$chooseitem['district']} {$chooseitem['address']}</p>
+                        </div>
+                        <p class="float_r" style="margin: 0;line-height: 4.5rem;font-size: 1.5rem;color: #ffffff;margin-right:1.5rem ;">></p>
+                    </li>
+                </a>
+                {else}
+                {loop $address $key $item}
+                  {if $item['isdefault'] == 1}
+                  <a href="{php echo $this->createMobileUrl('collectlist',array('goodid'=>$goodid,'cid'=>$_GPC['cid']))}">
+                      <li style="list-style: none;width: 100%;height: 4.5rem;padding:.875rem 0rem;">
+                          <div class="float_l" style="margin-left: 1.5rem;margin-top:0.7rem ;">
+                              <span style="color: #ffffff">{$item['username']}   &nbsp;    &nbsp;{$item['phone']}</span>
+                              <span style="display: inline-block;color: #ffffff;border: 1px solid #ffffff;margin-left:1rem ;">默认地址</span>
+                              <p style="margin: 0;margin-top: 0.2rem;color: #ffffff">{$item['province']} {$item['city']} {$item['district']} {$item['address']}</p>
+                          </div>
+                          <p class="float_r" style="margin: 0;line-height: 4.5rem;font-size: 1.5rem;color: #ffffff;margin-right:1.5rem ;">></p>
+                      </li>
+                  </a>
+                  {/if}
+                {/loop}
+                {/if}
+
+            </ul>
+        </div>
+
+        <p class="shoptext">商品详情</p>
+        <ul>
+            <li>
+                <img src="{php echo tomedia($good['thumb'])}" alt="">
+                <div class="Vnum">
+                    <span>{$good['title']}</span>
+                    <span>{$good['marketprice']} 积分</span>
+                    <span>X1</span>
+                    <span>有货</span>
+                </div>
+            </li>
+        </ul>
+        <div class="palynum">
+            <ul class="palyinfo">
+              <li class="paly-item">
+                <div class="paly-title">1件商品，商品小计：</div>
+                <div class="paly-content">{$good['marketprice']}积分</div>
+              </li>
+              <li class="paly-item">
+                <div class="paly-title">运费：</div>
+                <div class="paly-content">¥ 0.00</div>
+              </li>
+              <li class="paly-item">
+                <div class="paly-title">服务费：</div>
+                <div class="paly-content">¥ 0.00</div>
+              </li>
+            </ul>
+        </div>
+        <div class="m-palynum">
+            <p><span class="float_l">1件商品，商品小计：</span><span class="float_r" style="margin-right: 1.5rem">420积分</span></p>
+            <p><span  class="float_l">运费：</span><span class="float_r" style="margin-right: 1.5rem">¥ 0.00</span></p>
+            <p style="margin-bottom: 1rem"><span class="float_l">服务费：</span><span class="float_r" style="margin-right: 1.5rem">¥ 0.00</span></p>
+            <p style="background-color: #333333;margin-left: 0;"><span class="float_l" style="margin-left: 1.5rem;">应付总额</span><span class="float_r" style="margin-right: 1.5rem;background-color: #333333;color: #BE9D70;font-size: 1.1rem">420积分</span></p>
+        </div>
+        <div class="gross" id="resultinfo">
+            <div class="gross-item">
+                <div class="gross-title">应付总额：</div>
+                <div class="gross-content">{$good['marketprice']}积分</div>
+            </div>
+            <div class="gross-address">
+                <span >寄送至：  <span id="addaddress"></span></span>
+                <span style="display: inline-block;">收货人：  <span id="adduser"></span></span>
+            </div>
+        </div>
+    </div>
+    <div class="lastbutton">
+        <div class="submitbtn" id="submitbtn">提交订单</div>
+    </div>
+    <div class="logo">
+        <img src="{MODULE_URL}template/mobile/images/createorder/logo.png" alt="">
+    </div>
+</div>
+<div class="cvs">
+    <dis class="close PC_style">
+        <img src="{MODULE_URL}template/mobile/images/createorder/close.png" alt="">
+    </dis>
+    <div class="main">
+        <h3 class="PC_style" style="color: #BE9D70;margin-bottom: 2rem">新增收货地址</h3>
+        <p class="PC_style" style="width: 1rem;height: 1px;background-color: #BE9D70;margin-bottom: 2rem"></p>
+        <div class="colladd">
+            <p class="float_l" style="margin: 0;line-height: 3rem;margin-left: 2rem;">
+                <a href="#" style="font-size: 1.5rem;text-decoration: none;color: #BE9D70;line-height: 3rem"><</a>
+            </p>
+            <p class="float_l" style="margin: 0;line-height: 3rem;color: #BE9D70;margin-left: 9.5rem;">收货地址</p>
+        </div>
+        <div class="place PC_style">
+            <p class="float_l" style="margin: 0 2rem 0 0">* 所在地区</p>
+            <div class="float_l bck leave_out">
+                <div class="optionO" style="position: relative;display: flex ">
+                    <span id="province" style="display: inline-block;margin-left: 1.5rem;margin-right: 2rem;">省份</span>
+                    <span class="ico"
+                          style="display: inline-block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden">
+                    </span>
+                </div>
+                <ul class="leave_out_op" data-status="0">
+                </ul>
+            </div>
+            <div class="float_l bck city">
+                <div class="optionT" style="position: relative;display: flex ">
+                    <span id="city" style="display: inline-block;margin-left: 1.5rem;margin-right: 2rem;">市</span>
+                    <span class="ico"
+                          style="display: inline-block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden">
+                    </span>
+                </div>
+                <ul class="city_op" data-status="0">
+                </ul>
+            </div>
+            <div class="float_l bck area">
+                <div class="areaS" style="position: relative;display: flex ">
+                    <span id="area" class="" style="display: inline-block;margin-left: 1.5rem;margin-right: 2rem;">区</span>
+                    <span class="ico float_r"
+                          style="display:block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden;">
+                    </span>
+                </div>
+                <ul class="areaS_op" data-status="0">
+                </ul>
+            </div>
+        </div>
+        <div class="name place">
+            <p class="float_l"><span class="star">*</span>收货人姓名</p>
+            <div class="float_l">
+                <input class="PC_style" type="text" name="addaccount" value="">
+                <input  class="m_input m_style" type="text" value="" name="m_addccount" placeholder="姓名">
+            </div>
+        </div>
+        <div class="name m_input m_style" >
+            <p class="float_l" style="margin-left: 2rem" >联系方式</p>
+            <div class="float_l tran" style="margin-left: 1rem">
+                <input type="text" value="" name="m_addphone" placeholder="手机号码">
+            </div>
+        </div>
+        <div class="name m_input m_style" >
+            <p class="float_l" style="margin-left: 2rem" >所在地区</p>
+            <div class="float_l tran" style="margin-left: 1rem">
+                <input type="text" value="广东省,深圳市,南山区" id="demo1" readonly=""  name="m_address" placeholder="">
+            </div>
+        </div>
+        <div class="name move">
+            <p class="float_l spe" style="margin-right: 2rem" ><span class="star">*</span> 详细地址</p>
+            <div class="float_l tran1">
+                <input class="PC_style" type="text" name="addaddress" value="">
+                  <textarea class="m_style" placeholder="详细地址需填写楼栋楼层或房间号信息" name="m_addaddress"></textarea>
+            </div>
+        </div>
+        <div class="name PC_style">
+            <p class="float_l" style="margin-right: 2rem">* 手机号码</p>
+            <div class="float_l">
+                <input type="tel" name="addphone" value="">
+            </div>
+        </div>
+        <div class="filedTel PC_style">
+            <p class="float_l text" style="margin-right: 2rem"><span style="color: #141414;">* </span>固定电话</p>
+            <div class="float_l">
+                <input type="tel" name="telfor" value="">
+            </div>
+            <p class="line float_l"></p>
+            <div class="float_l">
+                <input type="tel" name="teltail" value="">
+            </div>
+        </div>
+        <div class="name PC_style">
+            <p class="float_l" style="margin-right: 2rem"><span style="color: #141414;">* </span>邮箱地址</p>
+            <div class="float_l">
+                <input type="email" name="addemail" value="">
+            </div>
+        </div>
+        <p class="PC_style" style="color: #ffffff;margin-left: 7rem;font-size: 0.8rem">用来接收订单提醒邮件，便于您及时了解订单状态</p>
+        <div class="butBox">
+            <div class="mycheck float_l">
+                <input type="checkbox" value="0" id="checkbox1" name="default"/>
+                <label for="checkbox1" id="changeDefault"></label>
+            </div>
+            <span class="float_l" style="color: #ffffff;font-size: 0.8rem">设为默认地址</span>
+            <div style="clear: both"></div>
+        </div>
+        <div class="sub PC_style">
+            <div class="saveadd" id="saveadd">保存收货人信息</div>
+        </div>
+        <div class="m_input qsq m_style">
+            <a href="#">确认</a>
+        </div>
+    </div>
+</div>
+<div class="m-cvs">
+    <div class="m-box1">
+        <a href="#" class="back"><</a>
+        <span>收货地址</span>
+    </div>
+    <div class="name1">
+        <p class="float_l">收货人姓名</p>
+        <div class="float_l">
+            <input type="text" value="" placeholder="姓名">
+        </div>
+    </div>
+    <div class="name1">
+        <p class="float_l">联系方式 &nbsp;&nbsp;</p>
+        <div class="float_l">
+            <input type="text" value="" placeholder="手机号码">
+        </div>
+    </div>
+    <div class="name1">
+        <p class="float_l">所在地区 &nbsp;&nbsp;</p>
+        <div class="float_l">
+            <p>浙江省杭州市拱墅区 <span>></span></p>
+        </div>
+    </div>
+    <div class="name1" style="padding-bottom: 2rem">
+        <p class="float_l">所在地区 &nbsp;&nbsp;</p>
+        <div class="float_l">
+            <textarea placeholder="详细地址需填写楼栋楼层或房间号信息"></textarea>
+        </div>
+    </div>
+    <div class="butBox">
+        <div class="mycheck float_l">
+            <input type="checkbox" value="1" id="checkbox2" name="" />
+            <label for="checkbox2"></label>
+        </div>
+        <span class="float_l" style="color: #ffffff;font-size: 1rem">设为默认地址</span>
+        <div style="clear: both"></div>
+    </div>
+    <div class="con">
+        <a href="#">确认</a>
+    </div>
+</div>
+<div class="box">
+    <div class="main">
+        <div class="box-close">
+          <img class="icon-close" src="{MODULE_URL}template/mobile/images/createorder/close.png" alt="">
+        </div>
+        <img src="{MODULE_URL}template/mobile/images/createorder/tipsicon.png" alt="">
+        <h3>确认要兑换吗</h3>
+            <div>
+                <div class="cfm"><a href="#">确认</a></div>
+                <div class="cancel"><a href="#">取消</a></div>
+            </div>
+    </div>
+</div>
+<div class="sorry-box">
+    <div class="main">
+      <div class="sorry-close PC_style">
+        <img class="icon-sorryclose" src="{MODULE_URL}template/mobile/images/createorder/close.png" alt="">
+      </div>
+      <img src="{MODULE_URL}template/mobile/images/createorder/erroricon.png" alt="">
+      <h3>对不起，您的积分不够兑换其产品!</h3>
+      <div class="confim m_style">
+          确定
+      </div>
+    </div>
+</div>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/LAreaData1.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/LAreaData2.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/LArea.js"></script>
+<script>
+var area1 = new LArea();
+area1.init({
+    'trigger': '#demo1', //触发选择控件的文本框，同时选择完毕后name属性输出到该位置
+    'valueTo': '#value1', //选择完毕后id属性输出到该位置
+    'keys': {
+        id: 'id',
+        name: 'name'
+    }, //绑定数据源相关字段 id对应valueTo的value属性输出 name对应trigger的value属性输出
+    'type': 1, //数据源类型
+    'data': LAreaData //数据源
+});
+area1.value=[1,13,3];//控制初始位置，注意：该方法并不会影响到input的value
+var area2 = new LArea();
+area2.init({
+    'trigger': '#demo2',
+    'valueTo': '#value2',
+    'keys': {
+        id: 'value',
+        name: 'text'
+    },
+    'type': 2,
+    'data': [provs_data, citys_data, dists_data]
+});
+</script>
+<script>
+$(function () {
+    // 判断是否为移动端
+    var isMobile = "{$isMobile}";
+    if(isMobile == 1){
+      $('.common-header').css({
+        'display':'none'
+      });
+      $('.common-footer').css({
+        'display':'none'
+      });
+      $('.common-func').css({
+        'display':'none'
+      })
+    }
+    $('.confim').on('click', function(event) {
+       $('.sorry-box').css({'display':'none'})
+    });
+    // 默认选中地址
+    $('.address-list').each(function(){
+      var actaddress = $(this).attr('data-active');
+      if(actaddress == 1){
+        var that = $(this).children('.tar');
+        var province = that.attr('data-province');
+        var city = that.attr('data-city');
+        var area = that.attr('data-area');
+        var address = that.attr('data-address');
+        var username = that.attr('data-username');
+        var phone = that.attr('data-phone');
+        var addtotal = province + '  ' + city + '  ' + area + '  ' + address ;
+        $('#addaddress').html(addtotal);
+        var userinfo = username + '  ' + phone;
+        $('#adduser').html(userinfo);
+        $('#resultinfo').attr('aid',$(this).attr('data-id'));
+        $('#adduser').attr('data-mobile',phone);
+      }
+    })
+    // 获取省
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('area')}",
+      data:{
+        'type':1
+      },
+      dataType:'JSON',
+      type:'post',
+      success:function(res){
+        if(res.status == 1){
+          var data = res.data;
+          for(var i = 0;i < data.length;i++){
+            $('.leave_out_op').append('<li onclick="getLi(this,\'province\')" data-id="'+data[i].id+'">'+data[i].region_name+'</li>');
+          }
+        }
+      }
+    });
+    $('#changeDefault').on('click',function(){
+      console.log($('input[name="default"]').val());
+      if($('input[name="default"]').val() == 0){
+        $('input[name="default"]').attr('value',1);
+      }else{
+        $('input[name="default"]').attr('value',0);
+      }
+    })
+    var just=true;
+    if(just){
+        $('.optionO').click(function () {
+            just=false;
+            var status = $('.leave_out_op').attr('data-status');
+            if(status == 0){
+                $('.leave_out_op').animate({height:'100px'},300,function () {
+                    just=true;
+                    $('.leave_out_op').attr('data-status',1);
+                });
+            }else {
+                $('.leave_out_op').animate({height:'0px'},300,function () {
+                    just=true;
+                    $('.leave_out_op').attr('data-status',0);
+                });
+            }
+        })
+    }
+    var just1=true;
+    if(just1){
+        $('.optionT').click(function () {
+            var status = $('.city_op').attr('data-status');
+            if(status == 0){
+                $('.city_op').animate({height:'100px'},300,function () {
+                    just1=true;
+                    $('.city_op').attr('data-status',1);
+                });
+            }else {
+                $('.city_op').animate({height:'0px'},300,function () {
+                    just1=true;
+                    $('.city_op').attr('data-status',0);
+                });
+            }
+        })
+    }
+    var just2=true;
+    if(just2){
+        $('.areaS').click(function () {
+            var status = $('.areaS_op').attr('data-status');
+            if(status == 0){
+                $('.areaS_op').animate({height:'100px'},300,function () {
+                    just2=true;
+                    $('.areaS_op').attr('data-status',1);
+                });
+            }else {
+                $('.areaS_op').animate({height:'0px'},300,function () {
+                    just2=true;
+                    $('.areaS_op').attr('data-status',0);
+                });
+            }
+        })
+    }
+    $('.pc-add').click(function(e){
+        e.preventDefault();
+        clearForm();
+        $('.cvs').css({'display':'block'});
+        $('body,html').css({
+          'overflow-y':'hidden'
+        });
+    })
+    $('.close').click(function () {
+        $('.createOlder').css({'display':'block'});
+        $('.cvs').css({'display':'none'});
+        $('body,html').css({
+          'overflow-y':'auto'
+        });
+    })
+    $('.m-add').click(function(e){
+        e.preventDefault();
+        $('.createOlder').css({'display':'none'});
+        $('.m-cvs').css({'display':'block'});
+
+    })
+    $('.back').click(function () {
+        $('.createOlder').css({'display':'block'});
+        $('.m-cvs').css({'display':'none'});
+    })
+    $('.Qdefault').click(function (e) {
+        e.preventDefault();
+        var thisSpan=$(this).parent().parent().parent();
+        $('.tar').removeClass('default');
+        thisSpan.find('.tar').addClass('default');
+        var id = $(this).parent().parent().parent().attr('data-id');
+        $.ajax({
+          url:"{php echo $this->createMobileUrl('default')}",
+          data:{
+            id:id,
+            uid:'{$userid}'
+          },
+          dataType:'JSON',
+          type:'post',
+          success:function(res){
+            if(res.status == 1){
+              alert('设置成功');
+              location.reload();
+            }else{
+              alert('设置失败');
+            }
+          }
+        })
+    })
+    $('.Qedit').click(function (e) {
+        e.preventDefault();
+        var thisSpan=$(this).parent().parent().parent();
+        var id = thisSpan.attr('data-id');
+        $('.cvs').attr('data-eid',id);
+        $('.cvs').css({'display':'block'});
+        $('body,html').css({
+          'overflow-y':'hidden'
+        });
+        $.ajax({
+          url:"{php echo $this->createMobileUrl('edit')}",
+          data:{
+            id:id
+          },
+          dataType:'JSON',
+          type:'post',
+          success:function(res){
+            if(res.status == 1){
+              var data = res.data;
+              console.log(data);
+              clearForm();
+              $('#province').html(data.province);
+              $('#city').html(data.city);
+              $('#area').html(data.district);
+              $('input[name="addaccount"]').val(data.username);
+              $('input[name="addaddress"]').val(data.address);
+              $('input[name="addphone"]').val(data.phone);
+              $('input[name="telfor"]').val(data.exmobile);
+              $('input[name="teltail"]').val(data.mobile);
+              $('input[name="addemail"]').val(data.mail);
+              if(data.isdefault == 1){
+                console.log('111');
+                // $('input[name="default"]').attr('checked',checked);
+                $('#checkbox1').prop('checked',true).attr('value',1);
+
+              }
+              $('.cvs').css({'display':'block'});
+            }
+
+          }
+        })
+        return false;
+        // $('.cvs').children('input[name=""]')
+    })
+    $('.Qdelete').click(function (e) {
+        if(confirm('确认是否删除?')){
+          e.preventDefault();
+          var thisSpan=$(this).parent().parent().parent();
+          var id = thisSpan.attr('data-id');
+          $.ajax({
+            url:"{php echo $this->createMobileUrl('delete')}",
+            data:{
+              id:id
+            },
+            dataType:'JSON',
+            type:'post',
+            success:function(res){
+              if(res.status == 1){
+                alert('删除成功');
+                location.reload();
+              }else{
+                alert('删除失败');
+              }
+            }
+          })
+        }else{
+          console.log('no');
+        }
+
+    })
+    // 切换选择地址
+    $('.address-list').on('click',function(e){
+      $(this).children('.pub').addClass('active');
+      $(this).siblings().children('.pub').removeClass('active');
+      var that = $(this).children('.tar');
+      var province = that.attr('data-province');
+      var city = that.attr('data-city');
+      var area = that.attr('data-area');
+      var address = that.attr('data-address');
+      var username = that.attr('data-username');
+      var phone = that.attr('data-phone');
+      var addtotal = province + '  ' + city + '  ' + area + '  ' + address ;
+      $('#addaddress').html(addtotal);
+      var userinfo = username + '  ' + phone;
+      $('#adduser').html(userinfo);
+      $('#resultinfo').attr('aid',$(this).attr('data-id'));
+      $('#adduser').attr('data-mobile',phone);
+    })
+})
+function getLi(obj,type){
+  if(type == "province"){
+    var text = $(obj).text();
+    var uid = $(obj).attr('data-id');
+    $('.leave_out_op').animate({
+      'height':'0px'
+    },300);
+    $('#province').html(text);
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('area')}",
+      data:{
+        'type':2,
+        'parent_id':uid
+      },
+      dataType:'JSON',
+      type:'post',
+      success:function(res){
+        if(res.status == 1){
+          var data = res.data;
+          $('.city_op').empty();
+          for(var i = 0;i<data.length;i++){
+            $('.city_op').append('<li onclick="getLi(this,\'city\')" data-pid='+data[i].id+'>'+data[i].region_name+'</li>')
+          }
+        }
+      }
+    })
+  }else if(type == "city"){
+    var text = $(obj).text();
+    var uid = $(obj).attr('data-pid');
+    $('.city_op').animate({
+      'height':'0px'
+    },300);
+    $('#city').html(text);
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('area')}",
+      data:{
+        'type':3,
+        'parent_id':uid
+      },
+      dataType:'JSON',
+      type:'post',
+      success:function(res){
+        if(res.status == 1){
+          var data = res.data;
+          $('.areaS_op').empty();
+          for(var i = 0;i<data.length;i++){
+            $('.areaS_op').append('<li onclick="getLi(this,\'area\')" data-pid='+data[i].id+'>'+data[i].region_name+'</li>')
+          }
+        }
+      }
+    })
+  }else{
+    var text = $(obj).text();
+    $('#area').html(text);
+    $('.areaS_op').animate({
+      'height':'0px'
+    },300);
+  }
+}
+// 保存收货地址
+$('#saveadd').on('click',function(){
+  var eid = $('.cvs').attr('data-eid');
+  console.log(eid);
+  if(eid == '' || eid == null || eid == undefined){
+    console.log('新增');
+    var province = $('#province').text();
+    var city = $('#city').text();
+    var area = $('#area').text();
+    if(province == '省份'){
+      alert('请选择省份');
+      return;
+    }
+    if(city == '市'){
+      alert('请选择市');
+      return;
+    }
+    if(area == '区'){
+      alert('请选择区');
+      return;
+    }
+    var name = $('input[name="addaccount"]').val();
+    var address = $('input[name="addaddress"]').val();
+    var phone = $('input[name="addphone"]').val();
+    if(name == '' || name == null || name == undefined){
+      alert('请填写姓名');
+      return;
+    }
+    if(address == '' || address == null || address == undefined){
+      alert('请填写地址');
+      return;
+    }
+    if(phone == '' || phone == null || phone == undefined){
+      alert('请填写手机号码');
+      return;
+    }
+    var telfor = $('input[name="telfor"]').val();
+    var teltail = $('input[name="teltail"]').val();
+    var email = $('input[name="addemail"]').val();
+    var isDefault = $('input[name="default"]').val();
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('receipt')}",
+      data:{
+        'uid':'{$userid}',
+        'ausername':name,
+        'phone':phone,
+        'exmobile':telfor,
+        'mobile':teltail,
+        'mail':email,
+        'province':province,
+        'city':city,
+        'district':area,
+        'address':address,
+        'isdefault':isDefault
+      },
+      dataType:'JSON',
+      type:'post',
+      success:function(res){
+        if(res.status == 1){
+          var data = res.date;
+          alert('添加成功');
+          location.reload();
+        }
+      }
+    })
+  }else{
+    console.log('更新');
+    var province = $('#province').text();
+    var city = $('#city').text();
+    var area = $('#area').text();
+    var name = $('input[name="addaccount"]').val();
+    var address = $('input[name="addaddress"]').val();
+    var phone = $('input[name="addphone"]').val();
+    var telfor = $('input[name="telfor"]').val();
+    var teltail = $('input[name="teltail"]').val();
+    var email = $('input[name="addemail"]').val();
+    var isDefault = $('input[name="default"]').val();
+    $.ajax({
+      url:"{php echo $this->createMobileUrl('gx')}",
+      data:{
+        'id':eid,
+        'type':'post',
+        'uid':'{$userid}',
+        'ausername':name,
+        'phone':phone,
+        'exmobile':telfor,
+        'mobile':teltail,
+        'mail':email,
+        'province':province,
+        'city':city,
+        'district':area,
+        'address':address,
+        'isdefault':isDefault
+      },
+      type:'post',
+      dataType:'JSON',
+      success:function(res){
+        if(res.status == 1){
+          alert('更新成功');
+          location.reload();
+        }
+      }
+    })
+
+  }
+})
+// 弹窗
+$('#submitbtn').on('click',function(){
+  var aid = $('#resultinfo').attr('aid');
+  if(aid == '' || aid == null || aid == undefined){
+    alert('请先选择地址！');
+    return false;
+  }
+  $('.box').css({
+    'display':'block'
+  });
+  $('body,html').css({
+    'overflow-y':'hidden'
+  });
+})
+// 提交订单
+$('.cfm').on('click',function(){
+  var chooseid = '{$chooseid}';
+  var aid;
+  if(chooseid != ''){
+    aid = chooseid;
+  }else{
+    aid = $('#resultinfo').attr('aid');
+  }
+  var pid = '{$goodid}';
+  var integral = "{$good['marketprice']}";
+  var mobile = $('#adduser').attr('data-mobile');
+  var uid = '{$uidd['phone']}';
+  console.log(chooseid + '~' + aid + '~' + pid + '~' + integral + '~' + mobile);
+  $.ajax({
+    url:"{php echo $this->createMobileUrl('exchange')}",
+    data:{
+      'aid':aid,
+      'pid':pid,
+      'cid':"{$_GPC['cid']}",
+      'mobile':mobile,
+      'integral':integral,
+      'userid': uid
+    },
+    type:'post',
+    dataType:'JSON',
+    success:function(res){
+      console.log(res);
+      if(res.status == 0){
+        $('.box').css({
+          'display':'none'
+        });
+        $('.sorry-box').css({
+          'display':'block'
+        });
+      }else{
+        location.href = "{php echo $this->createMobileUrl('success')}"+'&orderid='+res.orderid;
+      }
+    }
+  })
+})
+// 撤销
+$('.cancel,.box-close').on('click',function(){
+  $('.box').css({
+    'display':'none'
+  });
+  $('body,html').css({
+    'overflow-y':'auto'
+  });
+})
+$('.sorry-close').on('click',function(){
+  $('.sorry-box').css({
+    'display':'none'
+  })
+  $('body,html').css({
+    'overflow-y':'auto'
+  });
+})
+// 清空表单
+function clearForm(){
+  $('#checkbox1').prop('checked',false);
+  $('#province').html('省份');
+  $('#city').html('市');
+  $('#area').html('区');
+  $('input[name="addaccount"]').val('');
+  $('input[name="addaddress"]').val('');
+  $('input[name="addphone"]').val('');
+  $('input[name="telfor"]').val('');
+  $('input[name="teltail"]').val('');
+  $('input[name="addemail"]').val('');
+  $('input[name="default"]').val('');
+}
+</script>
+{template 'footer'}

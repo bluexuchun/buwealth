@@ -1,0 +1,84 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('user',array('op'=>'all'))}">返回用户信息</a></li>
+    <li class="active"><a>详情记录</a></li>
+</ul>
+<div class="main">
+    <form appointion="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">用户详细信息</div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">用户姓名</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$info['name']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">手机号</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$info['phone']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">注册时间</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$registerTime}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">上次登录时间</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$loginTime}">
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">微信绑定情况</label>
+                    <div class="col-xs-12 col-sm-9">
+                      {if $info['isbind']==1}
+                      {php $newname = $fans['openid'].' 昵称：('.$fans['nickname'].')';}
+                      <input type="text" class="form-control" readonly="readonly" value="{$newname} ">
+                      {elseif $info['isbind']==0}
+                      <input type="text" class="form-control" readonly="readonly" value="该用户没有绑定微信">
+                      {/if}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">证件认证情况</label>
+                    <div class="col-xs-12 col-sm-9">
+                      {if $info['isauth']==1}
+                      身份证:<input type="text" class="form-control" readonly="readonly" value="{$info['identity']} ">
+                      {elseif $info['isauth']==2}
+                      护照:<input type="text" class="form-control" readonly="readonly" value="{$info['identity']} ">
+                      {elseif $info['isauth']==3}
+                      港澳通行证:<input type="text" class="form-control" readonly="readonly" value="{$info['identity']} ">
+                      {elseif $info['isauth']==4}
+                      台胞证:<input type="text" class="form-control" readonly="readonly" value="{$info['identity']} ">
+                      {elseif $info['isauth']==0}
+                      <input type="text" class="form-control" readonly="readonly" value="该用户没有认证">
+                      {/if}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">处理情况</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <select name="isauth" id="changeSelect" style="width:100%;">
+                              <option {if $info['isauth'] == 1}selected="selected"{/if} class="form-control" value="1">待认证</option>
+                              <option {if $info['isauth'] == 2}selected="selected"{/if}class="form-control" value="2">认证成功</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="{$id}">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{template 'common/footer'}

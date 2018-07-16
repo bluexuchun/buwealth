@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/loading/loading.css">
+    <style>
+        .place .bck>div>.ico::after{
+            content: "";
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border: 1px solid #333333;
+            transform: rotate(45deg);
+            position: absolute;
+            top: -0.7rem;
+            left: 0.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="cvs">
+
+        <div class="main">
+            <h3 style="color: #BE9D70;margin-bottom: 2rem">新增收货地址</h3>
+            <p style="width: 1rem;height: 1px;background-color: #BE9D70;margin-bottom: 2rem"></p>
+            <div class="place">
+                <p class="float_l" style="margin: 0 2rem 0 0">* 所在地区</p>
+                <div class="float_l bck leave_out">
+                    <div class="optionO" style="position: relative;display: flex ">
+                        <span style="display: inline-block;margin-left: 1.5rem;margin-right: 2rem;">省份</span>
+                        <span class="ico"
+                              style="display: inline-block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden">
+                        </span>
+                    </div>
+                    <ul class="leave_out_op">
+                        <li><p>上海</p></li>
+                        <li><p>武汉</p></li>
+                    </ul>
+                </div>
+                <div class="float_l bck city">
+                    <div class="optionT" style="position: relative;display: flex ">
+                        <span style="display: inline-block;margin-left: 1.5rem;margin-right: 3rem;">市</span>
+                        <span class="ico"
+                              style="display: inline-block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden">
+                        </span>
+                    </div>
+                    <ul class="city_op">
+                        <li><p>上海</p></li>
+                        <li><p>武汉</p></li>
+                    </ul>
+                </div>
+                <div class="float_l bck area">
+                    <div class="areaS" style="position: relative;display: flex ">
+                        <span class="" style="display: inline-block;margin-left: 1.5rem;margin-right: 3rem;">区</span>
+                        <span class="ico float_r"
+                              style="display:block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden;">
+                        </span>
+                    </div>
+                    <ul class="areaS_op">
+                        <li><p>上海</p></li>
+                        <li><p>武汉</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="name">
+                <p class="float_l">* 收货人姓名</p>
+                <div class="float_l">
+                    <input type="text" value="">
+                </div>
+            </div>
+            <div class="name">
+                <p class="float_l" style="margin-right: 2rem" >* 详细地址</p>
+                <div class="float_l">
+                    <input type="text" value="">
+                </div>
+            </div>
+            <div class="name">
+                <p class="float_l" style="margin-right: 2rem">* 手机号码</p>
+                <div class="float_l">
+                    <input type="tel" value="">
+                </div>
+            </div>
+            <div class="filedTel">
+                <p class="float_l text" style="margin-right: 2rem"><span style="color: #141414;">* </span>固定电话</p>
+                <div class="float_l">
+                        <input type="tel" value="">
+                </div>
+                <p class="line float_l"></p>
+                <div class="float_l">
+                        <input type="tel" value="">
+                </div>
+            </div>
+            <div class="name">
+                <p class="float_l" style="margin-right: 2rem"><span style="color: #141414;">* </span>邮箱地址</p>
+                <div class="float_l">
+                    <input type="email" value="">
+                </div>
+            </div>
+            <p style="color: #ffffff;margin-left: 7rem;font-size: 0.8rem">用来接收订单提醒邮件，便于您及时了解订单状态</p>
+            <div class="butBox">
+                <div class="mycheck float_l">
+                    <input type="checkbox" value="1" id="checkbox1" name="" />
+                    <label for="checkbox1"></label>
+                </div>
+                <span class="float_l" style="color: #ffffff;font-size: 0.8rem">设为默认地址</span>
+                <div style="clear: both"></div>
+            </div>
+            <div class="sub">
+                <a href="#">保存收货人信息</a>
+            </div>
+        </div>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/loading/loading.js"></script>
+</body>
+</html>

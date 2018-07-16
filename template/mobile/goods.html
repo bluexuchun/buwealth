@@ -1,0 +1,42 @@
+{template 'header'}
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/goods/goods.css">
+<link rel="stylesheet" href="{MODULE_URL}template/mobile/css/goods/media.css">
+<!--banner部分-->
+<div class="banner">
+  <img src="{php echo tomedia($good['thumb'])}" alt="">
+</div>
+<!--exchange部分-->
+<div class="exchange">
+    <div class="exchange_main">
+        <div class="exchange_l">
+            <h2 >{$good['title']}</h2>
+            <h5>{$good['title']}</h5>
+            <p></p>
+        </div>
+        {if $inits['setting']['showCredit'] == 1}
+        <div class="exchange_r">
+            <div class="exchange_r_t">
+                <span class="exchange_r_t_l">所需积分：</span>
+                <div class="num"> {$good['marketprice']}</div>
+                <div class="num1"> {$good['marketprice']}</div>
+            </div>
+            <p class="wire"></p>
+            <p class="text"><a href="#" onclick="goOrder()">立即兑换</a></p>
+        </div>
+        {/if}
+    </div>
+</div>
+<div class="relator">
+  {$good['content']}
+</div>
+<script type="text/javascript">
+  function goOrder(){
+    var is_login = $('#li-login').attr('data-login');
+    if(is_login == 1){
+      location.href = "{php echo $this->createMobileUrl('createorder')}&goodid="+"{$good['id']}"+'&cid='+"{$_GPC['cid']}";
+    }else{
+      alert('请先登录！');
+    }
+  }
+</script>
+{template 'footer'}

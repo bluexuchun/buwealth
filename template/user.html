@@ -1,0 +1,191 @@
+{template 'common/header'}
+<ul class="nav nav-tabs">
+    <li {if $op == 'all'}class="active"{/if}><a href="{php echo $this->createWebUrl('user',array('op'=>'all'))}">全部记录</a></li>
+    <li {if $op == 'confrim'}class="active"{/if}><a href="{php echo $this->createWebUrl('user',array('op'=>'detail'))}">详细记录</a></li>
+</ul>
+{if $op == 'all'}
+<div class="main">
+    <form appointion="" method="post" class="form-horizontal form" id="form">
+      <div class="panel panel-info">
+          <div class="panel-heading">筛选</div>
+          <div class="panel-body table-responsive">
+            <div class="form-group">
+                <label class="col-xs-12 col-sm-3 col-lg-2 control-label">姓名/手机号</label>
+                <div class="col-xs-12 col-sm-9">
+                    <input type="text" class="form-control" name="search">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                    <input class="btn btn-success" type="submit" name="name_search_submit" value="搜索">
+          					<input type="hidden" name="token" value="{$_W['token']}"/>
+                </div>
+            </div>
+            <div class="form-group">
+      				<label class="col-sm-2 control-label">注册时间</label>
+      				<div class="col-sm-5">
+      					{php echo tpl_form_field_daterange('datelimit', array('start' => $_GPC['datelimit']['start'],'end' => $_GPC['datelimit']['end']), false)}
+      				</div>
+      			</div>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                    <div class="btn btn-success" data-name="search_submit">搜索</div>
+          					<input type="hidden" name="token" value="{$_W['token']}"/>
+          					<input class="btn btn-primary" type="submit" name="export_submit" id="export_submit" value="导出">
+                </div>
+            </div>
+            <script type="text/javascript">
+              $('div[data-name="search_submit"]').on('click',function(){
+                var datelimitst = $('input[name="datelimit[start]"]').val();
+                var datelimiten = $('input[name="datelimit[end]"]').val();
+                location.href = "{php echo $this->createWebUrl('user',array('op'=>'all'))}&datelimitst="+datelimitst+'&datelimiten='+datelimiten;
+              })
+            </script>
+          </div>
+      </div>
+    </form>
+    <form appointion="" method="post" class="form-horizontal form" id="form" enctype="multipart/form-data">
+      <div class="panel panel-info">
+          <div class="panel-heading">批量导入用户积分</div>
+          <div class="panel-body table-responsive">
+            <div class="form-group">
+      				<label class="col-sm-2 control-label"></label>
+      				<div class="col-sm-5">
+      					<input type="file" name="excel" />
+      				</div>
+      			</div>
+            <div class="form-group">
+      				<label class="col-sm-2 control-label"></label>
+      				<div class="col-sm-5">
+      					<a href="{MODULE_URL}exceldemo/chanpinrengou.xlsx">点击下载产品认购模板</a><br/>
+                <a href="{MODULE_URL}exceldemo/huodongjiangli.xlsx">点击下载活动奖励模板</a><br/>
+                <a href="{MODULE_URL}exceldemo/kehutuijian.xlsx">点击下载客户推荐模板</a><br/>
+                <a href="{MODULE_URL}exceldemo/qita.xlsx">点击下载其他模板</a><br/>
+      				</div>
+      			</div>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+          					<input type="hidden" name="token" value="{$_W['token']}"/>
+          					<input class="btn btn-primary" type="submit" name="import_submit" id="import_submit" value="导入">
+                </div>
+            </div>
+          </div>
+      </div>
+    </form>
+    <div class="panel panel-info">
+        <div class="panel-heading">用户管理</div>
+        <div class="panel-body table-responsive">
+            <table class="table table-hover" style="font-size:14px;">
+                <thead class="navbar-inner">
+                  <tr>
+                      <th>姓名</th>
+                      <th>手机</th>
+                      <th>注册时间</th>
+
+                      <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {if !empty($users)}
+                    {loop $users $key $user}
+                    <tr>
+                        <td>{$user['name']}</td>
+                        <td>{$user['phone']}</td>
+                        <th>{php echo date('Y-m-d H:i:s',$user['registerTime'])}</th>
+
+                        <td>
+                            <a href="{php echo $this->createWebUrl('userappoint', array('op'=>'all', 'userid'=>$user['id']));}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="预约记录">预约记录</a>
+                            <a href="{php echo $this->createWebUrl('userrecord', array('op'=>'detail', 'userid'=>$user['id']));}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="答题记录">答题记录</a>
+                            <a href="{php echo $this->createWebUrl('usercredit',array('userid'=>$user['id']));}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="积分操作">积分操作</a>
+                            <a href="{php echo $this->createWebUrl('useraddress',array('userid'=>$user['id']));}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="地址操作">地址操作</a>
+                            <a href="{php echo $this->createWebUrl('userdetail',array('userid'=>$user['id']));}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="详细信息">详细信息</a>
+                            <a href="{php echo $this->createWebUrl('orderdetail',array('userid'=>$user['id']));}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="详细信息">查看订单</a>
+                            <!-- <a onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" href="{php echo $this->createWebUrl('appoint', array('op'=>'delete', 'id'=>$user['id']));}" class="btn btn-default btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="删除"><i class="fa fa-times"></i></a> -->
+                        </td>
+                    </tr>
+                    {/loop}
+                    {else}
+                    <tr>
+                        <td colspan="5" class="text-center">尚未添加主题</td>
+                    </tr>
+                    {/if}
+
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+    </div>
+</div>
+{/if}
+{if $op == 'detail'}
+<div class="main">
+    <form appointion="" method="post" class="form-horizontal form" id="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">用户记录</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">用户姓名</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['name']}">
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">用户手机</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['phone']}">
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">省</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['area1']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">市</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['area2']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">何处预约</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{$content['from']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">提交时间</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{php echo date('Y-m-d H:i:s',$content['createtime'])}">
+                    </div>
+                </div>
+                {if !empty($content['statustime'])}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">受理时间</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="text" class="form-control" readonly="readonly" value="{php echo date('Y-m-d H:i:s',$content['statustime'])}">
+                    </div>
+                </div>
+                {/if}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">状态</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <select name="status" class="form-control">
+                          <option value="0">待受理</option>
+                          <option value="1">已处理</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">
+                        <input type="hidden" name="id" value="{$content['id']}">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary" id="dosubmit">
+                        <input type="hidden" name="token" value="{$_W['token']}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{/if}
+{template 'common/footer'}

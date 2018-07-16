@@ -1,0 +1,91 @@
+{template 'header'}
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/invest/invest.less">
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/invest/invest-media.css">
+<script src="{MODULE_URL}template/mobile/js/less-1.7.0.js" type="text/javascript"></script>
+<div class="invest">
+  <div class="invest-content">
+    <ul class="invest-ul">
+      {loop $contents $key $value}
+      {if $inits['isMobile']}
+      {php $detail = htmlspecialchars_decode($value['invPcontent'])}
+      {else}
+      {php $detail = htmlspecialchars_decode($value['invContent'])}
+      {/if}
+      {if ($key+1)%2 == 0}
+      <li class="invest-ul-li-spe">
+        <input type="hidden" class="invest-article" value='{$detail}'>
+        <div class="li-img">
+          <img src="{php echo tomedia($value['invIcon'])}" alt="">
+        </div>
+        <div class="li-word">
+          <div class="li-content">
+            <div class="li-content-title">{$value['invTitle']}</div>
+            <div class="li-content-desc">{$value['invDesc']}</div>
+          </div>
+          <div class="li-word-more">
+            <img src="{MODULE_URL}template/mobile/images/more2.png" alt="">
+          </div>
+        </div>
+      </li>
+      {else}
+      <li class="invest-ul-li">
+        <input type="hidden" class="invest-article" value='{$detail}'>
+        <div class="li-img">
+          <img class="li-img" src="{php echo tomedia($value['invIcon'])}" alt="">
+        </div>
+        <div class="li-word">
+          <div class="li-content">
+            <div class="li-content-title">{$value['invTitle']}</div>
+            <div class="li-content-desc">{$value['invDesc']}</div>
+          </div>
+          <div class="li-word-more">
+            <img src="{MODULE_URL}template/mobile/images/more2.png" alt="">
+          </div>
+        </div>
+      </li>
+      <div class="invest-border">
+        <img src="{MODULE_URL}template/mobile/images/invest-border.png" alt="">
+      </div>
+      {/if}
+      {/loop}
+    </ul>
+    <div class="invest-border">
+      <img src="{MODULE_URL}template/mobile/images/invest-border.png" alt="">
+    </div>
+  </div>
+</div>
+<div class="invest-article">
+  <div class="invest-black"></div>
+  <div class="articles">
+    <div class="articles-close">
+      <div class="articles-close-content">
+        <img src="{MODULE_URL}template/mobile/images/close.png" alt="">
+        <div class="close-word">Close</div>
+      </div>
+    </div>
+    <div class="articles-detail" id="articles-content">
+
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('.invest-ul li').on('click',function(){
+    $('#articles-content').empty();
+    var html = $(this).find('.invest-article').val();
+    $('#articles-content').append(html);
+    $('.invest-article').css('display','flex');
+    $('body,html').css({
+      'overflow-y':'hidden',
+      'position':'fixed'
+    });
+  })
+  $('.articles-close-content,.invest-black').on('click',function(){
+    $('#articles-content').empty();
+    $('.invest-article').css('display','none');
+    $('body,html').css({
+      'overflow-y':'auto',
+      'position':'relative'
+    });
+  });
+</script>
+{template 'footer'}

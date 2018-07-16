@@ -1,0 +1,125 @@
+@media screen  and (max-width: 500px){
+	       html,body{
+        background-color: #232323;
+    }
+
+    .cvs{
+        background-color: #141414;
+        display: none;
+    }
+    .cvs .close{
+        display: none;
+
+    }
+        .cvs .main{
+        width: 100%;
+        /*height: 10rem;*/
+        background-color: #141414;
+        height: 100%;
+        margin: 0 auto;
+        margin-top: 0;
+        padding: 0;
+    }
+    .cvs .main .m_h,.m_h1{
+        display: none ;
+    }
+        .cvs .main .colladd{
+        width: 100%;
+        height: 3rem;
+        display: block;
+        border-bottom: 1px solid #333333;
+
+    }
+        .star{
+        display: none;
+    }
+     .cvs .main .name{
+        /*padding: 1rem 0;*/
+        width: 100%;
+        height: 3rem;
+        margin-bottom: 0;
+        border-bottom: 1px solid #333333;
+    }
+    .cvs .main .move{
+        height: 4.5rem;
+    }
+
+    .cvs .main .name > p{
+        margin-left: -1rem;
+        font-size: 14px;
+        margin-top: 0.5rem;
+    }
+    .cvs .main .name > div{
+        width: 14rem;
+        border: none;
+        margin-top: 0.6rem;
+    }
+    .cvs .main .move>div{
+        height: 3rem;
+        width: 15rem;
+    }
+    .cvs .main .name > div>input{
+        border: none;
+    }
+.cvs .main .move>div>input{
+    }
+    .PC_input{
+        display: none;
+    }
+    .m_input{
+        display: block;
+    }
+    .cvs .main .name >.spe{
+        margin-left: 2rem;
+    }
+    .PC_style{
+        display: none;
+    }
+    .cvs .main .name >.tran{
+        margin-top: 0.5rem;
+    }
+    .cvs .main .name >div>textarea{
+        width: 15rem;
+        margin-top: 0.4rem;
+        margin-left: 0.9rem;
+        font-size: .675rem;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        outline-color: #141414;
+        color: #ffffff;
+        height: 3rem;
+    }
+     .cvs .main .butBox{
+        margin:1rem 0 1.5rem 2rem;
+    }
+    .cvs .main .qsq{
+        width: 20rem;
+        margin: 0 auto;
+    }
+    .cvs .main .qsq .save-btn{
+        display: inline-block;
+        width: 100%;
+				height:2.5rem;
+        line-height: 2.5rem;
+				background-color: #BE9D70;
+				border-radius: 0.3rem;
+        text-decoration: none;
+        color: black;
+				text-align: center;
+				margin:1rem 0rem;
+    }
+		.cvs .main .qsq .delete-btn{
+        display: none;
+        width: 100%;
+				height:2.5rem;
+        line-height: 2.5rem;
+				background-color: #333333;
+				border-radius: 0.3rem;
+        text-decoration: none;
+        color: black;
+				text-align: center;
+				color:#BE9D70;
+    }
+
+
+}

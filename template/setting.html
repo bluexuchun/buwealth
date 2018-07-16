@@ -1,0 +1,145 @@
+{template 'common/header'}
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+        <div class="panel panel-info">
+            <div class="panel-heading">网站基本信息</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">网站标题</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="bu_title" class="form-control" value="{$settings['bu_title']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">Logo标题</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="logo_title" class="form-control" value="{$settings['logo_title']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label">Logo</label>
+                    <div class="col-sm-8 col-xs-12">
+                        {php echo tpl_form_field_image('bu_logo', $settings['bu_logo']);}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">网站底部信息</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label">底部Logo</label>
+                    <div class="col-sm-8 col-xs-12">
+                        {php echo tpl_form_field_image('foot_logo', $settings['foot_logo']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label">底部二维码</label>
+                    <div class="col-sm-8 col-xs-12">
+                        {php echo tpl_form_field_image('bu_ewm', $settings['bu_ewm']);}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">地理位置</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="address" class="form-control" value="{$settings['address']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">消息</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="message" class="form-control" value="{$settings['message']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">热线电话</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="contact" class="form-control" value="{$settings['contact']}">
+                    </div>
+                </div>
+                {php $serTime = iunserializer($settings['serviceTime'])}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">服务时间</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="serviceTime[0][fTime]" class="form-control" style="width:45%;float:left;" value="{$serTime[0][fTime]}">
+                        <span style="display:inline-block;width:5%;height:34px;float:left;text-align:center;line-height:34px;">~</span>
+                        <input type="text" name="serviceTime[0][sTime]" class="form-control" style="width:45%;float:left;" value="{$serTime[0][sTime]}">
+                        <span style="display:inline-block;width:5%;height:34px;float:left;text-align:center;line-height:34px;">AM</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="serviceTime[1][fTime]" class="form-control" style="width:45%;float:left;" value="{$serTime[1][fTime]}">
+                        <span style="display:inline-block;width:5%;height:34px;float:left;text-align:center;line-height:34px;">~</span>
+                        <input type="text" name="serviceTime[1][sTime]" class="form-control" style="width:45%;float:left;" value="{$serTime[1][sTime]}">
+                        <span style="display:inline-block;width:5%;height:34px;float:left;text-align:center;line-height:34px;">PM</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">版权信息</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="copyright" class="form-control" value="{$settings['copyright']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">短信消息开关</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <label>
+                            <div class="switch switch{php echo $settings['dxtoggle'] == 1?'On':'Off'}" onclick="changeStatus(this,'dxtoggle')"></div>
+                            <input type="hidden" name="dxtoggle" value="{$settings['dxtoggle']}">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">模板消息开关</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <label>
+                            <div class="switch switch{php echo $settings['mbtoggle'] == 1?'On':'Off'}" onclick="changeStatus(this,'mbtoggle')"></div>
+                            <input type="hidden" name="mbtoggle" value="{$settings['mbtoggle']}">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">兑换短信模板</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="dhmb" class="form-control" value="{$settings['dhmb']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">购买短信模板</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="gmmb" class="form-control" value="{$settings['gmmb']}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-lg-2 control-label">显示积分</label>
+                    <div class="col-xs-12 col-sm-9">
+                        <label>
+                            <div class="switch switch{php echo $settings['showCredit'] == 1?'On':'Off'}" onclick="changeStatus(this,'showCredit')"></div>
+                            <input type="hidden" name="showCredit" value="{$settings['showCredit']}">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-sm-12">
+            <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" />
+            <input type="hidden" name="token" value="{$_W['token']}" />
+        </div>
+    </form>
+    <script>
+    function changeStatus (obj,name) {
+      console.log(name);
+        if($(obj).hasClass('switchOn')){
+            $(obj).removeClass('switchOn').addClass('switchOff');
+            $('input[name="'+name+'"]').val(0);
+        }else{
+            $(obj).removeClass('switchOff').addClass('switchOn');
+            $('input[name="'+name+'"]').val(1);
+        }
+
+    }
+    </script>
+</div>
+{template 'common/footer'}

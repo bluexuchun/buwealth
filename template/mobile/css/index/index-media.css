@@ -1,0 +1,95 @@
+@media screen and (min-width:1680px){
+
+}
+@media screen and (min-width:1280px) and (max-width: 1680px) {
+    .black-detail {
+      padding: 2rem 0rem;
+    }
+    .black-close {
+        margin-bottom: 0.5rem;
+    }
+    .swiper-container-notice {
+      margin-top:3rem;
+    }
+}
+@media screen and (max-width:1600px){
+  .swiper-button-next, .swiper-container-rtl .swiper-button-prev{
+    background-image: url('../../images/right-arow.png');
+    right: 15px;
+    left: auto;
+  }
+  .swiper-button-prev, .swiper-container-rtl .swiper-button-next{
+    background-image: url('../../images/left-arow.png');
+    left: 15px;
+    right: auto;
+  }
+}
+@media screen and (max-width:1400px){
+    .black-detail .activity-lists{
+      margin-top:0.5rem;
+    }
+    .black-close .close-content{
+      width:4rem;
+    }
+    .black-close .close-content .close{
+      font-size:1rem;
+    }
+}
+@media screen and (max-width: 1280px) {
+    .black-close .close-content{
+      width:3.5rem;
+    }
+    .black-detail{
+        padding:2rem 4rem;
+    }
+    .black-close {
+        margin-bottom: 0rem;
+    }
+    .black-title img {
+        height: 3rem;
+    }
+    .swiper-container-notice{
+        margin-top:2.5rem;
+    }
+}
+@media screen and (max-width: 500px){
+  .black-detail{
+    padding:2rem 0rem;
+  }
+  .activityApp{
+    text-align: center;
+  }
+  .black-detail .activity-lists .activity-item img{
+    width:80%;
+  }
+  .black-detail .activity-lists .activity-item a .yy-content .yy-btn{
+    display: none;
+  }
+  .black-detail .activity-lists .activity-item a .yy-content .pyy-btn{
+    display: block;
+    margin:0 auto;
+  }
+  .black-close .close-content{
+    margin-bottom:1.5rem;
+  }
+  .yy-content{
+    margin-top: 2.5rem;
+  }
+  .swiper-container{
+    height:100%;
+  }
+  .swiper-wrapper{
+    height:100%;
+  }
+  .swiper-slide img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
+  .index_main{
+    height:80vh;
+  }
+  .activity{
+    right:2rem;
+  }
+}

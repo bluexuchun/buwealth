@@ -1,0 +1,271 @@
+.float_l{
+  float: left;
+}
+.float_r{
+  float: right;
+}
+body{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #282828;
+}
+.cvs{
+  width: 100%;
+  height: 100%;
+  background-color: #282828;
+  position: relative;
+  .main{
+    position: absolute;
+    width: 54rem;
+    height: 41rem;
+    background-color: #141414;
+    top: 50%;
+    left: 50%;
+    margin: auto -27rem;
+    padding: 4rem;
+    .place{
+      height: 2rem;
+      color: #ffffff;
+      line-height: 2rem;
+      margin-bottom: 1rem;
+      >div{
+        margin-right: 1rem;
+        cursor:pointer;
+        width: 8rem;
+        height: 2rem;
+        border: 1px solid #333333;
+        box-sizing: border-box;
+        >span{
+        }
+      }
+      .leave_out{
+        position: relative;
+        >ul{
+          overflow: hidden;
+          height: 0;
+          position: absolute;
+          width: 7.9rem;
+          border: 1px solid #333333;
+          margin: 0;
+          padding: 0;
+          background-color: #141414;
+          top: 1.9rem;
+          left: -0.06rem;
+          >li{
+            list-style: none;
+            width: 8rem;
+            height: 2rem;
+            cursor: pointer;
+            &:hover{
+              background-color: #282828;
+            }
+            >p{
+              margin: 0 0 0 1.5rem;
+
+            }
+          }
+        }
+      }
+      .city{
+        position: relative;
+        >ul{
+          overflow: hidden;
+          height: 0;
+          position: absolute;
+          width: 7.9rem;
+          border: 1px solid #333333;
+          margin: 0;
+          padding: 0;
+          background-color: #141414;
+          top: 1.9rem;
+          left: -0.06rem;
+          >li{
+            list-style: none;
+            width: 8rem;
+            height: 2rem;
+            cursor: pointer;
+            &:hover{
+              background-color: #282828;
+            }
+            >p{
+              margin: 0 0 0 1.5rem;
+
+            }
+          }
+        }
+      }
+      .area{
+        position: relative;
+        >ul{
+          overflow: hidden;
+          height: 0;
+          position: absolute;
+          width: 7.9rem;
+          border: 1px solid #333333;
+          margin: 0;
+          padding: 0;
+          background-color: #141414;
+          top: 1.9rem;
+          left: -0.06rem;
+          >li{
+            list-style: none;
+            width: 8rem;
+            height: 2rem;
+            cursor: pointer;
+            &:hover{
+              background-color: #282828;
+            }
+            >p{
+              margin: 0 0 0 1.5rem;
+
+            }
+          }
+        }
+      }
+    }
+    .name{
+      height: 2rem;
+      color: #ffffff;
+      line-height: 2rem;
+      margin-bottom: 1rem;
+      >p{
+        margin: 0 1rem 0 0;
+      }
+      >div{
+        width: 24rem;
+        height: 2rem;
+        border: 1px solid #333333;
+        overflow: hidden;
+        input{
+          width: 23rem;
+          height: 1.7rem;
+          border: none;
+          background-color: rgba(0,0,0,0);
+          outline-color: #141414;
+          color: #ffffff;
+          margin-left: 1rem;
+        }
+      }
+    }
+    .filedTel{
+      height: 2rem;
+      color: #ffffff;
+      line-height: 2rem;
+      margin-bottom: 1rem;
+      >.text{
+        margin: 0 1rem 0 0;
+      }
+      >div{
+        overflow: hidden;
+        &:nth-child(2){
+          width: 5rem;
+          height: 2rem;
+          border: 1px solid #333333;
+          overflow: hidden;
+          input{
+            width: 5rem;
+            height: 1.7rem;
+            border: none;
+            background-color: rgba(0,0,0,0);
+            outline-color: #141414;
+            color: #ffffff;
+            margin-left: 1rem;
+          }
+        }
+        &:nth-child(4){
+          width: 16rem;
+          height: 2rem;
+          border: 1px solid #333333;
+          input{
+            width: 16rem;
+            height: 1.7rem;
+            border: none;
+            background-color: rgba(0,0,0,0);
+            outline-color: #141414;
+            color: #ffffff;
+            margin-left: 1rem;
+          }
+        }
+
+      }
+      .line{
+        width: 1rem;
+        height: 1px;
+        background-color: #333333;
+        margin: 1rem 1rem 0 1rem;
+
+      }
+      >p{
+        font-size: 1rem;
+        color: #ffffff;
+      }
+    }
+    .butBox{
+      margin: 2rem 0 2rem 7rem;
+      .mycheck {
+        width: 1.5rem;
+        position: relative;
+      }
+      .mycheck input[type=checkbox] {
+        visibility: hidden;
+      }
+      .mycheck label {
+        cursor: pointer;
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        top: 0;
+        left: 0;
+        background: #141414;
+        border:2px solid #333333;
+        //-moz-border-radius: 3px;      /* Gecko browsers */
+        //-webkit-border-radius: 3px;   /* Webkit browsers */
+        //border-radius:3px;            /* W3C syntax */
+      }
+      .mycheck label:after {
+        opacity: 0;
+        content: '';
+        position: absolute;
+        width: 0.5rem;
+        height: 0.4rem;
+        background: transparent;
+        top: 0.2rem;
+        left: 0.2rem;
+        border: 2px solid #333;
+        border-top: none;
+        border-right: none;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      /*.mycheck label:hover::after {*/
+      /*opacity: 0.5;*/
+      /*}*/
+      .mycheck input[type=checkbox]:checked + label:after {
+        opacity: 1;
+      }
+    }
+    .sub{
+      width: 15rem;
+      height: 3rem;
+      border: 1px solid #BE9D70;
+      border-radius: 0.5rem;
+      margin-left: 7rem;
+      overflow: hidden;
+      a{
+        display: block;
+        width: 15rem;
+        height: 3rem;
+        color: #BE9D70;
+        text-decoration: none;
+        text-align: center;
+        line-height: 3rem;
+      }
+    }
+
+  }
+}

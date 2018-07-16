@@ -1,0 +1,131 @@
+@media screen and (min-width:1680px){
+
+}
+@media screen and (min-width:1400px) and (max-width: 1680px) {
+
+}
+@media screen and (max-width:1400px){
+  .msgs-ul .item-word-title{
+    font-size:1.2rem;
+  }
+  .msgs-ul .item-word-desc{
+    font-size:0.875rem;
+    margin-top:1.5rem;
+  }
+  .msgs-ul .item-word-btn img{
+    height:3.5rem;
+  }
+  .msgs-ul .line img{
+    width:72%;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .msgs-content{
+    padding:8rem 11rem;
+  }
+  .msgs-ul .item-word-title {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width:1000px){
+  .msgs-ul .item{
+    flex-direction: column;
+  }
+  .msgs-ul .item-img{
+    width:100%;
+    height:400px;
+    overflow: hidden;
+  }
+  .msgs-ul .item-img img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
+  .msgs-ul .item-word{
+    width: 100%;
+    position: relative;
+  }
+  .msgs-ul .item-word-title{
+    padding:1rem 0rem;
+    width:90%;
+  }
+  .msgs-ul .item-word-btn{
+    padding:1rem 0rem;
+    width:90%;
+    text-align: right;
+  }
+  .msgs-content{
+    padding:8rem 5rem;
+  }
+  .msgs-ul .line img{
+    width:100%;
+  }
+}
+@media screen and (max-width:650px){
+  .msgs-ul .item-img{
+    width:100%;
+    height:300px;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width:500px){
+  .msgs-content {
+    padding: 5rem 2rem;
+  }
+  .msgs-ul .line img{
+    width:auto;
+    height:0.4rem;
+  }
+  .msgs-window-close .content{
+    margin-right:0.5rem;
+  }
+  .msgs-window-content {
+    width: 90%;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    margin-left: -45%;
+    z-index: 6;
+    overflow: hidden;
+    overflow-y: auto;
+    color: #fff;
+  }
+  .msgs-window-content{
+    width:100%;
+    margin-left:-50%;
+  }
+  .msgs-window-close {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 0rem;
+    padding:1.5rem 0rem 0rem;
+    position: fixed;
+    left: 50%;
+    margin-left: -50%;
+    background: rgba(0,0,0,0.8);
+  }
+  .msgs-window-article{
+    padding:8rem 0rem;
+  }
+  .msgs-ul .item-word{
+    display: none;
+  }
+  .msgs-ul .item-word-phone{
+    display: flex;
+  }
+}
+@media screen and (min-width:415px) and (max-width:800px){
+
+}
+@media screen and (min-width:360px) and (max-width: 415px) {
+
+}
+@media screen and (min-width:321px) and (max-width:360px){
+
+}
+@media screen and (max-width:320px){
+
+}

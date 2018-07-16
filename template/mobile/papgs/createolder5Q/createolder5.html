@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/createolder5/createolder5.css">
+    <link rel="stylesheet" href="css/createolder5/media.css">
+    <style>
+        .pc-add::after{
+            content: url("images/createolder5/icon添加.png");
+            position: absolute;
+            right: 0;
+            top: 0.09rem;
+        }
+        /*点击li的样式*/
+          .active{
+              background: url("./images/createolder5/选中框.png") no-repeat;
+              background-size: cover;
+          }
+        .place .bck>div>.ico::after{
+            content: "";
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border: 1px solid #333333;
+            transform: rotate(45deg);
+            position: absolute;
+            top: -0.7rem;
+            left: 0.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="createOlder">
+        <div class="createOlder_main">
+            <div class="PC-box1">
+                <h2>创建订单</h2>
+                <img class="min-nav float_r" src="images/createolder5/流程@2x.png" alt="">
+                <div style="clear: both"></div>
+                <p class="minline"></p>
+            </div>
+            <div class="m-box1">
+                <a href="#"><</a>
+                <span>创建订单</span>
+            </div>
+            <div class="address">
+                <p class="float_l">确认收货地址</p>
+                <p class="float_r" style="margin-bottom: 1rem"><a href="#" class="pc-add">新增收货地址 &nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+                <div style="clear: both"></div>
+                <p class="min-line"></p>
+                <ul>
+                    <li class="">
+                        <span class="pub" style="margin-right: 5rem;padding: 0.5rem 3rem;
+                        background-color:#232323;">王悠悠</span>
+                        <span  class="default tar">上海 上海市 徐汇区 星联科研大厦1号楼 13215682749
+                        </span>
+                        <div class="float_r editor"  style="margin-right: 1rem">
+                            <span style="font-size: 1rem;color: #BE9D70;line-height: 1rem">
+                                 <a href="#" class="Qdefault" style="line-height: 2rem;color: #BE9D70">设为默认地址</a>
+                                <a href="#" style="margin-left: 1.5rem;color: #BE9D70">编辑</a>
+                                <a href="#" style="margin-left: 1.5rem;color: #BE9D70">删除</a>
+                            </span>
+                        </div>
+
+                    </li>
+                    <li class="">
+                        <span class="active pub" style="margin-right: 5rem;padding: 0.5rem 3rem;
+                        background-color:#232323;">王凤间</span>
+                        <span style="" class="tar">上海 上海市 闸北区 场中路2160弄3号207室 18927465332</span>
+                        <div class="float_r editor"  style="margin-right: 1rem">
+                            <span style="font-size: 1rem;color: #BE9D70;line-height: 1rem">
+                                 <a href="#" class="Qdefault" style="line-height: 2rem;color: #BE9D70">设为默认地址</a>
+                                <a href="#" style="margin-left: 1.5rem;color: #BE9D70">编辑</a>
+                                <a href="#" style="margin-left: 1.5rem;color: #BE9D70">删除</a>
+                            </span>
+                        </div>
+
+                    </li>
+                    <li class="">
+                        <span class="pub" style="margin-right: 5rem;padding: 0.5rem 3rem;
+                        background-color:#232323;">王悠悠</span>
+                        <span class="tar">上海 上海市 徐汇区 星联科研大厦1号楼 13215682749
+                        </span>
+                        <div class="float_r editor"  style="margin-right: 1rem">
+                            <span style="font-size: 1rem;color: #BE9D70;line-height: 1rem">
+                                 <a href="#" class="Qdefault" style="line-height: 2rem;color: #BE9D70">设为默认地址</a>
+                                <a href="#" style="margin-left: 1.5rem;color: #BE9D70">编辑</a>
+                                <a href="#" style="margin-left: 1.5rem;color: #BE9D70">删除</a>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="">
+                        <span class="pub" style="margin-right: 5rem;padding: 0.5rem 3rem;
+                        background-color:#232323;">王凤间</span>
+                        <span style="" class="tar">上海 上海市 闸北区 场中路2160弄3号207室 18927465332
+                        </span>
+                        <div class="float_r editor"  style="margin-right: 1rem">
+                            <span style="font-size: 1rem;color: #BE9D70;line-height: 1rem">
+                                 <a href="#" class="Qdefault" style="line-height: 2rem;color: #BE9D70">设为默认地址</a>
+                                <a href="#" style="margin-left: 1.5rem;color: #BE9D70">编辑</a>
+                                <a href="#" style="margin-left: 1.5rem;color: #BE9D70">删除</a>
+                            </span>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="m-address">
+                <!--<span>新增收货地址</span>-->
+                <!--<a href="#" class="m-add"><img src="images/createolder5/icon添加.png" alt=""></a>-->
+                <ul style="width: 100%;margin: 0;padding: 0;">
+                    <li style="list-style: none;width: 100%;height: 4.5rem">
+                        <div class="float_l" style="margin-left: 1.5rem;margin-top:0.7rem ;">
+                            <span style="color: #ffffff">王悠悠   &nbsp;    &nbsp;1321568274</span>
+                            <span style="display: inline-block;color: #ffffff;border: 1px solid #ffffff;margin-left:1rem ;">默认地址</span>
+                            <p style="margin: 0;margin-top: 0.2rem;color: #ffffff">上海上海市徐汇区星联科研大厦1号楼</p>
+                        </div>
+                        <p class="float_r" style="margin: 0;line-height: 4.5rem;font-size: 1.5rem;color: #ffffff;margin-right:1.5rem ;">></p>
+                    </li>
+                </ul>
+            </div>
+
+            <p class="shoptext">商品详情</p>
+            <ul>
+                <li>
+                    <img src="images/createolder5/shop.jpg" alt="">
+                    <div class="Vnum">
+                        <span>全球机场VIP通道</span>
+                        <span>420 积分</span>
+                        <span>X1</span>
+                        <span>有货</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="palynum">
+                <p>&nbsp;&nbsp;1件商品，商品小计：
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    420积分</p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    运费：
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    ¥ 0.00 </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    服务费：
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    ¥ 0.00  </p>
+            </div>
+            <div class="m-palynum">
+                <p><span class="float_l">1件商品，商品小计：</span><span class="float_r" style="margin-right: 1.5rem">420积分</span></p>
+                <p><span  class="float_l">运费：</span><span class="float_r" style="margin-right: 1.5rem">¥ 0.00</span></p>
+                <p style="margin-bottom: 1rem"><span class="float_l">服务费：</span><span class="float_r" style="margin-right: 1.5rem">¥ 0.00</span></p>
+                <p style="background-color: #333333;margin-left: 0;"><span class="float_l" style="margin-left: 1.5rem;">应付总额</span><span class="float_r" style="margin-right: 1.5rem;background-color: #333333;color: #BE9D70;font-size: 1.1rem">420积分</span></p>
+            </div>
+            <div class="gross">
+                <p>
+                    <span>应付总额：</span>
+                    <span style="display: inline-block;margin-left: 2.6rem;font-size: 1rem;color: #BE9D70">420积分</span>
+                </p>
+                <p style="margin-top: 1rem;margin-right: -2.5rem">
+                    <span style="margin-right: 1rem">寄送至：  上海 上海市 徐汇区 星联科研大厦1号楼           </span>
+                    <span style="display: inline-block;margin-left: 1rem">收货人：  王悠悠 13215682749</span>
+                </p>
+            </div>
+            <div class="lastbutton">
+                <a href="#">提交订单</a>
+            </div>
+            <div class="logo">
+                <img src="images/createolder5/logo.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="cvs">
+        <dis class="close">
+            <img src="images/createolder5/close.png" alt="">
+        </dis>
+        <div class="main">
+            <h3 style="color: #BE9D70;margin-bottom: 2rem">新增收货地址</h3>
+            <p style="width: 1rem;height: 1px;background-color: #BE9D70;margin-bottom: 2rem"></p>
+            <div class="place">
+                <p class="float_l" style="margin: 0 2rem 0 0">* 所在地区</p>
+                <div class="float_l bck leave_out">
+                    <div class="optionO" style="position: relative;display: flex ">
+                        <span style="display: inline-block;margin-left: 1.5rem;margin-right: 2rem;">省份</span>
+                        <span class="ico"
+                              style="display: inline-block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden">
+                        </span>
+                    </div>
+                    <ul class="leave_out_op">
+                        <li><p>上海</p></li>
+                        <li><p>武汉</p></li>
+                    </ul>
+                </div>
+                <div class="float_l bck city">
+                    <div class="optionT" style="position: relative;display: flex ">
+                        <span style="display: inline-block;margin-left: 1.5rem;margin-right: 3rem;">市</span>
+                        <span class="ico"
+                              style="display: inline-block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden">
+                        </span>
+                    </div>
+                    <ul class="city_op">
+                        <li><p>上海</p></li>
+                        <li><p>武汉</p></li>
+                    </ul>
+                </div>
+                <div class="float_l bck area">
+                    <div class="areaS" style="position: relative;display: flex ">
+                        <span class="" style="display: inline-block;margin-left: 1.5rem;margin-right: 3rem;">区</span>
+                        <span class="ico float_r"
+                              style="display:block;width: 1.5rem;height: 1.5rem;margin-top: 0.8rem;position: relative;overflow: hidden;">
+                        </span>
+                    </div>
+                    <ul class="areaS_op">
+                        <li><p>上海</p></li>
+                        <li><p>武汉</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="name">
+                <p class="float_l">* 收货人姓名</p>
+                <div class="float_l">
+                    <input type="text" value="">
+                </div>
+            </div>
+            <div class="name">
+                <p class="float_l" style="margin-right: 2rem" >* 详细地址</p>
+                <div class="float_l">
+                    <input type="text" value="">
+                </div>
+            </div>
+            <div class="name">
+                <p class="float_l" style="margin-right: 2rem">* 手机号码</p>
+                <div class="float_l">
+                    <input type="tel" value="">
+                </div>
+            </div>
+            <div class="filedTel">
+                <p class="float_l text" style="margin-right: 2rem"><span style="color: #141414;">* </span>固定电话</p>
+                <div class="float_l">
+                    <input type="tel" value="">
+                </div>
+                <p class="line float_l"></p>
+                <div class="float_l">
+                    <input type="tel" value="">
+                </div>
+            </div>
+            <div class="name">
+                <p class="float_l" style="margin-right: 2rem"><span style="color: #141414;">* </span>邮箱地址</p>
+                <div class="float_l">
+                    <input type="email" value="">
+                </div>
+            </div>
+            <p style="color: #ffffff;margin-left: 7rem;font-size: 0.8rem">用来接收订单提醒邮件，便于您及时了解订单状态</p>
+            <div class="butBox">
+                <div class="mycheck float_l">
+                    <input type="checkbox" value="1" id="checkbox1" name="" />
+                    <label for="checkbox1"></label>
+                </div>
+                <span class="float_l" style="color: #ffffff;font-size: 0.8rem">设为默认地址</span>
+                <div style="clear: both"></div>
+            </div>
+            <div class="sub">
+                <a href="#">保存收货人信息</a>
+            </div>
+        </div>
+    </div>
+    <div class="m-cvs">
+        <div class="m-box1">
+            <a href="#" class="back"><</a>
+            <span>收货地址</span>
+        </div>
+        <div class="name1">
+            <p class="float_l">收货人姓名</p>
+            <div class="float_l">
+                <input type="text" value="" placeholder="姓名">
+            </div>
+        </div>
+        <div class="name1">
+            <p class="float_l">联系方式 &nbsp;&nbsp;</p>
+            <div class="float_l">
+                <input type="text" value="" placeholder="手机号码">
+            </div>
+        </div>
+        <div class="name1">
+            <p class="float_l">所在地区 &nbsp;&nbsp;</p>
+            <div class="float_l">
+                <p>浙江省杭州市拱墅区 <span>></span></p>
+            </div>
+        </div>
+        <div class="name1" style="padding-bottom: 2rem">
+            <p class="float_l">所在地区 &nbsp;&nbsp;</p>
+            <div class="float_l">
+                <textarea placeholder="详细地址需填写楼栋楼层或房间号信息"></textarea>
+            </div>
+        </div>
+        <div class="butBox">
+            <div class="mycheck float_l">
+                <input type="checkbox" value="1" id="checkbox2" name="" />
+                <label for="checkbox2"></label>
+            </div>
+            <span class="float_l" style="color: #ffffff;font-size: 1rem">设为默认地址</span>
+            <div style="clear: both"></div>
+        </div>
+        <div class="con">
+            <a href="#">确认</a>
+        </div>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/loading/loading.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+{template 'header'}
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/about/about.less">
+<link rel="stylesheet/less" href="{MODULE_URL}template/mobile/css/about/about-media.css">
+<script src="{MODULE_URL}template/mobile/js/less-1.7.0.js" type="text/javascript"></script>
+<div class="about">
+  <ul class="about-nav">
+    {loop $navs $key $nav}
+    <!-- <img src="{php echo tomedia($nav['header'])}" alt=""> -->
+    <li {if $childId == $nav['id']}class="active"{/if}>
+      <a href="{php echo $this->createMobileUrl('about',array('id'=>$id,'childId'=>$nav['id']))}">
+        <div class="nav-item">
+          <div class="nav-title">{$nav['title']}</div>
+          <img src="{$nav['header']}" alt="">
+        </div>
+      </a>
+    </li>
+    {/loop}
+  </ul>
+  <div class="about-header">
+    <img class="header-img" src="{$item['banner']}" alt="">
+  </div>
+  {if $childId == 1}
+  <div class="about-content1">
+    {if $inits['isMobile']}
+    <div class="content">
+      {php echo htmlspecialchars_decode($item['mobileContent']);}
+    </div>
+    {else}
+    <div class="content">
+      {php echo htmlspecialchars_decode($item['content']);}
+    </div>
+    {/if}
+  </div>
+  {/if}
+  {if $childId == 2}
+  <div class="about-content2">
+    <div class="content">
+      {if $inits['isMobile']}
+        {php echo htmlspecialchars_decode($item['mobileContent']);}
+      {else}
+        {php echo htmlspecialchars_decode($item['content']);}
+      {/if}
+    </div>
+  </div>
+  {/if}
+  {if $childId == 3}
+  <div class="about-content3">
+    {if $inits['isMobile']}
+    <div class="content">
+      <div class="content-padding">
+        <div class="content-title">新的经济形态、新的商业模式快速迭代。</div>
+        <div class="content-desc">从创立甦翔投资、BU财富，胡天翔先生再度出发，联合中国首个青年企业家联合投资体——BU集团，希望再一次改变财富管理行业的格局，在已经略微呈现寡头垄断的市场中，打破公司间的壁垒，融合整体市场资源，继续以专业的团队，科学的管理理念，高效的服务流程服务于日益增长的中国高净值人群。</div>
+        <ul class="content-ul">
+          <li class="content-ul-title">价值理念</li>
+          <li class="content-ul-item">勇于担当：坚持原则，勇于责任，敢于担当；</li>
+          <li class="content-ul-item">正直诚信：正直向上，诚信为本，重诺守信；</li>
+          <li class="content-ul-item">持续发展：深耕细作，持续创新，长久发展；</li>
+          <li class="content-ul-item">追求卓越：精益求精，在迭代发展中创新发展；</li>
+          <li class="content-ul-item">成就客户：专业专注，助力财富人生的全方位实现。</li>
+        </ul>
+      </div>
+    </div>
+    {else}
+    <div class="content">
+      <div class="content-title">新的经济形态、新的商业模式快速迭代。</div>
+      <div class="content-desc">从创立甦翔投资、BU财富，胡天翔先生再度出发，联合中国首个青年企业家联合投资体——BU集团，希望再一次改变财富管理行业的格局，在已经略微呈现寡头垄断的市场中，打破公司间的壁垒，融合整体市场资源，继续以专业的团队，科学的管理理念，高效的服务流程服务于日益增长的中国高净值人群。</div>
+      <ul class="content-ul">
+        <li class="content-ul-title">价值理念</li>
+        <li class="content-ul-item">勇于担当：坚持原则，勇于责任，敢于担当；</li>
+        <li class="content-ul-item">正直诚信：正直向上，诚信为本，重诺守信；</li>
+        <li class="content-ul-item">持续发展：深耕细作，持续创新，长久发展；</li>
+        <li class="content-ul-item">追求卓越：精益求精，在迭代发展中创新发展；</li>
+        <li class="content-ul-item">成就客户：专业专注，助力财富人生的全方位实现。</li>
+      </ul>
+    </div>
+    {/if}
+  </div>
+  {/if}
+  {if $childId == 4}
+  <div class="about-content4">
+    <div class="content">
+      {if $inits['isMobile']}
+        {php echo htmlspecialchars_decode($item['mobileContent']);}
+      {else}
+        {php echo htmlspecialchars_decode($item['content']);}
+      {/if}
+    </div>
+  </div>
+  {/if}
+  {if $childId == 5}
+  <div class="about-content5">
+    <div class="content">
+      {if $inits['isMobile']}
+        {php echo htmlspecialchars_decode($item['mobileContent']);}
+      {else}
+        {php echo htmlspecialchars_decode($item['content']);}
+      {/if}
+    </div>
+  </div>
+  {/if}
+  {if $childId == 6}
+  <div class="about-content6">
+    <div class="content">
+      <div class="content-pos">
+        <div class="content-info">
+          <div class="content-ewm">
+            <div class="ewm-content">
+              <img src="{php echo tomedia($inits['setting']['bu_ewm'])}" alt="">
+            </div>
+            <div class="ewm-word">
+              <div class="content">
+                “BU财富”官微欢迎关注！
+              </div>
+            </div>
+          </div>
+          <ul>
+            <li class="content-item">
+              <div class="content-item-left">
+                <div class="item">BU财富</div>
+                <div class="item">总部</div>
+                <div class="item">服务热线: {$inits['setting']['contact']}</div>
+              </div>
+              <div class="content-item-right">
+                <img src="{MODULE_URL}template/mobile/images/about/about6/phone.png" alt="">
+              </div>
+            </li>
+            <li class="content-item">
+              <div class="content-item-left">
+                <div class="item">工作时间</div>
+                {php $serviceTime = iunserializer($inits['setting']['serviceTime'])}
+                <div class="item">周一到周五</div>
+                <div class="item">am {$serviceTime[0]['fTime']}-{$serviceTime[0]['sTime']}</div>
+                <div class="item">pm {$serviceTime[1]['fTime']}-{$serviceTime[1]['sTime']}</div>
+              </div>
+              <div class="content-item-right">
+                <img src="{MODULE_URL}template/mobile/images/about/about6/time.png" alt="">
+              </div>
+            </li>
+            <li class="content-item">
+              <div class="content-item-left">
+                <div class="item">邮箱</div>
+                <div class="item">{$inits['setting']['message']}</div>
+              </div>
+              <div class="content-item-right">
+                <img class="msg" src="{MODULE_URL}template/mobile/images/about/about6/msg.png" alt="">
+              </div>
+            </li>
+            <li class="content-item">
+              <div class="content-item-left">
+                <div class="item">官网</div>
+                <div class="item">www.buwealth.com</div>
+              </div>
+              <div class="content-item-right">
+                <img src="{MODULE_URL}template/mobile/images/about/about6/net.png" alt="">
+              </div>
+            </li>
+            <li class="content-item">
+              <div class="content-item-left">
+                <div class="item">地址</div>
+                <div class="item">{$inits['setting']['address']}</div>
+              </div>
+              <div class="content-item-right">
+                <img src="{MODULE_URL}template/mobile/images/about/about6/location.png" alt="">
+              </div>
+            </li>
+          </ul>
+        </div>
+        <img class="content-pic" src="{MODULE_URL}template/mobile/images/about/about6/about6pic.jpg" alt="">
+      </div>
+      <link rel="stylesheet" href="{MODULE_URL}template/mobile/css/about/rangeslider.css">
+      <div id="slider">
+          <br>
+          <input type="range" min="3" max="18" value="18" step="1" data-rangeslider>
+          <!-- <output></output> -->
+          <input type="hidden" id="show">
+          <div class="button" id="btnadd">+</div>
+          <div class="button" id="btnremove">-</div>
+      </div>
+      <div class="map-content" id="mapContent">
+
+      </div>
+
+      <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.2&key=ca4d8c75dd9290a30e7965a05114e33a"></script>
+      <script type="text/javascript" src="{MODULE_URL}template/mobile/js/rangeslider.min.js"></script>
+      <script>
+      $(function() {
+          var $document   = $(document);
+          var selector    = '[data-rangeslider]';
+          var $inputRange = $(selector);
+
+          function valueOutput(element) {
+              var value = element.value;
+              // var output = element.parentNode.getElementsByTagName('output')[0];
+              // output.innerHTML = value;
+              $('#show').val(value);
+          }
+
+          // Initial value output
+          for (var i = $inputRange.length - 1; i >= 0; i--) {
+              valueOutput($inputRange[i]);
+          };
+
+          // Update value output
+          $document.on('input', selector, function(e) {
+              valueOutput(e.target);
+              console.log(e);
+          });
+          // Initialize the elements
+          $inputRange.rangeslider({
+              polyfill: false
+          });
+          // $inputRange.rangeslider('destroy');
+
+          // Example functionality to demonstrate programmatic value changes
+          $document.on('click', '#slider .button', function(e) {
+              var $inputRange = $('input[type="range"]', e.target.parentNode);
+              var value = $('input[type="number"]', e.target.parentNode)[0].value;
+
+              $inputRange
+                  .val(value)
+                  .change();
+          });
+
+          $('#btnadd').on('click',function(){
+            var value1 = $('#show').val();
+            value1 = Number(value1) + Number(1);
+            $inputRange
+                 .val(value1)
+                 .change();
+          })
+          $('#btnremove').on('click',function(){
+            var value1 = $('#show').val();
+            value1 = Number(value1) - Number(1);
+            $inputRange
+                 .val(value1)
+                 .change();
+          })
+
+      });
+    	</script>
+      <script type="text/javascript">
+          $(function(){
+            $('.rangeslider__handle').attr('id','spe');
+            var map = new AMap.Map('mapContent',{
+               zoom: 18,
+               center: [121.487194,31.246141],
+               scrollWheel:false
+            });
+            AMap.event.addDomListener(document.getElementById('spe'), 'click', function() {
+               // 设置缩放级别和中心点
+               map.setZoom($('#show').val());
+            });
+            AMap.event.addDomListener(document.getElementById('js-rangeslider-0'), 'click', function() {
+                // 设置缩放级别和中心点
+                map.setZoom($('#show').val());
+            });
+            AMap.event.addDomListener(document.getElementById('btnadd'), 'click', function() {
+               // 设置缩放级别和中心点
+               map.setZoom($('#show').val());
+            });
+            AMap.event.addDomListener(document.getElementById('btnremove'), 'click', function() {
+               // 设置缩放级别和中心点
+               map.setZoom($('#show').val());
+            });
+            var lnglats=[
+                 [121.487194,31.246141]
+             ];
+            var infoWindow = new AMap.InfoWindow({offset:new AMap.Pixel(0,-30)});
+            for(var i= 0,marker;i<lnglats.length;i++){
+                  var marker=new AMap.Marker({
+                      position:lnglats[i],
+                      map:map
+                  });
+                marker.content='星荟中心';
+                marker.on('click',markerClick);
+                marker.emit('click',{target:marker});
+            }
+            function markerClick(e){
+                infoWindow.setContent(e.target.content);
+                infoWindow.open(map, e.target.getPosition());
+            }
+            map.setFitView();
+          })
+      </script>
+    </div>
+  </div>
+  {/if}
+</div>
+<script>
+  // $('#hover,.about-nav').hover(function(){
+  //   $('.about-nav').css({
+  //     'z-index':2,
+  //     'opacity':1
+  //   });
+  // },function(){
+  //   $('.about-nav').css({
+  //     'z-index':0,
+  //     'opacity':0
+  //   });
+  // })
+</script>
+{template 'footer'}

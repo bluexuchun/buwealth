@@ -1,0 +1,171 @@
+html{
+    font-size:16pt;
+}
+@media screen and (min-width:1680px){
+    html{
+        font-size:14pt;
+    }
+}
+@media screen and (min-width:1280px) and (max-width: 1680px) {
+    html {
+        font-size: 12pt;
+    }
+}
+@media screen and (max-width: 1400px) {
+  .common-footer .content-detail .contact{
+    width:53%;
+  }
+}
+@media screen and (max-width: 1380px) {
+  .common-footer .content-detail .ewm img{
+    height:6rem;
+  }
+  .common-func .tools-content-content{
+    padding:0.875rem 3rem;
+  }
+  .common-func .tools-close{
+    margin-bottom:0.8rem;
+  }
+  .common-func .tools-title{
+    padding:0.3rem 0rem;
+  }
+  .common-func .tools .form .login-btn{
+    margin-top:1.5rem;
+  }
+  .common-func .tools-title div{
+    margin-bottom:2px;
+  }
+  .common-func .tools .form{
+    margin-top:0.5rem;
+  }
+  .common-func .tools .form-content{
+    padding:0.5rem 0rem;
+  }
+  .common-func .tools-content{
+    top:25%;
+  }
+}
+@media screen and (max-width:1100px){
+  .common-header-content{
+    align-items: center;
+  }
+  .common-header-nav{
+    display: none;
+  }
+  .common-ham{
+    display: flex;
+  }
+  .common-ham-content{
+    display: block;
+  }
+  .common-footer .content .phone-show{
+    display: block;
+  }
+  .common-footer .content-detail .pc-show{
+    display: none;
+  }
+  .common-footer .content-detail{
+    justify-content: space-between;
+  }
+  .common-footer .content-detail .logo{
+    width:50%;
+  }
+  .common-footer .content-detail .ewm{
+    width:50%;
+  }
+}
+@media screen and (max-width:800px){
+  .common-ham-content .ham-content{
+    width:70%;
+    margin-left:-35%;
+  }
+}
+@media screen and (max-width:500px){
+  html{
+    overflow-x: auto;
+  }
+  .common-ham-content .ham-content{
+    width:90%;
+    margin-left:-45%;
+  }
+  .common-footer .content{
+    padding:0rem 1rem;
+  }
+  .common-footer .content-detail .logo img{
+    height:3rem;
+  }
+  .common-footer .content-detail .ewm .tTop img {
+    height: 1.5rem;
+    margin-bottom:2px;
+  }
+  .common-footer .content-detail .ewm img{
+    height:5rem;
+  }
+  .common-footer .content .contact-ul{
+    flex-direction: column;
+  }
+  .common-footer .content .contact-ul li{
+    width:100%;
+  }
+  .common-footer .content .contact-ul li .content-icon img{
+    width:18px;
+  }
+  .common-footer .content .contact-ul li .content-icon img.location{
+    width:14px;
+  }
+  .common-footer .content-detail{
+    padding:.5rem 0rem;
+  }
+  .common-footer .content .contact-ul{
+    margin: .5rem 0rem;
+  }
+  .common-footer .content-copy{
+    padding:.5rem 0rem;
+  }
+  .common-footer .content-detail .ewm img{
+    height:4.5rem;
+    margin-right:0px;
+  }
+  .common-footer .content .contact-ul li .content{
+    padding:0rem;
+  }
+}
+@media screen and (min-width:800px) and (max-width: 1280px) {
+    html {
+        font-size: 12pt;
+    }
+}
+@media screen and (min-width:415px) and (max-width:800px){
+    html {
+        font-size: 11pt;
+    }
+}
+@media screen and (min-width:360px) and (max-width: 415px) {
+    html {
+        font-size: 10pt;
+    }
+    .common-func li{
+      width:3rem;
+      height:3rem;
+      font-size:1rem;
+    }
+    .common-func .li-personal{
+      width:3rem;
+      height:5rem;
+    }
+    .common-func .li-welcome, .common-func .li-app{
+      font-size: 1rem;
+      width: 3rem;
+      padding: 1rem 0rem;
+    }
+}
+@media screen and (min-width:321px) and (max-width:360px){
+    html {
+        font-size: 9pt;
+    }
+}
+@media screen and (max-width:320px){
+    html {
+        font-size: 8pt;
+    }
+}

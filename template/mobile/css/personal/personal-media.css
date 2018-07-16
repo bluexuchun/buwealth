@@ -1,0 +1,146 @@
+@media screen and (min-width:1680px){
+
+}
+@media screen and (min-width:1280px) and (max-width: 1680px) {
+
+}
+@media screen and (max-width:1600px){
+
+}
+@media screen and (max-width:1400px){
+
+}
+@media screen and (max-width: 1280px) {
+
+}
+@media screen and (max-width: 500px){
+  .personal-content{
+    width:100%;
+    margin:0rem auto;
+  }
+  .personal-content .perhead-user{
+    width:100%;
+    padding:1.5rem 0rem;
+  }
+  .personal-content .perhead{
+    flex-direction: column;
+  }
+  .personal-content .perhead-fi{
+    width:100%;
+  }
+  .personal-content .perhead-user .userc-head img{
+    width:7rem;
+    height:7rem;
+  }
+  .personal-content .perhead-user .userc-head .userc-info{
+    width:15rem;
+    font-size:1.1rem;
+  }
+  .personal-content .perhead-user .userc-foot .usercrz, .personal-content .perhead-user .userc-foot .usercbd{
+    justify-content: center;
+    font-size:1rem;
+  }
+  .personal-content .perhead-user .userc-foot{
+    width:90%;
+    font-size: 1.1rem;
+  }
+  .personal-content .perhead-user .userc-foot .usercrz-btn, .personal-content .perhead-user .userc-foot .usercbd-btn{
+    width:5rem;
+  }
+  .personal-content .perhead-fi .userf-head{
+    text-align: right;
+  }
+  .personal-content .perhead-fi .userf-content{
+    justify-content: center;
+  }
+  .personal-content .perhead-fi .userf-footm{
+    display: flex;
+    width:8rem;
+    height:2rem;
+    align-self: flex-end;
+  }
+  .personal-content .perhead-fi .userf-foot{
+    display: none;
+  }
+  .personal-content .perhead-fi .userf-content .userf-ava{
+    width:5.5rem;
+  }
+  .personal-content .perhead-fi .userf-content .userf-info{
+    width:8rem;
+    padding:0rem .875rem;
+  }
+  .personal-content .perhead-fi .userf{
+    padding:1.5rem 1rem;
+  }
+  .personal-content .perul-invest .perulin{
+    padding:1rem .875rem;
+  }
+  .personal-content .perul-invest .perulin-left-title{
+    font-size:.9rem;
+  }
+  .personal-content .perul-invest .perulin-left-date{
+    font-size:.875rem;
+  }
+  .personal-content .perul-invest .perulin .pertime{
+    font-size:.7rem;
+    width:39%;
+  }
+  .result-m{
+    padding:0rem .4rem;
+  }
+  .personal-content .perul-invest .perulin-left-money{
+    font-size:1.2rem;
+  }
+  .personal-content .perul-invest .perulin-left{
+    width:50%;
+  }
+  .personal-content .perul-invest .perulin-right{
+    width:7rem;
+  }
+  .personal-content .perul-invest .result-d{
+    width:30%;
+  }
+  .personal-content{
+    padding-bottom:4rem;
+  }
+  .personal-content .perhead-user .userc-foot .udl{
+    margin-right:0.875rem;
+  }
+  .dark .tc{
+    width:90%;
+  }
+  .dark .tc-content{
+    width:85%;
+  }
+  .dark .tc-content .tc-title{
+    font-size:1.1rem;
+  }
+  .detail .decon-content .word-hidden{
+    display: none;
+  }
+  .detail .decon-content .deul .item-5 .deul-item-word{
+    width:25%;
+  }
+  .detail .decon-head-word{
+    width:70%;
+    font-size:1.2rem;
+  }
+  .detail .decon-head-img{
+    width:5rem;
+  }
+  .detail .decon{
+    width:90%;
+  }
+  .detail-close{
+    top:4rem;
+  }
+  .perhead{
+    display: none;
+  }
+  .perhead-mob{
+    display: inline-block;
+  }
+  .dark .tc-content .tc-form .tc-img .tc-tipssss{
+    display: block;
+  }
+}

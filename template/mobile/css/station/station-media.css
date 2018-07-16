@@ -1,0 +1,299 @@
+@media screen and (min-width:1680px){
+
+}
+@media screen and (max-width: 1680px) {
+  .invest-header .recruit{
+    width:90%;
+    margin-left:-45%;
+    bottom:-32rem;
+  }
+  .invest-content{
+    padding:30rem 0rem 8rem 0rem;
+  }
+}
+@media screen and (max-width:1600px){
+  .invest li .line:after {
+    top: 15px;
+  }
+  .invest li{
+    padding:0.2rem 0rem;
+  }
+  .invest .item-top{
+    padding:0.5rem 0rem;
+  }
+  .invest .item-bottom{
+    padding:0.5rem 0rem;
+  }
+  .invest .left-ul{
+    width:100%;
+  }
+  .invest .right-ul{
+    width:100%;
+  }
+  .invest li .li-word{
+    width:100%;
+  }
+}
+@media screen and (max-width:1450px){
+  .invest-content .invest-item-1 .item-left .item-content {
+    padding: 2rem 5rem 3rem 8rem;
+  }
+  .invest .item-top{
+    width:90%;
+  }
+  .invest .item-bottom{
+    width:90%;
+  }
+  .invest-content .invest-multi .multi-left .multi-one{
+    padding:6rem 0rem 5rem 6rem;
+  }
+  .invest-content .invest-multi .multi-right .multi-one{
+    padding:6rem 4rem 5rem 4rem;
+  }
+  .invest-content .invest-multi .multi-left .multi-two {
+    padding: 6rem 0rem 5rem 6rem;
+  }
+  .invest-content .invest-multi .multi-right .multi-two{
+    padding:6rem 4rem 5rem 4rem;
+  }
+  .invest-content .invest-multi .multi-right .multi-three {
+    padding: 1rem 4rem 1rem 4rem;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .invest-content .invest-item-2 .item-right .zfx {
+    width: 28rem;
+    height: 25rem;
+    background: #be9d70;
+    margin-left: 4rem;
+    position: relative;
+  }
+  .invest-content .invest-item-2 .item-right .zfx1 {
+    width: 28rem;
+    height: 25rem;
+    background: #252626;
+    margin-left: 4rem;
+  }
+  .invest-content .invest-item-2 .item-right .zfx img{
+    width:28rem;
+  }
+  .invest .item-top {
+    width: 95%;
+}
+.invest-content .invest-item-2 .item-left .item-content {
+    padding: 6rem 2rem 3rem 3rem;
+}
+.invest .item-bottom {
+    width: 95%;
+}
+.invest-content .invest-item-2 .item-left .item-content li {
+    padding: 0.2rem 0rem;
+}
+}
+@media screen and (max-width:800px){
+  .invest .title{
+    border:1px solid #fff;
+  }
+  .invest-header .recruit-item{
+    flex-direction:column;
+  }
+  .invest-header .recruit-item .item-left{
+    width:100%;
+  }
+  .invest-header .recruit-item .item-right{
+    width:100%;
+  }
+  .invest-content .invest-item-1 .item-right{
+    display: none;
+  }
+  .invest-content .invest-item-1 .item-left{
+    height:auto;
+    position: relative;
+    width:90%;
+    margin: 0 auto;
+  }
+  .invest-content .invest-item-1 .item-left .item-content{
+    width:90%;
+    padding:2rem 0rem;
+    margin: 0 auto;
+  }
+  .invest .ul-spe{
+    position: relative;
+  }
+  .invest .ul-spe .left-ul{
+    width:60%;
+  }
+  .invest .ul-spe-img{
+    display: block;
+    position: absolute;
+    top:0px;
+    right:-40px;
+    height:290px;
+    img{
+      height:100%;
+    }
+  }
+  .invest-content .invest-item-2 .item-right{
+    display: none;
+  }
+  .invest-content .invest-item-2 .item-left{
+    width:90%;
+    height:auto;
+    position: relative;
+    background: rgba(0,0,0,0.8);
+    margin: 0 auto;
+  }
+  .invest-content .invest-item-2 {
+    padding: 0rem 0rem 0rem 0rem;
+  }
+  .invest-content .invest-item-2 .item-left .item-content {
+    padding: 2rem 2rem 2rem 2rem;
+  }
+  .invest .item-top{
+    width:100%;
+  }
+  .invest .sta-title{
+    width:100%;
+  }
+  .invest .invest-item-2 .sta-title{
+    display: none;
+  }
+  .invest .invest-item-2 .item-top .title{
+    display: none;
+  }
+  .invest .invest-item-2 .sta-spe-title{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+  }
+  .invest .invest-item-2 .sta-spe-title .sta-spe-img{
+    width:60%;
+  }
+  .sta-spe-img img{
+    width:100%;
+  }
+  .invest .invest-item-2 .sta-spe-word{
+    width:40%;
+    height:100%;
+    position: absolute;
+    top:0px;
+    right:0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+  .invest .invest-item-2 .sta-spe-word .sta-word{
+    color: #be9d70;
+    font-size: 1.2rem;
+  }
+  .invest .invest-item-2 .sta-spe-word .title{
+    display: block;
+  }
+  .invest-content .invest-multi{
+    flex-direction: column;
+  }
+  .invest-content .invest-multi .multi-left{
+    width:90%;
+    margin: 0 auto;
+  }
+  .invest-content .invest-multi .multi-right{
+    width:90%;
+    margin: 0 auto;
+    position: relative;
+  }
+  .invest-content .invest-multi .multi-left .multi-one{
+    padding: 0rem 2rem;
+
+    background: rgb(37,37,39);
+  }
+  .invest-multi .multi-left .multi-two{
+    display: none;
+  }
+  .invest-content .invest-multi .multi-right .multi-one{
+    padding:0rem 2rem;
+    background: rgba(0,0,0,0.8);
+  }
+  .invest-content .invest-multi .multi-right .multi-two{
+    padding:0rem 2rem;
+    margin-bottom:2rem;
+  }
+  .invest-content .invest-multi .multi-right .multi-pic{
+    display: none;
+  }
+  .invest-content .invest-multi .phone-pic{
+    display: block;
+    width:100%;
+  }
+  .invest-content .invest-multi .phone-pic img{
+    width:100%;
+  }
+  .invest-content .invest-multi .multi-pic .multi-pic-content{
+    width:90%;
+    margin: 0 auto;
+  }
+  .multi-pic .multi-pic-content .multi-two{
+    padding:0rem 2rem;
+    background: rgba(37,38,38,0.8);
+    margin-top:-10rem;
+    position: relative;
+    z-index:1;
+  }
+  .multi-pic .multi-pic-content .multi-three{
+    padding:0rem 2rem;
+    background: rgba(0,0,0,0.8);
+  }
+  .multi-foot img{
+    display: none;
+  }
+  .invest .multi-foot .multi-eml{
+    width:100%;
+    position: relative;
+  }
+  .invest .multi-foot{
+    padding:2rem 0rem 4rem 0rem;
+  }
+  .invest-content{
+    padding:30rem 0rem 1rem 0rem;
+  }
+  .invest .multi-foot .multi-eml .eml-content{
+    padding:0rem 14rem;
+  }
+  .invest .multi-foot .multi-eml .eml-content .city-content{
+    font-size:2rem;
+    padding:0rem 0rem 2rem 0rem;
+    border-bottom: 3px solid rgb(190,157,112);
+  }
+}
+@media screen and (max-width:500px){
+  .invest .multi-foot .multi-eml .eml-content {
+    padding: 0rem 2rem;
+  }
+  .invest .multi-foot .multi-eml .eml-content .city-content {
+    font-size: 1.8rem;
+    padding: 0rem 0rem 1rem 0rem;
+    border-bottom: 2px solid #be9d70;
+  }
+  .invest-header .recruit{
+    bottom:-60rem;
+  }
+  .invest-content {
+    padding: 60rem 0rem 1rem 0rem;
+  }
+  .invest .left-ul .line{
+    width:18%;
+  }
+}
+@media screen and (min-width:415px) and (max-width:800px){
+
+}
+@media screen and (min-width:360px) and (max-width: 415px) {
+
+}
+@media screen and (min-width:321px) and (max-width:360px){
+
+}
+@media screen and (max-width:320px){
+
+}
